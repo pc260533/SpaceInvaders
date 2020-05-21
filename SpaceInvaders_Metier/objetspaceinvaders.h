@@ -8,11 +8,9 @@
 
 
 
-class SpaceInvaders;
 class ObjetSpaceInvaders : public QGraphicsItem {
 
 private:
-    SpaceInvaders* spaceInvaders;
     QString cheminFichier;
     int positionX;
     int positionY;
@@ -24,9 +22,8 @@ private:
     int largeurEcran;
 
 public:
-    ObjetSpaceInvaders(SpaceInvaders* spaceInvaders, QString cheminFichier, int positionX, int positionY);
-    virtual ~ObjetSpaceInvaders();
-    SpaceInvaders *getSpaceInvaders() const;
+    ObjetSpaceInvaders(QString cheminFichier, int positionX, int positionY);
+    virtual ~ObjetSpaceInvaders() override;
     int getPositionX() const;
     void setPositionX(int value);
     int getPositionY() const;
@@ -42,6 +39,9 @@ public:
     QRectF boundingRect() const override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     void advance(int phase) override;
+
+signals:
+    virtual void nouveauObjetSpaceInvadersDansJeu(ObjetSpaceInvaders*) = 0;
 
 };
 

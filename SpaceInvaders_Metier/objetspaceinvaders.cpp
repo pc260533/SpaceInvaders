@@ -1,22 +1,18 @@
 #include "objetspaceinvaders.h"
 
-ObjetSpaceInvaders::ObjetSpaceInvaders(SpaceInvaders* spaceInvaders, QString cheminFichier, int positionX, int positionY) {
-    this->spaceInvaders = spaceInvaders;
+ObjetSpaceInvaders::ObjetSpaceInvaders(QString cheminFichier, int positionX, int positionY) {
     this->cheminFichier = cheminFichier;
     this->positionX = positionX;
     this->positionY = positionY;
     this->pixmap = QPixmap(cheminFichier);
     this->hauteur = this->pixmap.size().height();
     this->largeur = this->pixmap.size().width();
-    this->hauteurEcran = this->spaceInvaders->getLongueur();
+    this->hauteurEcran = 600;
+    this->largeurEcran = 800;
 }
 
 ObjetSpaceInvaders::~ObjetSpaceInvaders() {
 
-}
-
-SpaceInvaders *ObjetSpaceInvaders::getSpaceInvaders() const {
-    return this->spaceInvaders;
 }
 
 int ObjetSpaceInvaders::getPositionX() const {
@@ -42,7 +38,7 @@ void ObjetSpaceInvaders::deplacerXY(int deplacementX, int deplacementY) {
 
 
 QRectF ObjetSpaceInvaders::boundingRect() const {
-    return QRectF(0, 0, this->largeur, this->hauteur);
+    return QRectF(this->positionX, this->positionY, this->largeur, this->hauteur);
 }
 
 void ObjetSpaceInvaders::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {

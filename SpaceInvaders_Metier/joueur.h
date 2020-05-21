@@ -3,13 +3,23 @@
 
 #include "objetspaceinvadersbougeableclavier.h"
 
+#include <QObject>
+#include <QKeyEvent>
 
 
-class Joueur : public ObjetSpaceInvadersBougeableClavier {
+class Joueur : public QObject, public ObjetSpaceInvadersBougeableClavier {
+    Q_OBJECT
+
+private:
+    int nombreViesJoueur;
+    bool enVieJoueur;
+    int vitesseJoueur;
+
+private:
+    void intialiserLaPositionDuJoueur();
 
 public:
-    Joueur(SpaceInvaders* spaceInvaders, QString cheminFichier, int positionX, int positionY);
-
+    Joueur(int positionX, int positionY);
 
     // ObjetSpaceInvaders interface
 public:
@@ -19,6 +29,11 @@ public:
     // ObjetSpaceInvadersBougeableClavier interface
 public:
     void onKeyPressedEvent(QKeyEvent *event) override;
+
+
+    // ObjetSpaceInvaders interface
+signals:
+    void nouveauObjetSpaceInvadersDansJeu(ObjetSpaceInvaders*) override;
 
 };
 

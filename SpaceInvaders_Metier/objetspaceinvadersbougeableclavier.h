@@ -8,14 +8,15 @@
 class ObjetSpaceInvadersBougeableClavier : public ObjetSpaceInvaders {
 
 public:
-    ObjetSpaceInvadersBougeableClavier(SpaceInvaders* spaceInvaders, QString cheminFichier, int positionX, int positionY);
-    virtual ~ObjetSpaceInvadersBougeableClavier();
+    ObjetSpaceInvadersBougeableClavier(QString cheminFichier, int positionX, int positionY);
+    virtual ~ObjetSpaceInvadersBougeableClavier() override;
     virtual void onKeyPressedEvent(QKeyEvent* event) = 0;
 
 
     // QGraphicsItem interface
 protected:
     void keyPressEvent(QKeyEvent *event) override;
+
 
 };
 

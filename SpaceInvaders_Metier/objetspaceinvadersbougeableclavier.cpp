@@ -1,7 +1,7 @@
 #include "objetspaceinvadersbougeableclavier.h"
 
-ObjetSpaceInvadersBougeableClavier::ObjetSpaceInvadersBougeableClavier(SpaceInvaders* spaceInvaders, QString cheminFichier, int positionX, int positionY)
-    : ObjetSpaceInvaders(spaceInvaders, cheminFichier, positionX, positionY) {
+ObjetSpaceInvadersBougeableClavier::ObjetSpaceInvadersBougeableClavier(QString cheminFichier, int positionX, int positionY)
+    : ObjetSpaceInvaders(cheminFichier, positionX, positionY) {
     this->setFlag(QGraphicsItem::ItemIsFocusable);
 }
 

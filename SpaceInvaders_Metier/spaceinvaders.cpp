@@ -14,18 +14,18 @@ void SpaceInvaders::setGraphicsSceneJeu(QGraphicsScene *value) {
     graphicsSceneJeu = value;
 }
 
-int SpaceInvaders::getLongueur() const
-{
-    return longueur;
+int SpaceInvaders::getHauteur() const {
+    return hauteur;
 }
 
-int SpaceInvaders::getLargeur() const
-{
+int SpaceInvaders::getLargeur() const {
     return largeur;
 }
 
-SpaceInvaders::SpaceInvaders() {
-    this->graphicsSceneJeu = new QGraphicsScene();
+SpaceInvaders::SpaceInvaders(): QObject(nullptr) {
+    this->largeur = 800;
+    this->hauteur = 600;
+    this->graphicsSceneJeu = new QGraphicsScene(0, 0, this->largeur, this->hauteur);
 }
 
 SpaceInvaders::~SpaceInvaders() {
@@ -44,4 +44,9 @@ void SpaceInvaders::jouer() {
     this->initialiserArrierePlan();
     this->initialiserObjetsJeu();
     this->initialiserEvenements();
+}
+
+void SpaceInvaders::ajouterObjetsSpaceInvadersAuJeu(ObjetSpaceInvaders *objetSpaceInvaders) {
+    qDebug() << "objet attrapé et ajouté";
+    this->ajouterObjetSpaceInvaders(objetSpaceInvaders);
 }

@@ -3,15 +3,15 @@
 
 #include <QMainWindow>
 
-#include <SpaceInvaders_Metier/joueur.h>
-#include <SpaceInvaders_Metier/spaceinvaders.h>
+#include <SpaceInvaders_Metier/spaceinvadersimpl.h>
+
 
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow, public SpaceInvaders {
+class MainWindow : public QMainWindow{
     Q_OBJECT
 
 public:
@@ -20,17 +20,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    Joueur *joueur;
-
-    // SpaceInvaders interface
-public:
-    void actionAExecuterJeuPerdu() override;
-    void actionAExecuterJeuGagne() override;
-    bool jeuEstGagne() override;
-    bool jeuEstPerdu() override;
-    void initialiserObjetsJeu() override;
-    void initialiserArrierePlan() override;
-    void initialiserEvenements() override;
+    SpaceInvadersImpl *spaceInvadersImpl;
 
 };
 #endif // MAINWINDOW_H

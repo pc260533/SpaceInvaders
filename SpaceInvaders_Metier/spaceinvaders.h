@@ -1,20 +1,25 @@
 #ifndef JEU_H
 #define JEU_H
 
+
 #include "objetspaceinvaders.h"
 
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QList>
 #include <QString>
+#include <QObject>
+
+#include <QDebug>
 
 
 
-class SpaceInvaders {
+class SpaceInvaders : public QObject {
+    Q_OBJECT
 
 private:
     QString titre;
-    int longueur;
+    int hauteur;
     int largeur;
     QList<ObjetSpaceInvaders*> listeObjetsSpaceInvaders;
 
@@ -25,7 +30,7 @@ public:
     SpaceInvaders();
     virtual ~SpaceInvaders();
 
-    int getLongueur() const;
+    int getHauteur() const;
     int getLargeur() const;
     void setGraphicsView(QGraphicsView *value);
     QGraphicsScene *getGraphicsSceneJeu() const;
@@ -42,6 +47,9 @@ public:
     virtual void initialiserObjetsJeu() = 0;
     virtual void initialiserArrierePlan() = 0;
     virtual void initialiserEvenements() = 0;
+
+private slots:
+    void ajouterObjetsSpaceInvadersAuJeu(ObjetSpaceInvaders* objetSpaceInvaders);
 
 };
 

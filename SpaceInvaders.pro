@@ -20,6 +20,7 @@ SOURCES += \
     SpaceInvaders_Metier/objetspaceinvaders.cpp \
     SpaceInvaders_Metier/objetspaceinvadersbougeableclavier.cpp \
     SpaceInvaders_Metier/spaceinvaders.cpp \
+    SpaceInvaders_Metier/spaceinvadersimpl.cpp \
     main.cpp \
     mainwindow.cpp
 
@@ -28,6 +29,7 @@ HEADERS += \
     SpaceInvaders_Metier/objetspaceinvaders.h \
     SpaceInvaders_Metier/objetspaceinvadersbougeableclavier.h \
     SpaceInvaders_Metier/spaceinvaders.h \
+    SpaceInvaders_Metier/spaceinvadersimpl.h \
     mainwindow.h
 
 FORMS += \
