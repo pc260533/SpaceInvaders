@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/ressources/images">
+        <file>images/backgroundSpaceInvaders.jpg</file>
+        <file>images/joueur.png</file>
+    </qresource>
+</RCC>
