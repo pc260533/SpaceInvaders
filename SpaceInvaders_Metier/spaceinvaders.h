@@ -14,7 +14,7 @@
 
 
 
-class SpaceInvaders : public QObject {
+class SpaceInvaders : public QGraphicsScene {
     Q_OBJECT
 
 private:
@@ -23,18 +23,18 @@ private:
     int largeur;
     QList<ObjetSpaceInvaders*> listeObjetsSpaceInvaders;
 
-    QGraphicsScene* graphicsSceneJeu;
+    //QGraphicsScene* graphicsSceneJeu;
     QGraphicsView* graphicsView;
 
 public:
     SpaceInvaders();
-    virtual ~SpaceInvaders();
+    virtual ~SpaceInvaders() override;
 
     int getHauteur() const;
     int getLargeur() const;
     void setGraphicsView(QGraphicsView *value);
-    QGraphicsScene *getGraphicsSceneJeu() const;
-    void setGraphicsSceneJeu(QGraphicsScene *value);
+    //QGraphicsScene *getGraphicsSceneJeu() const;
+    //void setGraphicsSceneJeu(QGraphicsScene *value);
 
     void ajouterObjetSpaceInvaders(ObjetSpaceInvaders* objetSpaceInvaders);
     void supprimerObjetSpaceInvaders(ObjetSpaceInvaders* objetSpaceInvaders);
@@ -47,9 +47,16 @@ public:
     virtual void initialiserObjetsJeu() = 0;
     virtual void initialiserArrierePlan() = 0;
     virtual void initialiserEvenements() = 0;
+    virtual void onKeyPressEvent(QKeyEvent *event) = 0;
 
 private slots:
     void ajouterObjetsSpaceInvadersAuJeu(ObjetSpaceInvaders* objetSpaceInvaders);
+    void supprimerObjetsSpaceInvadersDuJeu(ObjetSpaceInvaders* objetSpaceInvaders);
+
+
+    // QGraphicsScene interface
+protected:
+    void keyPressEvent(QKeyEvent *event) override;
 
 };
 

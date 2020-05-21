@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTimer>
 
 #include <SpaceInvaders_Metier/spaceinvadersimpl.h>
 
@@ -21,6 +22,7 @@ public:
 private:
     Ui::MainWindow *ui;
     SpaceInvadersImpl *spaceInvadersImpl;
+    QTimer* timer;
 
 };
 #endif // MAINWINDOW_H

@@ -23,6 +23,7 @@ public:
     void initialiserObjetsJeu() override;
     void initialiserArrierePlan() override;
     void initialiserEvenements() override;
+    void onKeyPressEvent(QKeyEvent *event) override;
 
 };
 

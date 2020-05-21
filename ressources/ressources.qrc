@@ -2,5 +2,14 @@
     <qresource prefix="/ressources/images">
         <file>images/backgroundSpaceInvaders.jpg</file>
         <file>images/joueur.png</file>
+        <file>images/balleJoueur.png</file>
+        <file>images/ennemi1_0.png</file>
+        <file>images/ennemi1_1.png</file>
+        <file>images/ennemi2_0.png</file>
+        <file>images/ennemi2_1.png</file>
+        <file>images/ennemi3_0.png</file>
+        <file>images/ennemi3_1.png</file>
+        <file>images/ennemiMystere.png</file>
+        <file>images/explosionEnnemi.png</file>
     </qresource>
 </RCC>

@@ -16,18 +16,36 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    SpaceInvaders_Metier/balle.cpp \
+    SpaceInvaders_Metier/balleenemi.cpp \
+    SpaceInvaders_Metier/ballejoueur.cpp \
+    SpaceInvaders_Metier/ennemi.cpp \
+    SpaceInvaders_Metier/ennemi1.cpp \
+    SpaceInvaders_Metier/ennemi2.cpp \
+    SpaceInvaders_Metier/ennemi3.cpp \
+    SpaceInvaders_Metier/ennemimystere.cpp \
+    SpaceInvaders_Metier/iobjetspaceinvadersbougeableclavier.cpp \
+    SpaceInvaders_Metier/iobjetspaceinvaderstireur.cpp \
     SpaceInvaders_Metier/joueur.cpp \
     SpaceInvaders_Metier/objetspaceinvaders.cpp \
-    SpaceInvaders_Metier/objetspaceinvadersbougeableclavier.cpp \
     SpaceInvaders_Metier/spaceinvaders.cpp \
     SpaceInvaders_Metier/spaceinvadersimpl.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
+    SpaceInvaders_Metier/balle.h \
+    SpaceInvaders_Metier/balleenemi.h \
+    SpaceInvaders_Metier/ballejoueur.h \
+    SpaceInvaders_Metier/ennemi.h \
+    SpaceInvaders_Metier/ennemi1.h \
+    SpaceInvaders_Metier/ennemi2.h \
+    SpaceInvaders_Metier/ennemi3.h \
+    SpaceInvaders_Metier/ennemimystere.h \
+    SpaceInvaders_Metier/iobjetspaceinvadersbougeableclavier.h \
+    SpaceInvaders_Metier/iobjetspaceinvaderstireur.h \
     SpaceInvaders_Metier/joueur.h \
     SpaceInvaders_Metier/objetspaceinvaders.h \
-    SpaceInvaders_Metier/objetspaceinvadersbougeableclavier.h \
     SpaceInvaders_Metier/spaceinvaders.h \
     SpaceInvaders_Metier/spaceinvadersimpl.h \
     mainwindow.h

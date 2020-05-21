@@ -27,14 +27,23 @@ void SpaceInvadersImpl::initialiserObjetsJeu() {
     QObject::connect(dynamic_cast<QObject*>(this->joueur), SIGNAL(nouveauObjetSpaceInvadersDansJeu(ObjetSpaceInvaders*)), this, SLOT(ajouterObjetsSpaceInvadersAuJeu(ObjetSpaceInvaders*)));
 
     this->ajouterObjetSpaceInvaders(this->joueur);
-    this->getGraphicsSceneJeu()->setFocusItem(this->joueur);
-
+    //this->getGraphicsSceneJeu()->setFocusItem(this->joueur);
+    this->setFocus();
 }
 
 void SpaceInvadersImpl::initialiserArrierePlan() {
-    this->getGraphicsSceneJeu()->setBackgroundBrush(QPixmap(":/ressources/images/images/backgroundSpaceInvaders.jpg"));
+    //this->getGraphicsSceneJeu()->setBackgroundBrush(QPixmap(":/ressources/images/images/backgroundSpaceInvaders.jpg"));
+    //this->setBackgroundBrush(QPixmap(":/ressources/images/images/backgroundSpaceInvaders.jpg"));
+    this->setBackgroundBrush(Qt::black);
+    //QPen pen = QPen(Qt::red);
+    //QLineF top(this->sceneRect().topLeft(), this->sceneRect().topRight());
+    //this->addLine(top, pen);
 }
 
 void SpaceInvadersImpl::initialiserEvenements() {
 
+}
+
+void SpaceInvadersImpl::onKeyPressEvent(QKeyEvent *event) {
+    this->joueur->onKeyPressedEvent(event);
 }

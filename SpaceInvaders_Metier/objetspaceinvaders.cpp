@@ -9,6 +9,7 @@ ObjetSpaceInvaders::ObjetSpaceInvaders(QString cheminFichier, int positionX, int
     this->largeur = this->pixmap.size().width();
     this->hauteurEcran = 600;
     this->largeurEcran = 800;
+    this->setPos(this->positionX, this->positionY);
 }
 
 ObjetSpaceInvaders::~ObjetSpaceInvaders() {
@@ -31,20 +32,45 @@ void ObjetSpaceInvaders::setPositionY(int value) {
     this->positionY = value;
 }
 
+int ObjetSpaceInvaders::getHauteurEcran() const {
+    return this->hauteurEcran;
+}
+
+int ObjetSpaceInvaders::getLargeurEcran() const {
+    return this->largeurEcran;
+}
+
+int ObjetSpaceInvaders::getHauteur() const {
+    return this->hauteur;
+}
+
+int ObjetSpaceInvaders::getLargeur() const {
+    return this->largeur;
+}
+
+int ObjetSpaceInvaders::getMilieuX() const {
+    return this->positionX + (this->largeur / 2);
+}
+
+int ObjetSpaceInvaders::getMilieuY() const {
+    return this->positionY + (this->hauteur / 2);
+}
+
 void ObjetSpaceInvaders::deplacerXY(int deplacementX, int deplacementY) {
     this->positionX += deplacementX;
     this->positionY += deplacementY;
+    this->setPos(this->positionX, this->positionY);
+    //this->setX(this->positionX + deplacementX);
+    //this->moveBy(deplacementX, deplacementY);
 }
 
-
 QRectF ObjetSpaceInvaders::boundingRect() const {
-    return QRectF(this->positionX, this->positionY, this->largeur, this->hauteur);
+    return QRectF(0, 0, this->largeur, this->hauteur);
 }
 
 void ObjetSpaceInvaders::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
-    painter->drawPixmap(this->positionX, this->positionY, this->pixmap);
+    painter->drawPixmap(0, 0, this->pixmap);
 }
-
 
 void ObjetSpaceInvaders::advance(int phase) {
     this->evoluerDansLeTemsp();

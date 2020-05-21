@@ -6,6 +6,8 @@
 #include <QPixmap>
 #include <QSize>
 
+#include <QDebug>
+
 
 
 class ObjetSpaceInvaders : public QGraphicsItem {
@@ -28,6 +30,12 @@ public:
     void setPositionX(int value);
     int getPositionY() const;
     void setPositionY(int value);
+    int getHauteurEcran() const;
+    int getLargeurEcran() const;
+    int getHauteur() const;
+    int getLargeur() const;
+    int getMilieuX() const;
+    int getMilieuY() const;
 
     void deplacerXY(int deplacementX, int deplacementY);
 
@@ -42,6 +50,7 @@ public:
 
 signals:
     virtual void nouveauObjetSpaceInvadersDansJeu(ObjetSpaceInvaders*) = 0;
+    virtual void suppressionObjetSpaceInvadersDansJeu(ObjetSpaceInvaders*) = 0;
 
 };
 

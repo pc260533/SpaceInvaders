@@ -1,13 +1,15 @@
 #ifndef JOUEUR_H
 #define JOUEUR_H
 
-#include "objetspaceinvadersbougeableclavier.h"
+#include "ballejoueur.h"
+#include "iobjetspaceinvadersbougeableclavier.h"
+#include "iobjetspaceinvaderstireur.h"
 
 #include <QObject>
 #include <QKeyEvent>
 
 
-class Joueur : public QObject, public ObjetSpaceInvadersBougeableClavier {
+class Joueur : public QObject, public IObjetSpaceInvadersBougeableClavier, public IObjetSpaceInvadersTireur {
     Q_OBJECT
 
 private:
@@ -30,11 +32,14 @@ public:
 public:
     void onKeyPressedEvent(QKeyEvent *event) override;
 
+    // IObjetSpaceInvadersTireur interface
+public:
+    void tirer() override;
 
     // ObjetSpaceInvaders interface
 signals:
     void nouveauObjetSpaceInvadersDansJeu(ObjetSpaceInvaders*) override;
-
+    void suppressionObjetSpaceInvadersDansJeu(ObjetSpaceInvaders *) override;
 };
 
 #endif // JOUEUR_H

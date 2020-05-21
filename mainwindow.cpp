@@ -11,6 +11,9 @@ MainWindow::MainWindow(QWidget *parent)
     this->ui->graphicsView->setFrameStyle(0);
     this->spaceInvadersImpl->setGraphicsView(this->ui->graphicsView);
     this->spaceInvadersImpl->jouer();
+    this->timer = new QTimer(this);
+    QObject::connect(this->timer, SIGNAL (timeout()), this->spaceInvadersImpl, SLOT(advance()));
+    this->timer->start(10);
 }
 
 MainWindow::~MainWindow() {
