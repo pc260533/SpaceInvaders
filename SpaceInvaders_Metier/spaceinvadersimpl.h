@@ -3,6 +3,7 @@
 
 #include "ennemimystere.h"
 #include "joueur.h"
+#include "mur.h"
 #include "spaceinvaders.h"
 #include "vagueennemis.h"
 
@@ -14,6 +15,10 @@ private:
     Joueur *joueur;
     VagueEnnemis *vagueEnnemis;
     EnnemiMystere *ennemiMystere;
+    Mur* mur1;
+    Mur* mur2;
+    Mur* mur3;
+    Mur* mur4;
 
 public:
     SpaceInvadersImpl();

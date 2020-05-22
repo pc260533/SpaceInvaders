@@ -31,6 +31,8 @@ SOURCES += \
     SpaceInvaders_Metier/objetspaceinvaders.cpp \
     SpaceInvaders_Metier/objetspaceinvadersgroupe.cpp \
     SpaceInvaders_Metier/objetspaceinvaderspixmap.cpp \
+    SpaceInvaders_Metier/partiedemur.cpp \
+    SpaceInvaders_Metier/score.cpp \
     SpaceInvaders_Metier/spaceinvaders.cpp \
     SpaceInvaders_Metier/spaceinvadersimpl.cpp \
     SpaceInvaders_Metier/vagueennemis.cpp \
@@ -53,6 +55,8 @@ HEADERS += \
     SpaceInvaders_Metier/objetspaceinvaders.h \
     SpaceInvaders_Metier/objetspaceinvadersgroupe.h \
     SpaceInvaders_Metier/objetspaceinvaderspixmap.h \
+    SpaceInvaders_Metier/partiedemur.h \
+    SpaceInvaders_Metier/score.h \
     SpaceInvaders_Metier/spaceinvaders.h \
     SpaceInvaders_Metier/spaceinvadersimpl.h \
     SpaceInvaders_Metier/vagueennemis.h \

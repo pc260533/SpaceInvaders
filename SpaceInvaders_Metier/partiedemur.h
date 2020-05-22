@@ -1,18 +1,15 @@
-#ifndef ENNEMIMYSTERE_H
-#define ENNEMIMYSTERE_H
+#ifndef PARTIEDEMUR_H
+#define PARTIEDEMUR_H
 
 #include "objetspaceinvaderspixmap.h"
 
 
 
-class EnnemiMystere : public ObjetSpaceInvadersPixmap {
-
-private:
-    int vitesseEnnemiMystere;
-    int directionEnnemiMystere;
+class PartieDeMur : public ObjetSpaceInvadersPixmap {
 
 public:
-    EnnemiMystere(int positionX, int positionY);
+    PartieDeMur(int positionX, int positionY);
+    virtual ~PartieDeMur() override;
 
     // ObjetSpaceInvaders interface
 public:
@@ -22,11 +19,10 @@ public:
 public:
     void effetCollision(ObjetSpaceInvadersPixmap *objetSpaceInvadersPixmap) override;
 
-    // ObjetSpaceInvaders interface
 signals:
     void nouveauObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmap *) override;
     void suppressionObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmap *) override;
 
 };
 
-#endif // ENNEMIMYSTERE_H
+#endif // PARTIEDEMUR_H

@@ -15,9 +15,3 @@ QString Ennemi2::getCheminFichierAnimationEnnemi1() {
 QString Ennemi2::getCheminFichierAnimationEnnemi2() {
     return ":/ressources/images/images/ennemi2_1.png";
 }
-
-void Ennemi2::nouveauObjetSpaceInvadersDansJeu(ObjetSpaceInvadersPixmap *) {
-}
-
-void Ennemi2::suppressionObjetSpaceInvadersDansJeu(ObjetSpaceInvadersPixmap *) {
-}

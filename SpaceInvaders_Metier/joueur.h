@@ -26,7 +26,10 @@ public:
     // ObjetSpaceInvaders interface
 public:
     void evoluerDansLeTemsp() override;
-    void effetCollision(ObjetSpaceInvaders *objetSpaceInvaders) override;
+
+    // ObjetSpaceInvadersPixmap interface
+public:
+    void effetCollision(ObjetSpaceInvadersPixmap *objetSpaceInvadersPixmap) override;
 
     // ObjetSpaceInvadersBougeableClavier interface
 public:
@@ -38,8 +41,8 @@ public:
 
     // ObjetSpaceInvaders interface
 signals:
-    void nouveauObjetSpaceInvadersDansJeu(ObjetSpaceInvadersPixmap*) override;
-    void suppressionObjetSpaceInvadersDansJeu(ObjetSpaceInvadersPixmap *) override;
+    void nouveauObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmap*) override;
+    void suppressionObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmap *) override;
 };
 
 #endif // JOUEUR_H

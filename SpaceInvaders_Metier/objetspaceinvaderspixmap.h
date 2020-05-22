@@ -31,13 +31,15 @@ public:
     void deplacerXY(int deplacementX, int deplacementY);
     void changerImage(QString cheminFichier);
 
+    virtual void effetCollision(ObjetSpaceInvadersPixmap* objetSpaceInvadersPixmap) = 0;
+
     // QGraphicsItem interface
 public:
     void advance(int phase) override;
 
 signals:
-    virtual void nouveauObjetSpaceInvadersDansJeu(ObjetSpaceInvadersPixmap*) = 0;
-    virtual void suppressionObjetSpaceInvadersDansJeu(ObjetSpaceInvadersPixmap*) = 0;
+    virtual void nouveauObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmap*) = 0;
+    virtual void suppressionObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmap*) = 0;
 
 };
 

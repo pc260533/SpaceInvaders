@@ -8,10 +8,10 @@ void BalleEnnemi::evoluerDansLeTemsp() {
     this->deplacerXY(0, 2);
     if (this->getPositionY() + this->getHauteur() > this->getHauteurEcran()) {
         qDebug() << "émission suppresion balle ennemi";
-        emit suppressionObjetSpaceInvadersDansJeu(this);
+        emit suppressionObjetSpaceInvadersPixmapDansJeu(this);
     }
 }
 
-void BalleEnnemi::effetCollision(ObjetSpaceInvaders *objetSpaceInvaders) {
+void BalleEnnemi::effetCollision(ObjetSpaceInvadersPixmap *objetSpaceInvadersPixmap) {
 
 }

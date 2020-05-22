@@ -3,6 +3,7 @@
 
 
 #include "objetspaceinvaderspixmap.h"
+#include "objetspaceinvadersgroupe.h"
 
 #include <QGraphicsScene>
 #include <QGraphicsView>
@@ -33,8 +34,10 @@ public:
     int getLargeur() const;
     void setGraphicsView(QGraphicsView *value);
 
-    void ajouterObjetSpaceInvaders(ObjetSpaceInvadersPixmap* objetSpaceInvaders);
-    void supprimerObjetSpaceInvaders(ObjetSpaceInvadersPixmap* objetSpaceInvaders);
+    void ajouterObjetSpaceInvadersPixmap(ObjetSpaceInvadersPixmap* objetSpaceInvadersPixmap);
+    void supprimerObjetSpaceInvadersPixmap(ObjetSpaceInvadersPixmap* objetSpaceInvadersPixmap);
+    void ajouterObjetSpaceInvadersGroupe(ObjetSpaceInvadersGroupe* objetSpaceInvadersGroupe);
+    void supprimerObjetSpaceInvadersGroupe(ObjetSpaceInvadersGroupe* objetSpaceInvadersGroupe);
     void jouer();
 
     virtual void actionAExecuterJeuPerdu() = 0;
@@ -47,8 +50,8 @@ public:
     virtual void onKeyPressEvent(QKeyEvent *event) = 0;
 
 private slots:
-    void ajouterObjetsSpaceInvadersAuJeu(ObjetSpaceInvadersPixmap* objetSpaceInvaders);
-    void supprimerObjetsSpaceInvadersDuJeu(ObjetSpaceInvadersPixmap* objetSpaceInvaders);
+    void ajouterObjetsSpaceInvadersPixmapAuJeu(ObjetSpaceInvadersPixmap* objetSpaceInvadersPixmap);
+    void supprimerObjetsSpaceInvadersPixmapDuJeu(ObjetSpaceInvadersPixmap* objetSpaceInvadersPixmap);
 
 
     // QGraphicsScene interface

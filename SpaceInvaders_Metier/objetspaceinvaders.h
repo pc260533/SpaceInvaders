@@ -1,6 +1,9 @@
 #ifndef OBJETSPACEINVADERS_H
 #define OBJETSPACEINVADERS_H
 
+#include <QGraphicsItem>
+
+
 
 
 class ObjetSpaceInvaders {
@@ -22,7 +25,6 @@ public:
     int getLargeurEcran() const;
 
     virtual void evoluerDansLeTemsp() = 0;
-    virtual void effetCollision(ObjetSpaceInvaders* objetSpaceInvaders) = 0;
 
 };
 

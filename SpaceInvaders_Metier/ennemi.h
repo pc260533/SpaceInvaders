@@ -5,8 +5,9 @@
 #include "iobjetspaceinvaderstireur.h"
 #include "objetspaceinvaderspixmap.h"
 
+#include <QObject>
 #include <QString>
-#include <ctime>
+#include <QRandomGenerator>
 
 
 
@@ -35,11 +36,19 @@ public:
     // ObjetSpaceInvaders interface
 public:
     void evoluerDansLeTemsp() override;
-    void effetCollision(ObjetSpaceInvaders *objetSpaceInvaders) override;
+
+    // ObjetSpaceInvadersPixmap interface
+public:
+    void effetCollision(ObjetSpaceInvadersPixmap *objetSpaceInvadersPixmap) override;
 
     // IObjetSpaceInvadersTireur interface
 public:
     void tirer() override;
+
+    // ObjetSpaceInvadersPixmap interface
+signals:
+    void nouveauObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmap *) override;
+    void suppressionObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmap *) override;
 
 };
 

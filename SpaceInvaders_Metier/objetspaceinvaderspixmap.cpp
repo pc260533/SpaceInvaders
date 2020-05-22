@@ -26,7 +26,7 @@ int ObjetSpaceInvadersPixmap::getMilieuX() const {
 }
 
 int ObjetSpaceInvadersPixmap::getMilieuY() const {
-    return this->getPositionX() + (this->hauteur / 2);
+    return this->getPositionY() + (this->hauteur / 2);
 }
 
 void ObjetSpaceInvadersPixmap::deplacerXY(int deplacementX, int deplacementY) {

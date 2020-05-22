@@ -16,11 +16,6 @@ public:
     QString getCheminFichierAnimationEnnemi1() override;
     QString getCheminFichierAnimationEnnemi2() override;
 
-    // ObjetSpaceInvaders interface
-signals:
-    void nouveauObjetSpaceInvadersDansJeu(ObjetSpaceInvadersPixmap *) override;
-    void suppressionObjetSpaceInvadersDansJeu(ObjetSpaceInvadersPixmap *) override;
-
 };
 
 #endif // ENNEMI2_H

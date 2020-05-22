@@ -13,12 +13,12 @@ void EnnemiMystere::evoluerDansLeTemsp() {
     }
 }
 
-void EnnemiMystere::effetCollision(ObjetSpaceInvaders *objetSpaceInvaders) {
+void EnnemiMystere::effetCollision(ObjetSpaceInvadersPixmap *objetSpaceInvadersPixmap) {
 
 }
 
-void EnnemiMystere::nouveauObjetSpaceInvadersDansJeu(ObjetSpaceInvadersPixmap *) {
+void EnnemiMystere::nouveauObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmap *) {
 }
 
-void EnnemiMystere::suppressionObjetSpaceInvadersDansJeu(ObjetSpaceInvadersPixmap *) {
+void EnnemiMystere::suppressionObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmap *) {
 }

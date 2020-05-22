@@ -5,38 +5,38 @@
 #include "ennemi1.h"
 #include "ennemi2.h"
 #include "ennemi3.h"
+#include "objetspaceinvadersgroupe.h"
 
 #include <QList>
 
 
 
-class VagueEnnemis : public QGraphicsItemGroup {
+class VagueEnnemis : public ObjetSpaceInvadersGroupe {
 
 private:
     QList<Ennemi*> listeEnnemis;
-    int positionDebutX;
-    int positionDebutY;
     int vitesseX;
     int vitesseY;
     int direction;
 
 private:
+    void creerVague();
     void descendreVagueEnnemis();
     bool testChangementDeDirectionVagueEnnemis(Ennemi* ennemi);
     void deplacerVagueEnnemis();
 
 public:
-    VagueEnnemis();
+    VagueEnnemis(int positionX, int positionY);
     virtual ~VagueEnnemis() override;
-    void creerVague();
+    QList<Ennemi*> getListeEnnemis() const;
     void ajouterEnnemi(Ennemi* ennemi);
     void supprimerEnnemi(Ennemi* ennemi);
     bool contientAucunEnnemis();
     void detruireVagueEnnemi();
 
-    // QGraphicsItem interface
+    // ObjetSpaceInvaders interface
 public:
-    void advance(int phase) override;
+    void evoluerDansLeTemsp() override;
 
 };
 

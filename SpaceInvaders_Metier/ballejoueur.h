@@ -16,12 +16,15 @@ public:
     // ObjetSpaceInvaders interface
 public:
     void evoluerDansLeTemsp() override;
-    void effetCollision(ObjetSpaceInvaders *objetSpaceInvaders) override;
+
+    // ObjetSpaceInvadersPixmap interface
+public:
+    void effetCollision(ObjetSpaceInvadersPixmap *objetSpaceInvadersPixmap) override;
 
     // ObjetSpaceInvaders interface
 signals:
-    void nouveauObjetSpaceInvadersDansJeu(ObjetSpaceInvadersPixmap*) override;
-    void suppressionObjetSpaceInvadersDansJeu(ObjetSpaceInvadersPixmap *) override;
+    void nouveauObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmap*) override;
+    void suppressionObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmap *) override;
 
 };
 

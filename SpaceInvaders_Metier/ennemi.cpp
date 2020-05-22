@@ -30,6 +30,7 @@ void Ennemi::evoluerDansLeTemsp() {
     /*QList<QGraphicsItem *> localCollidingItems = this->collidingItems();
     int test = localCollidingItems.size();
     if (test > 1) {
+        this->effetCollision(dynamic_cast<ObjetSpaceInvadersPixmap*>(localCollidingItems.at(0)));
         qDebug() << "collision";
     }*/
     //qDebug() << "advance ennemi";
@@ -40,18 +41,17 @@ void Ennemi::evoluerDansLeTemsp() {
     else {
         this->compteurChangementAnimation++;
     }
-    srand(static_cast<unsigned>(time(nullptr)));
-    int chanceDeTirer =(rand() % 10000) + 1;
+    int chanceDeTirer = QRandomGenerator::global()->bounded(10000);
     if (chanceDeTirer > Ennemi::chanceDeTirEnnemi) {
         this->tirer();
     }
 }
 
-void Ennemi::effetCollision(ObjetSpaceInvaders *objetSpaceInvaders) {
+void Ennemi::effetCollision(ObjetSpaceInvadersPixmap *objetSpaceInvadersPixmap) {
 
 }
 
 void Ennemi::tirer() {
     BalleEnnemi* balleEnnemi = new BalleEnnemi(this->getMilieuX() - 2, this->getMilieuY());
-    emit this->nouveauObjetSpaceInvadersDansJeu(balleEnnemi);
+    emit this->nouveauObjetSpaceInvadersPixmapDansJeu(balleEnnemi);
 }

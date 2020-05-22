@@ -13,7 +13,7 @@ void Joueur::evoluerDansLeTemsp() {
 
 }
 
-void Joueur::effetCollision(ObjetSpaceInvaders *objetSpaceInvaders) {
+void Joueur::effetCollision(ObjetSpaceInvadersPixmap *objetSpaceInvadersPixmap) {
 
 }
 
@@ -35,5 +35,5 @@ void Joueur::onKeyPressedEvent(QKeyEvent *event) {
 
 void Joueur::tirer() {
     BalleJoueur* balleJoueur = new BalleJoueur(this->getMilieuX() - 2, this->getMilieuY());
-    emit this->nouveauObjetSpaceInvadersDansJeu(balleJoueur);
+    emit this->nouveauObjetSpaceInvadersPixmapDansJeu(balleJoueur);
 }
