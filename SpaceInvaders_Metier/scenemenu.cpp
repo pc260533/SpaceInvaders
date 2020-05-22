@@ -99,3 +99,7 @@ void SceneMenu::initialiserObjetsJeu() {
 void SceneMenu::initialiserArrierePlan() {
     this->setBackgroundBrush(QPixmap(":/ressources/images/images/backgroundSpaceInvaders.jpg"));
 }
+
+QString SceneMenu::getCheminMusiqueTheme() {
+    return "qrc:/ressources/musiques/musiques/menuTheme.wav";
+}

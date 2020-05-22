@@ -5,10 +5,11 @@ Scene::Scene() : QGraphicsScene(0, 0, 800, 600) {
     this->largeur = 800;
     this->hauteur = 600;
     this->getFontSpaceInvaders();
+    this->player = new QMediaPlayer();
 }
 
 Scene::~Scene() {
-
+    delete this->player;
 }
 
 int Scene::getHauteur() const {
@@ -55,6 +56,20 @@ void Scene::supprimerTousLesItems() {
     for (QGraphicsItem* item : this->items()) {
         this->removeItem(item);
         delete item;
+    }
+}
+
+void Scene::lancerMusiqueTheme() {
+    if (!this->getCheminMusiqueTheme().isEmpty()) {
+        this->player->setMedia(QUrl(this->getCheminMusiqueTheme()));
+        this->player->play();
+    }
+}
+
+void Scene::stopperMusiqueTheme() {
+    if (!this->getCheminMusiqueTheme().isEmpty()) {
+        this->player->setMedia(QUrl(this->getCheminMusiqueTheme()));
+        this->player->stop();
     }
 }
 

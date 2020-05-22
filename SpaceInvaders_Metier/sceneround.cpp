@@ -23,3 +23,7 @@ void SceneRound::initialiserObjetsJeu() {
 void SceneRound::initialiserArrierePlan() {
     this->setBackgroundBrush(Qt::black);
 }
+
+QString SceneRound::getCheminMusiqueTheme() {
+    return "";
+}

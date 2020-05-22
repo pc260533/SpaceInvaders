@@ -24,3 +24,7 @@ void SceneGagne::initialiserObjetsJeu() {
 void SceneGagne::initialiserArrierePlan() {
     this->setBackgroundBrush(Qt::black);
 }
+
+QString SceneGagne::getCheminMusiqueTheme() {
+    return "qrc:/ressources/musiques/musiques/gagneTheme.wav";
+}

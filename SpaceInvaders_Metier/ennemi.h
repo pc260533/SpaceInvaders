@@ -9,6 +9,7 @@
 
 #include <QObject>
 #include <QString>
+#include <QMediaPlayer>
 
 
 
@@ -21,6 +22,9 @@ private:
     int compteurChangementAnimation;
     bool vaEtreDetruit;
     int compteurAvantDestruction;
+
+    QMediaPlayer* playerTirEnnemi;
+    QMediaPlayer* playerEnnemiTue;
 
 private:
     void animerEnnemi();

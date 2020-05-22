@@ -6,10 +6,17 @@ Ennemi::Ennemi(QString cheminFichier, int positionX, int positionY) : ObjetSpace
     this->compteurChangementAnimation = 1;
     this->vaEtreDetruit = false;
     this->compteurAvantDestruction = 1;
+    this->playerTirEnnemi = new QMediaPlayer();
+    this->playerTirEnnemi->setMedia(QUrl("qrc:/ressources/musiques/musiques/tirEnnemi.mp3"));
+    this->playerEnnemiTue = new QMediaPlayer();
+    this->playerEnnemiTue->setMedia(QUrl("qrc:/ressources/musiques/musiques/ennemiTue.mp3"));
 }
 
 Ennemi::~Ennemi() {
-
+    delete this->playerTirEnnemi;
+    this->playerTirEnnemi = nullptr;
+    delete this->playerEnnemiTue;
+    this->playerEnnemiTue = nullptr;
 }
 
 void Ennemi::animerEnnemi() {
@@ -28,6 +35,10 @@ void Ennemi::animerEnnemi() {
 void Ennemi::evoluerDansLeTemsp() {
     if (this->vaEtreDetruit) {
         if (this->compteurAvantDestruction == 3) {
+            if (this->playerEnnemiTue->state() == QMediaPlayer::PlayingState) {
+                this->playerEnnemiTue->setPosition(0);
+            }
+            this->playerEnnemiTue->play();
             emit this->suppressionObjetSpaceInvadersPixmapDansJeu(this);
         }
         else {
@@ -62,6 +73,10 @@ void Ennemi::effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvader
 }
 
 void Ennemi::tirer() {
+    if (this->playerTirEnnemi->state() == QMediaPlayer::PlayingState) {
+        this->playerTirEnnemi->setPosition(0);
+    }
+    this->playerTirEnnemi->play();
     BalleEnnemi* balleEnnemi = new BalleEnnemi(this->getMilieuX() - 2, this->getMilieuY());
     emit this->nouveauObjetSpaceInvadersPixmapDansJeu(balleEnnemi);
 }

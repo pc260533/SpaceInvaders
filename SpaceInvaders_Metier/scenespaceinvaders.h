@@ -38,6 +38,7 @@ private:
 
     SceneRound* sceneRound;
 
+    int nombreDeRoundAJouer;
     bool changementDeRound;
 
 private:
@@ -49,6 +50,10 @@ private:
 public:
     SceneSpaceInvaders();
     virtual ~SceneSpaceInvaders();
+
+    // Scene interface
+public:
+    QString getCheminMusiqueTheme() override;
 
     // SpaceInvaders interface
 public:

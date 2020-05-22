@@ -20,6 +20,7 @@ public:
 public:
     void initialiserObjetsJeu() override;
     void initialiserArrierePlan() override;
+    QString getCheminMusiqueTheme() override;
 
 };
 

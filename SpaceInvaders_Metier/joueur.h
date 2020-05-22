@@ -7,6 +7,7 @@
 
 #include <QObject>
 #include <QKeyEvent>
+#include <QMediaPlayer>
 
 
 class Joueur : public QObject, public IObjetSpaceInvadersBougeableClavier, public IObjetSpaceInvadersTireur {
@@ -22,12 +23,16 @@ private:
     bool estDeplacementDroite;
     bool estEnTir;
 
+    QMediaPlayer* playerTirJoueur;
+    QMediaPlayer* playerJoueurTouche;
+
 private:
     void intialiserLaPositionDuJoueur();
     void decrementerVieDuJoueur();
 
 public:
     Joueur(int positionX, int positionY);
+    virtual ~Joueur();
     int getNombreViesJoueur() const;
     void setNombreViesJoueur(int nombreViesJoueur);
 

@@ -19,6 +19,7 @@ SceneSpaceInvaders::SceneSpaceInvaders() : SceneJeu() {
     this->nombreViesJoueurTextItem = nullptr;
     this->sceneRound = new SceneRound();
     this->sceneRound->initialiserScene();
+    this->nombreDeRoundAJouer = 3;
     this->changementDeRound = false;
 }
 
@@ -64,6 +65,9 @@ void SceneSpaceInvaders::chargerNouveauRound() {
     this->initialiserScene();
 }
 
+QString SceneSpaceInvaders::getCheminMusiqueTheme() {
+    return "qrc:/ressources/musiques/musiques/jeuTheme.wav";
+}
 
 void SceneSpaceInvaders::actionAExecuterJeuPerdu() {
     emit this->partiePerdu();
@@ -74,7 +78,7 @@ void SceneSpaceInvaders::actionAExecuterJeuGagne() {
 }
 
 bool SceneSpaceInvaders::jeuEstGagne() {
-    return (this->round == 4);
+    return (this->round == this->nombreDeRoundAJouer + 1);
 }
 
 bool SceneSpaceInvaders::jeuEstPerdu() {
@@ -261,11 +265,17 @@ void SceneSpaceInvaders::evoluer() {
         else if (this->jeuEstPerdu()) {
             this->actionAExecuterJeuPerdu();
         }
-        else { //<= 0
-            if ((this->vagueEnnemis->getListeEnnemis().size() == 55) && (this->joueur->getNombreViesJoueur() > 0)) {
-                this->changementDeRound = true;
-                this->getGraphicsView()->setScene(this->sceneRound);
-                QTimer::singleShot(2000, this, SLOT(afficherNextRound()));
+        else {
+            if ((this->vagueEnnemis->getListeEnnemis().size() <= 0) && (this->joueur->getNombreViesJoueur() > 0)) {
+                if (this->round < this->nombreDeRoundAJouer) {
+                    this->changementDeRound = true;
+                    this->getGraphicsView()->setScene(this->sceneRound);
+                    QTimer::singleShot(2000, this, SLOT(afficherNextRound()));
+                }
+                else {
+                    this->round++;
+                    SceneJeu::evoluer();
+                }
             }
             else {
                 SceneJeu::evoluer();

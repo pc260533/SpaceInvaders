@@ -18,4 +18,16 @@
     <qresource prefix="/ressources/font">
         <file>fonts/fontSpaceInvaders.ttf</file>
     </qresource>
+    <qresource prefix="/ressources/musiques">
+        <file>musiques/ennemiMystereEntre.wav</file>
+        <file>musiques/gagneTheme.wav</file>
+        <file>musiques/jeuTheme.wav</file>
+        <file>musiques/menuTheme.wav</file>
+        <file>musiques/perduTheme.wav</file>
+        <file>musiques/tirJoueur.wav</file>
+        <file>musiques/joueurTouche.mp3</file>
+        <file>musiques/ennemiTue.mp3</file>
+        <file>musiques/tirEnnemi.mp3</file>
+        <file>musiques/ennemiMystereTue.mp3</file>
+    </qresource>
 </RCC>

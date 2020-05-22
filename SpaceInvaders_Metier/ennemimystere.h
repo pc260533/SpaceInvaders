@@ -4,6 +4,8 @@
 #include "iennemi.h"
 #include "objetspaceinvaderspixmapevoluable.h"
 
+#include <QMediaPlayer>
+
 
 
 class EnnemiMystere : public QObject, public ObjetSpaceInvadersPixmapEvoluable, public IEnnemi {
@@ -12,6 +14,9 @@ class EnnemiMystere : public QObject, public ObjetSpaceInvadersPixmapEvoluable, 
 private:
     int vitesseEnnemiMystere;
     int directionEnnemiMystere;
+
+    QMediaPlayer* playerEnnemiMystereEntre;
+    QMediaPlayer* playerEnnemiMystereTue;
 
 public:
     EnnemiMystere(int positionX, int positionY);

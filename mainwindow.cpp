@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
     this->timer = new QTimer(this);
 
     this->ui->graphicsView->setScene(this->sceneMenu);
+    this->sceneMenu->lancerMusiqueTheme();
 }
 
 MainWindow::~MainWindow() {
@@ -36,6 +37,7 @@ void MainWindow::lancerSpaceInvaders() {
     this->sceneSpaceInvaders = new SceneSpaceInvaders();
     this->sceneSpaceInvaders->setGraphicsView(this->ui->graphicsView);
     this->sceneSpaceInvaders->initialiserScene();
+    this->sceneSpaceInvaders->lancerMusiqueTheme();
 
     QObject::connect(this->sceneSpaceInvaders, SIGNAL (partieGagne()), this, SLOT(onPartieGagne()));
     QObject::connect(this->sceneSpaceInvaders, SIGNAL (partiePerdu()), this, SLOT(onPartiePerdu()));
@@ -48,6 +50,7 @@ void MainWindow::lancerSpaceInvaders() {
 void MainWindow::stopperSpaceInvaders() {
     if (this->sceneSpaceInvaders) {
         this->timer->stop();
+        this->sceneSpaceInvaders->stopperMusiqueTheme();
         delete this->sceneSpaceInvaders;
         this->sceneSpaceInvaders = nullptr;
     }
@@ -55,11 +58,13 @@ void MainWindow::stopperSpaceInvaders() {
 
 void MainWindow::onPartieGagne() {
     this->stopperSpaceInvaders();
+    this->sceneGagne->lancerMusiqueTheme();
     this->ui->graphicsView->setScene(this->sceneGagne);
 }
 
 void MainWindow::onPartiePerdu() {
     this->stopperSpaceInvaders();
+    this->scenePerdu->lancerMusiqueTheme();
     this->ui->graphicsView->setScene(this->scenePerdu);
 }
 
@@ -72,6 +77,9 @@ void MainWindow::keyPressEvent(QKeyEvent *event) {
     //qDebug() << event;
     if (event->key() == Qt::Key_A) {
         if (!this->sceneSpaceInvaders) {
+            this->sceneMenu->stopperMusiqueTheme();
+            this->sceneGagne->stopperMusiqueTheme();
+            this->scenePerdu->stopperMusiqueTheme();
             this->lancerSpaceInvaders();
         }
     }

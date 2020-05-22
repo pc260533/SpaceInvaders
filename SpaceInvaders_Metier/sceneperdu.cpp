@@ -24,3 +24,7 @@ void ScenePerdu::initialiserObjetsJeu() {
 void ScenePerdu::initialiserArrierePlan() {
     this->setBackgroundBrush(Qt::black);
 }
+
+QString ScenePerdu::getCheminMusiqueTheme() {
+    return "qrc:/ressources/musiques/musiques/perduTheme.wav";
+}

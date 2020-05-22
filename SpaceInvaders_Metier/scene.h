@@ -9,6 +9,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QList>
+#include <QMediaPlayer>
 #include <QString>
 #include <QObject>
 
@@ -20,6 +21,8 @@ private:
     QString titre;
     int hauteur;
     int largeur;
+
+    QMediaPlayer* player;
 
 public:
     Scene();
@@ -38,6 +41,10 @@ public:
     void supprimerObjetSpaceInvadersTexte(ObjetSpaceInvadersTexte* objetSpaceInvadersTexte);
 
     void supprimerTousLesItems();
+
+    void lancerMusiqueTheme();
+    void stopperMusiqueTheme();
+    virtual QString getCheminMusiqueTheme() = 0;
 
     virtual void initialiserObjetsJeu() = 0;
     virtual void initialiserArrierePlan() = 0;
