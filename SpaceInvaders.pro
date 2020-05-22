@@ -90,3 +90,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     ressources/ressources.qrc
+
+win32:RC_FILE += winicon.rc

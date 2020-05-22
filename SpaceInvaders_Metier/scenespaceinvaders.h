@@ -41,11 +41,15 @@ private:
     int nombreDeRoundAJouer;
     bool changementDeRound;
 
+    QString jsonCheminFichierSauvegardeHighscoreHighestRound;
+
 private:
     void miseAJourTexteNombreDeViesJoueur();
     void miseAJourTexteScoreHighscore();
     void miseAJourTexteRoundHighestRound();
     void chargerNouveauRound();
+    void sauvegarderHighscoreHighestRound();
+    void chargerHighscoreHighestRound();
 
 public:
     SceneSpaceInvaders();

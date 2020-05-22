@@ -1,5 +1,8 @@
 #include "scenespaceinvaders.h"
 
+#include <QJsonDocument>
+#include <QJsonObject>
+
 SceneSpaceInvaders::SceneSpaceInvaders() : SceneJeu() {
     this->joueur = nullptr;
     this->vagueEnnemis = nullptr;
@@ -21,9 +24,12 @@ SceneSpaceInvaders::SceneSpaceInvaders() : SceneJeu() {
     this->sceneRound->initialiserScene();
     this->nombreDeRoundAJouer = 3;
     this->changementDeRound = false;
+    this->jsonCheminFichierSauvegardeHighscoreHighestRound = "sauvegardeHighscoreHighestRound.json";
+    this->chargerHighscoreHighestRound();
 }
 
 SceneSpaceInvaders::~SceneSpaceInvaders() {
+    this->sauvegarderHighscoreHighestRound();
     this->reinitialiserScene();
     /*delete this->joueur;
     delete this->vagueEnnemis;
@@ -61,8 +67,40 @@ void SceneSpaceInvaders::miseAJourTexteRoundHighestRound() {
 void SceneSpaceInvaders::chargerNouveauRound() {
     qDebug() << "chargerNouveauRound";
     this->round++;
+    this->sauvegarderHighscoreHighestRound();
     this->reinitialiserScene();
     this->initialiserScene();
+}
+
+void SceneSpaceInvaders::sauvegarderHighscoreHighestRound() {
+    QJsonObject jsonObject;
+    jsonObject["highscore"] = this->highscore;
+    jsonObject["highestRound"] = this->highestRound;
+    QJsonDocument jsonDocument(jsonObject);
+    QString jsonContenu = jsonDocument.toJson(QJsonDocument::Indented);
+    QFile jsonFile(this->jsonCheminFichierSauvegardeHighscoreHighestRound);
+    if (jsonFile.open(QFile::WriteOnly)) {
+        jsonFile.write(jsonContenu.toLocal8Bit());
+        jsonFile.close();
+    }
+}
+
+void SceneSpaceInvaders::chargerHighscoreHighestRound() {
+    QString jsonContenu = "";
+    QFile jsonFile(this->jsonCheminFichierSauvegardeHighscoreHighestRound);
+    if (jsonFile.open(QIODevice::ReadOnly | QIODevice::WriteOnly)) {
+        QTextStream textStream(&jsonFile);
+        jsonContenu = textStream.readAll();
+    }
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(jsonContenu.toUtf8());
+    QJsonObject jsonObject = jsonDocument.object();
+    if ((jsonObject.contains("highscore")) && (jsonObject["highscore"].isDouble())) {
+        this->highscore = jsonObject["highscore"].toInt();
+    }
+    if ((jsonObject.contains("highestRound")) && (jsonObject["highestRound"].isDouble())) {
+        this->highestRound = jsonObject["highestRound"].toInt();
+    }
+    jsonFile.close();
 }
 
 QString SceneSpaceInvaders::getCheminMusiqueTheme() {
@@ -127,27 +165,27 @@ void SceneSpaceInvaders::initialiserObjetsJeu() {
     QFont fontSpaceInvaders = this->getFontSpaceInvaders();
     fontSpaceInvaders.setPixelSize(15);
 
-    this->nombreViesJoueurTextItem = new ObjetSpaceInvadersTexte(20, 5);
+    this->nombreViesJoueurTextItem = new ObjetSpaceInvadersTexte(20, 0);
     this->nombreViesJoueurTextItem->setCouleurTexte(Qt::white);
     this->nombreViesJoueurTextItem->setFont(fontSpaceInvaders);
     this->ajouterObjetSpaceInvadersTexte(this->nombreViesJoueurTextItem);
 
-    this->scoreTextItem = new ObjetSpaceInvadersTexte(400, 5);
+    this->scoreTextItem = new ObjetSpaceInvadersTexte(400, 0);
     this->scoreTextItem->setCouleurTexte(Qt::white);
     this->scoreTextItem->setFont(fontSpaceInvaders);
     this->ajouterObjetSpaceInvadersTexte(this->scoreTextItem);
 
-    this->highscoreTextItem = new ObjetSpaceInvadersTexte(630, 5);
+    this->highscoreTextItem = new ObjetSpaceInvadersTexte(630, 0);
     this->highscoreTextItem->setCouleurTexte(Qt::white);
     this->highscoreTextItem->setFont(fontSpaceInvaders);
     this->ajouterObjetSpaceInvadersTexte(this->highscoreTextItem);
 
-    this->roundTextItem = new ObjetSpaceInvadersTexte(20, 583);
+    this->roundTextItem = new ObjetSpaceInvadersTexte(20, 578);
     this->roundTextItem->setCouleurTexte(Qt::white);
     this->roundTextItem->setFont(fontSpaceInvaders);
     this->ajouterObjetSpaceInvadersTexte(this->roundTextItem);
 
-    this->highestRoundTextItem = new ObjetSpaceInvadersTexte(630, 583);
+    this->highestRoundTextItem = new ObjetSpaceInvadersTexte(630, 578);
     this->highestRoundTextItem->setCouleurTexte(Qt::white);
     this->highestRoundTextItem->setFont(fontSpaceInvaders);
     this->ajouterObjetSpaceInvadersTexte(this->highestRoundTextItem);

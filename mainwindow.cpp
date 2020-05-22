@@ -9,6 +9,8 @@ MainWindow::MainWindow(QWidget *parent)
     this->ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     this->ui->graphicsView->setFrameStyle(0);
 
+    this->sceneSpaceInvaders = nullptr;
+
     this->sceneMenu = new SceneMenu();
     this->sceneGagne = new SceneGagne();
     this->scenePerdu = new ScenePerdu();
