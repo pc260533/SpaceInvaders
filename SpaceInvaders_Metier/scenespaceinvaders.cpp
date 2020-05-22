@@ -19,10 +19,12 @@ SceneSpaceInvaders::SceneSpaceInvaders() : SceneJeu() {
     this->nombreViesJoueurTextItem = nullptr;
     this->sceneRound = new SceneRound();
     this->sceneRound->initialiserScene();
+    this->changementDeRound = false;
 }
 
 SceneSpaceInvaders::~SceneSpaceInvaders() {
-    delete this->joueur;
+    this->reinitialiserScene();
+    /*delete this->joueur;
     delete this->vagueEnnemis;
     if (this->ennemiMystere) {
         delete this->ennemiMystere;
@@ -35,7 +37,7 @@ SceneSpaceInvaders::~SceneSpaceInvaders() {
     delete this->highscoreTextItem;
     delete this->roundTextItem;
     delete this->highestRoundTextItem;
-    delete this->sceneRound;
+    delete this->sceneRound;*/
 }
 
 void SceneSpaceInvaders::miseAJourTexteNombreDeViesJoueur() {
@@ -72,7 +74,7 @@ void SceneSpaceInvaders::actionAExecuterJeuGagne() {
 }
 
 bool SceneSpaceInvaders::jeuEstGagne() {
-    return (this->round == 3);
+    return (this->round == 4);
 }
 
 bool SceneSpaceInvaders::jeuEstPerdu() {
@@ -205,9 +207,12 @@ void SceneSpaceInvaders::reinitialiserScene() {
 }
 
 void SceneSpaceInvaders::onKeyPressEvent(QKeyEvent *event) {
-    // si escape save et close
-    // envoie du signal de close
-    this->joueur->onKeyPressedEvent(event);
+    if (event->key() == Qt::Key_Escape) {
+        emit quitter();
+    }
+    else {
+        this->joueur->onKeyPressedEvent(event);
+    }
 }
 
 void SceneSpaceInvaders::onKeyReleaseEvent(QKeyEvent *event) {
@@ -220,6 +225,8 @@ void SceneSpaceInvaders::onNombreViesJoueurDiminue() {
 
 void SceneSpaceInvaders::afficherNextRound() {
     this->getGraphicsView()->setScene(this);
+    this->chargerNouveauRound();
+    this->changementDeRound = false;
 }
 
 void SceneSpaceInvaders::supprimerObjetsSpaceInvadersPixmapDuJeu(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) {
@@ -247,22 +254,22 @@ void SceneSpaceInvaders::supprimerObjetsSpaceInvadersPixmapDuJeu(ObjetSpaceInvad
 }
 
 void SceneSpaceInvaders::evoluer() {
-    if (this->jeuEstGagne()) {
-        this->actionAExecuterJeuGagne();
-    }
-    else if (this->jeuEstPerdu()) {
-        this->actionAExecuterJeuPerdu();
-    }
-    else {
-        //quabnd on le fait deux fois c'est a cause de la deuxième balle qui touche l'ennemi revenu à la vie
-        if ((this->vagueEnnemis->getListeEnnemis().size() == 0) && (this->joueur->getNombreViesJoueur() > 0)) {
-            this->chargerNouveauRound();
-            //ca réinitialise mais ca atend 10 secondes donc c'est niqué
-            this->getGraphicsView()->setScene(this->sceneRound);
-            QTimer::singleShot(2000, this, SLOT(afficherNextRound()));
+    if (!this->changementDeRound) {
+        if (this->jeuEstGagne()) {
+            this->actionAExecuterJeuGagne();
         }
-        else {
-            SceneJeu::evoluer();
+        else if (this->jeuEstPerdu()) {
+            this->actionAExecuterJeuPerdu();
+        }
+        else { //<= 0
+            if ((this->vagueEnnemis->getListeEnnemis().size() == 55) && (this->joueur->getNombreViesJoueur() > 0)) {
+                this->changementDeRound = true;
+                this->getGraphicsView()->setScene(this->sceneRound);
+                QTimer::singleShot(2000, this, SLOT(afficherNextRound()));
+            }
+            else {
+                SceneJeu::evoluer();
+            }
         }
     }
 }

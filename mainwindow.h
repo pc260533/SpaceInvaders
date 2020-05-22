@@ -18,10 +18,6 @@ QT_END_NAMESPACE
 class MainWindow : public QMainWindow{
     Q_OBJECT
 
-public:
-    MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
-
 private:
     Ui::MainWindow *ui;
     QTimer* timer;
@@ -30,13 +26,22 @@ private:
     SceneGagne* sceneGagne;
     ScenePerdu* scenePerdu;
 
-private slots:
-    void onPartieGagne();
-    void onPartiePerdu();
+private:
+    void lancerSpaceInvaders();
+    void stopperSpaceInvaders();
+
+public:
+    MainWindow(QWidget *parent = nullptr);
+    ~MainWindow();
 
     // QWidget interface
 protected:
     void keyPressEvent(QKeyEvent *event) override;
+
+private slots:
+    void onPartieGagne();
+    void onPartiePerdu();
+    void onQuitter();
 
 };
 #endif // MAINWINDOW_H

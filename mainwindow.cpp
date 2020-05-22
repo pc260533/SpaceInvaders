@@ -16,17 +16,9 @@ MainWindow::MainWindow(QWidget *parent)
     this->sceneGagne->initialiserScene();
     this->scenePerdu->initialiserScene();
 
-    this->sceneSpaceInvaders = new SceneSpaceInvaders();
-    this->sceneSpaceInvaders->setGraphicsView(this->ui->graphicsView);
-    this->sceneSpaceInvaders->initialiserScene();
-
-    QObject::connect(this->sceneSpaceInvaders, SIGNAL (partieGagne()), this, SLOT(onPartieGagne()));
-    QObject::connect(this->sceneSpaceInvaders, SIGNAL (partiePerdu()), this, SLOT(onPartiePerdu()));
-
-
     this->timer = new QTimer(this);
-    QObject::connect(this->timer, SIGNAL (timeout()), this->sceneSpaceInvaders, SLOT(evoluer()));
-    this->timer->start(10);
+
+    this->ui->graphicsView->setScene(this->sceneMenu);
 }
 
 MainWindow::~MainWindow() {
@@ -40,31 +32,47 @@ MainWindow::~MainWindow() {
     delete this->ui;
 }
 
+void MainWindow::lancerSpaceInvaders() {
+    this->sceneSpaceInvaders = new SceneSpaceInvaders();
+    this->sceneSpaceInvaders->setGraphicsView(this->ui->graphicsView);
+    this->sceneSpaceInvaders->initialiserScene();
+
+    QObject::connect(this->sceneSpaceInvaders, SIGNAL (partieGagne()), this, SLOT(onPartieGagne()));
+    QObject::connect(this->sceneSpaceInvaders, SIGNAL (partiePerdu()), this, SLOT(onPartiePerdu()));
+    QObject::connect(this->sceneSpaceInvaders, SIGNAL (quitter()), this, SLOT(onQuitter()));
+
+    QObject::connect(this->timer, SIGNAL (timeout()), this->sceneSpaceInvaders, SLOT(evoluer()));
+    this->timer->start(10);
+}
+
+void MainWindow::stopperSpaceInvaders() {
+    if (this->sceneSpaceInvaders) {
+        this->timer->stop();
+        delete this->sceneSpaceInvaders;
+        this->sceneSpaceInvaders = nullptr;
+    }
+}
+
 void MainWindow::onPartieGagne() {
-    qDebug() << "gagne";
-    this->timer->stop();
-    delete this->sceneSpaceInvaders;
-    this->sceneSpaceInvaders = nullptr;
+    this->stopperSpaceInvaders();
     this->ui->graphicsView->setScene(this->sceneGagne);
 }
 
 void MainWindow::onPartiePerdu() {
-    this->timer->stop();
-    delete this->sceneSpaceInvaders;
-    this->sceneSpaceInvaders = nullptr;
+    this->stopperSpaceInvaders();
     this->ui->graphicsView->setScene(this->scenePerdu);
 }
 
+void MainWindow::onQuitter() {
+    this->stopperSpaceInvaders();
+    this->close();
+}
 
 void MainWindow::keyPressEvent(QKeyEvent *event) {
-    // au pire il faut jsute unset le focus
-    //d'ailleur c'est le cas par défaut donc c'est bon
-    // oui il y a rien a envoyer a la scene de jeu ez
-    // et donc pas de keyRelease ahhhh
-    qDebug() << event;
+    //qDebug() << event;
     if (event->key() == Qt::Key_A) {
         if (!this->sceneSpaceInvaders) {
-
+            this->lancerSpaceInvaders();
         }
     }
     else if (event->key() == Qt::Key_Escape) {

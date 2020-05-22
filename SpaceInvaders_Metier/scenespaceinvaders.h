@@ -38,6 +38,8 @@ private:
 
     SceneRound* sceneRound;
 
+    bool changementDeRound;
+
 private:
     void miseAJourTexteNombreDeViesJoueur();
     void miseAJourTexteScoreHighscore();
@@ -74,6 +76,7 @@ public slots:
     void evoluer() override;
 
 signals:
+    void quitter();
     void partieGagne();
     void partiePerdu();
 
