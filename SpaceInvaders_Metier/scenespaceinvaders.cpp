@@ -1,6 +1,6 @@
-#include "spaceinvadersimpl.h"
+#include "scenespaceinvaders.h"
 
-SpaceInvadersImpl::SpaceInvadersImpl() : SpaceInvaders() {
+SceneSpaceInvaders::SceneSpaceInvaders() : SceneJeu() {
     this->joueur = nullptr;
     this->vagueEnnemis = nullptr;
     this->ennemiMystere = nullptr;
@@ -21,7 +21,7 @@ SpaceInvadersImpl::SpaceInvadersImpl() : SpaceInvaders() {
     this->sceneRound->initialiserScene();
 }
 
-SpaceInvadersImpl::~SpaceInvadersImpl() {
+SceneSpaceInvaders::~SceneSpaceInvaders() {
     delete this->joueur;
     delete this->vagueEnnemis;
     if (this->ennemiMystere) {
@@ -38,11 +38,11 @@ SpaceInvadersImpl::~SpaceInvadersImpl() {
     delete this->sceneRound;
 }
 
-void SpaceInvadersImpl::miseAJourTexteNombreDeViesJoueur() {
+void SceneSpaceInvaders::miseAJourTexteNombreDeViesJoueur() {
     this->nombreViesJoueurTextItem->setTexte("Lives : " + QString::number(this->joueur->getNombreViesJoueur()));
 }
 
-void SpaceInvadersImpl::miseAJourTexteScoreHighscore() {
+void SceneSpaceInvaders::miseAJourTexteScoreHighscore() {
     if (this->score > this->highscore) {
         this->highscore = this->score;
     }
@@ -50,36 +50,36 @@ void SpaceInvadersImpl::miseAJourTexteScoreHighscore() {
     this->highscoreTextItem->setTexte("Highscore : " + QString::number(this->highscore));
 }
 
-void SpaceInvadersImpl::miseAJourTexteRoundHighestRound() {
+void SceneSpaceInvaders::miseAJourTexteRoundHighestRound() {
     this->roundTextItem->setTexte("Round : " + QString::number(this->round));
     this->highestRoundTextItem->setTexte("Highest Round : " + QString::number(this->highestRound));
 }
 
-void SpaceInvadersImpl::chargerNouveauRound() {
+void SceneSpaceInvaders::chargerNouveauRound() {
+    qDebug() << "chargerNouveauRound";
     this->round++;
-    this->vagueEnnemis->reinitialiserChanceDeTirEnnemi();
     this->reinitialiserScene();
     this->initialiserScene();
 }
 
 
-void SpaceInvadersImpl::actionAExecuterJeuPerdu() {
+void SceneSpaceInvaders::actionAExecuterJeuPerdu() {
     emit this->partiePerdu();
 }
 
-void SpaceInvadersImpl::actionAExecuterJeuGagne() {
+void SceneSpaceInvaders::actionAExecuterJeuGagne() {
     emit this->partieGagne();
 }
 
-bool SpaceInvadersImpl::jeuEstGagne() {
+bool SceneSpaceInvaders::jeuEstGagne() {
     return (this->round == 3);
 }
 
-bool SpaceInvadersImpl::jeuEstPerdu() {
-    return (this->joueur->getNombreViesJoueur() >= 0);
+bool SceneSpaceInvaders::jeuEstPerdu() {
+    return (this->joueur->getNombreViesJoueur() <= 0);
 }
 
-void SpaceInvadersImpl::initialiserObjetsJeu() {
+void SceneSpaceInvaders::initialiserObjetsJeu() {
     this->joueur = new Joueur(370, 550);
     QObject::connect(dynamic_cast<QObject*>(this->joueur), SIGNAL(nouveauObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmapEvoluable*)), this, SLOT(ajouterObjetsSpaceInvadersPixmapAuJeu(ObjetSpaceInvadersPixmapEvoluable*)));
     QObject::connect(dynamic_cast<QObject*>(this->joueur), SIGNAL(suppressionObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmapEvoluable*)), this, SLOT(supprimerObjetsSpaceInvadersPixmapDuJeu(ObjetSpaceInvadersPixmapEvoluable*)));
@@ -153,54 +153,76 @@ void SpaceInvadersImpl::initialiserObjetsJeu() {
     this->setFocus();
 }
 
-void SpaceInvadersImpl::initialiserArrierePlan() {
+void SceneSpaceInvaders::initialiserArrierePlan() {
     this->setBackgroundBrush(Qt::black);
 }
 
-void SpaceInvadersImpl::reinitialiserScene() {
-    SpaceInvaders::reinitialiserScene();
+void SceneSpaceInvaders::reinitialiserScene() {
+    //SpaceInvaders::reinitialiserScene();
+    //this->clear();
+    qDebug() << this->items().size();
+    this->supprimerObjetSpaceInvadersPixmap(this->joueur);
+    this->supprimerObjetSpaceInvadersGroupe(this->vagueEnnemis);
+    this->supprimerObjetSpaceInvadersGroupe(this->mur1);
+    this->supprimerObjetSpaceInvadersGroupe(this->mur2);
+    this->supprimerObjetSpaceInvadersGroupe(this->mur3);
+    this->supprimerObjetSpaceInvadersGroupe(this->mur4);
+    this->supprimerObjetSpaceInvadersTexte(this->nombreViesJoueurTextItem);
+    this->supprimerObjetSpaceInvadersTexte(this->scoreTextItem);
+    this->supprimerObjetSpaceInvadersTexte(this->highscoreTextItem);
+    this->supprimerObjetSpaceInvadersTexte(this->roundTextItem);
+    this->supprimerObjetSpaceInvadersTexte(this->highestRoundTextItem);
     delete this->joueur;
     delete this->vagueEnnemis;
     if (this->ennemiMystere) {
+        this->supprimerObjetSpaceInvadersPixmap(this->ennemiMystere);
         delete this->ennemiMystere;
     }
     delete this->mur1;
     delete this->mur2;
     delete this->mur3;
     delete this->mur4;
+    delete this->nombreViesJoueurTextItem;
     delete this->scoreTextItem;
     delete this->highscoreTextItem;
     delete this->roundTextItem;
     delete this->highestRoundTextItem;
+    //Suppression de tous les items : il peut rester des balles qui ont étét tirées mais pas supprimées.
+    this->supprimerTousLesItems();
+    qDebug() << this->items().size();
+    qDebug() << this->items();
     this->joueur = nullptr;
     this->vagueEnnemis = nullptr;
     this->ennemiMystere = nullptr;
     this->mur1 = nullptr;
     this->mur2 = nullptr;
     this->mur4 = nullptr;
+    this->nombreViesJoueurTextItem = nullptr;
     this->scoreTextItem = nullptr;
     this->highscoreTextItem = nullptr;
     this->roundTextItem = nullptr;
     this->highestRoundTextItem = nullptr;
 }
 
-void SpaceInvadersImpl::onKeyPressEvent(QKeyEvent *event) {
+void SceneSpaceInvaders::onKeyPressEvent(QKeyEvent *event) {
+    // si escape save et close
+    // envoie du signal de close
     this->joueur->onKeyPressedEvent(event);
 }
 
-void SpaceInvadersImpl::onKeyReleaseEvent(QKeyEvent *event) {
+void SceneSpaceInvaders::onKeyReleaseEvent(QKeyEvent *event) {
     this->joueur->onKeyReleasedEvent(event);
 }
 
-void SpaceInvadersImpl::onNombreViesJoueurDiminue() {
+void SceneSpaceInvaders::onNombreViesJoueurDiminue() {
     this->miseAJourTexteNombreDeViesJoueur();
 }
 
-void SpaceInvadersImpl::afficherNextRound() {
+void SceneSpaceInvaders::afficherNextRound() {
     this->getGraphicsView()->setScene(this);
 }
 
-void SpaceInvadersImpl::supprimerObjetsSpaceInvadersPixmapDuJeu(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) {
+void SceneSpaceInvaders::supprimerObjetsSpaceInvadersPixmapDuJeu(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) {
     QString objetType = objetSpaceInvadersPixmap->getTypeObjet();
     if ((objetType == "Ennemi1") || (objetType == "Ennemi2") || (objetType == "Ennemi3")) {
         Ennemi* ennemi = dynamic_cast<Ennemi*>(objetSpaceInvadersPixmap);
@@ -221,21 +243,26 @@ void SpaceInvadersImpl::supprimerObjetsSpaceInvadersPixmapDuJeu(ObjetSpaceInvade
         this->mur3->supprimerPartieDeMur(partieDeMur);
         this->mur4->supprimerPartieDeMur(partieDeMur);
     }
-    SpaceInvaders::supprimerObjetsSpaceInvadersPixmapDuJeu(objetSpaceInvadersPixmap);
+    SceneJeu::supprimerObjetsSpaceInvadersPixmapDuJeu(objetSpaceInvadersPixmap);
 }
 
-void SpaceInvadersImpl::evoluer() {
+void SceneSpaceInvaders::evoluer() {
     if (this->jeuEstGagne()) {
         this->actionAExecuterJeuGagne();
     }
     else if (this->jeuEstPerdu()) {
         this->actionAExecuterJeuPerdu();
     }
-    if ((this->vagueEnnemis->getListeEnnemis().size() == 59) && (this->joueur->getNombreViesJoueur() > 0)) {
-        qDebug() << "nouveau round";
-        this->chargerNouveauRound();
-        this->getGraphicsView()->setScene(this->sceneRound);
-        QTimer::singleShot(2000, this, SLOT(afficherNextRound()));
+    else {
+        //quabnd on le fait deux fois c'est a cause de la deuxième balle qui touche l'ennemi revenu à la vie
+        if ((this->vagueEnnemis->getListeEnnemis().size() == 0) && (this->joueur->getNombreViesJoueur() > 0)) {
+            this->chargerNouveauRound();
+            //ca réinitialise mais ca atend 10 secondes donc c'est niqué
+            this->getGraphicsView()->setScene(this->sceneRound);
+            QTimer::singleShot(2000, this, SLOT(afficherNextRound()));
+        }
+        else {
+            SceneJeu::evoluer();
+        }
     }
-    SpaceInvaders::evoluer();
 }

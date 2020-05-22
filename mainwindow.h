@@ -7,7 +7,7 @@
 #include <SpaceInvaders_Metier/scenegagne.h>
 #include <SpaceInvaders_Metier/scenemenu.h>
 #include <SpaceInvaders_Metier/sceneperdu.h>
-#include <SpaceInvaders_Metier/spaceinvadersimpl.h>
+#include <SpaceInvaders_Metier/scenespaceinvaders.h>
 
 
 
@@ -24,11 +24,19 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    SpaceInvadersImpl *spaceInvadersImpl;
     QTimer* timer;
+    SceneSpaceInvaders *sceneSpaceInvaders;
     SceneMenu* sceneMenu;
     SceneGagne* sceneGagne;
     ScenePerdu* scenePerdu;
+
+private slots:
+    void onPartieGagne();
+    void onPartiePerdu();
+
+    // QWidget interface
+protected:
+    void keyPressEvent(QKeyEvent *event) override;
 
 };
 #endif // MAINWINDOW_H

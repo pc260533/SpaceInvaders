@@ -1,7 +1,5 @@
 #include "ennemi.h"
 
-int Ennemi::chanceDeTirEnnemi = 9999;
-
 Ennemi::Ennemi(QString cheminFichier, int positionX, int positionY) : ObjetSpaceInvadersPixmapEvoluable(cheminFichier, positionX, positionY) {
     this->etatAnimationEnnemi = "";
     this->vitesseEnnemi = 5;
@@ -27,11 +25,6 @@ void Ennemi::animerEnnemi() {
         this->etatAnimationEnnemi = this->getCheminFichierAnimationEnnemi1();
     }
 }
-
-void Ennemi::miseAJourChanceDeTirEnnemi() {
-    Ennemi::chanceDeTirEnnemi--;
-}
-
 void Ennemi::evoluerDansLeTemsp() {
     if (this->vaEtreDetruit) {
         if (this->compteurAvantDestruction == 3) {
@@ -51,10 +44,7 @@ void Ennemi::evoluerDansLeTemsp() {
     else {
         this->compteurChangementAnimation++;
     }
-    int chanceDeTirer = QRandomGenerator::global()->bounded(10000);
-    if (chanceDeTirer > Ennemi::chanceDeTirEnnemi) {
-        this->tirer();
-    }
+
 }
 
 void Ennemi::effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmapEvoluable) {
@@ -62,7 +52,6 @@ void Ennemi::effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvader
         QString objetType = objetSpaceInvadersPixmapEvoluable->getTypeObjet();
         if (objetType == "BalleJoueur") {
             this->changerImage(":/ressources/images/images/explosionEnnemi.png");
-            this->miseAJourChanceDeTirEnnemi();
             this->vaEtreDetruit = true;
             emit this->suppressionObjetSpaceInvadersPixmapDansJeu(objetSpaceInvadersPixmapEvoluable);
         }

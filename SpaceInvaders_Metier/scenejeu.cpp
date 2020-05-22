@@ -1,33 +1,33 @@
-#include "spaceinvaders.h"
+#include "scenejeu.h"
 
-SpaceInvaders::SpaceInvaders() : Scene() {
+SceneJeu::SceneJeu() : Scene() {
     this->listeObjetsSpaceInvadersASupprimer = QList<ObjetSpaceInvadersPixmapEvoluable*>();
 }
 
-SpaceInvaders::~SpaceInvaders() {
+SceneJeu::~SceneJeu() {
 
 }
 
-QGraphicsView* SpaceInvaders::getGraphicsView() const {
+QGraphicsView* SceneJeu::getGraphicsView() const {
     return this->graphicsView;
 }
 
-void SpaceInvaders::setGraphicsView(QGraphicsView* graphicsView) {
+void SceneJeu::setGraphicsView(QGraphicsView* graphicsView) {
     this->graphicsView = graphicsView;
     this->graphicsView->setScene(this);
 }
 
-void SpaceInvaders::jouer() {
+void SceneJeu::jouer() {
 
 }
 
-void SpaceInvaders::ajouterObjetsSpaceInvadersPixmapAuJeu(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) {
+void SceneJeu::ajouterObjetsSpaceInvadersPixmapAuJeu(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) {
     //qDebug() << "objet attrapé et ajouté";
     this->ajouterObjetSpaceInvadersPixmap(objetSpaceInvadersPixmap);
     QObject::connect(dynamic_cast<QObject*>(objetSpaceInvadersPixmap), SIGNAL(suppressionObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmapEvoluable*)), this, SLOT(supprimerObjetsSpaceInvadersPixmapDuJeu(ObjetSpaceInvadersPixmapEvoluable*)));
 }
 
-void SpaceInvaders::supprimerObjetsSpaceInvadersPixmapDuJeu(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) {
+void SceneJeu::supprimerObjetsSpaceInvadersPixmapDuJeu(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) {
     //qDebug() << "objet attrapé et supprimé";
     if (!this->items().contains(objetSpaceInvadersPixmap)) {
         this->supprimerObjetSpaceInvadersPixmap(objetSpaceInvadersPixmap);
@@ -37,7 +37,7 @@ void SpaceInvaders::supprimerObjetsSpaceInvadersPixmapDuJeu(ObjetSpaceInvadersPi
     }
 }
 
-void SpaceInvaders::evoluer() {
+void SceneJeu::evoluer() {
     this->advance();
     for (ObjetSpaceInvadersPixmapEvoluable* objetSpaceInvadersPixmapEvoluable : this->listeObjetsSpaceInvadersASupprimer) {
         if (objetSpaceInvadersPixmapEvoluable != nullptr) {
@@ -48,10 +48,10 @@ void SpaceInvaders::evoluer() {
     this->listeObjetsSpaceInvadersASupprimer.clear();
 }
 
-void SpaceInvaders::keyPressEvent(QKeyEvent *event) {
+void SceneJeu::keyPressEvent(QKeyEvent *event) {
     this->onKeyPressEvent(event);
 }
 
-void SpaceInvaders::keyReleaseEvent(QKeyEvent *event) {
+void SceneJeu::keyReleaseEvent(QKeyEvent *event) {
     this->onKeyReleaseEvent(event);
 }

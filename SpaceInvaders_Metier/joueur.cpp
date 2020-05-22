@@ -3,7 +3,7 @@
 Joueur::Joueur(int positionX, int positionY)
     :  QObject(nullptr), IObjetSpaceInvadersBougeableClavier(":/ressources/images/images/joueur.png", positionX, positionY) {
     this->vitesseJoueur = 5;
-    this->nombreViesJoueur = 3;
+    this->nombreViesJoueur = 1;
     this->enVieJoueur = true;
     this->positionXInitiale = positionX;
     this->positionYInitiale = positionY;

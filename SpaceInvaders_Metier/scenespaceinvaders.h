@@ -6,14 +6,14 @@
 #include "mur.h"
 #include "objetspaceinvaderstexte.h"
 #include "sceneround.h"
-#include "spaceinvaders.h"
+#include "scenejeu.h"
 #include "vagueennemis.h"
 
 #include <QTimer>
 
 
 
-class SpaceInvadersImpl : public SpaceInvaders {
+class SceneSpaceInvaders : public SceneJeu {
     Q_OBJECT
 
 private:
@@ -45,8 +45,8 @@ private:
     void chargerNouveauRound();
 
 public:
-    SpaceInvadersImpl();
-    virtual ~SpaceInvadersImpl();
+    SceneSpaceInvaders();
+    virtual ~SceneSpaceInvaders();
 
     // SpaceInvaders interface
 public:

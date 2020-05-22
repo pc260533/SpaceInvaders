@@ -16,7 +16,7 @@
 
 
 
-class SpaceInvaders : public Scene {
+class SceneJeu : public Scene {
     Q_OBJECT
 
 private:
@@ -24,8 +24,8 @@ private:
     QList<ObjetSpaceInvadersPixmapEvoluable*> listeObjetsSpaceInvadersASupprimer;
 
 public:
-    SpaceInvaders();
-    virtual ~SpaceInvaders() override;
+    SceneJeu();
+    virtual ~SceneJeu() override;
 
     QGraphicsView *getGraphicsView() const;
     void setGraphicsView(QGraphicsView* graphicsView);

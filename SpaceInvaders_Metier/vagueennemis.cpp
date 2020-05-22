@@ -7,6 +7,7 @@ VagueEnnemis::VagueEnnemis(int positionX, int positionY) : ObjetSpaceInvadersGro
     this->direction = 1;
     this->compteurDeplacement = 1;
     this->compteurDeplacementMaximal = 100;
+    this->chanceDeTirEnnemi = 9999;
     this->creerVague();
 }
 
@@ -50,8 +51,8 @@ void VagueEnnemis::miseAJourCompteurDeplacementMaximal() {
     this->compteurDeplacementMaximal -= 2;
 }
 
-void VagueEnnemis::reinitialiserChanceDeTirEnnemi() {
-
+void VagueEnnemis::miseAJourChanceDeTirEnnemi() {
+    this->chanceDeTirEnnemi--;
 }
 
 void VagueEnnemis::creerVague() {
@@ -83,6 +84,7 @@ void VagueEnnemis::ajouterEnnemi(Ennemi* ennemi) {
 void VagueEnnemis::supprimerEnnemi(Ennemi* ennemi) {
     this->listeEnnemis.removeOne(ennemi);
     this->removeFromGroup(ennemi);
+    this->miseAJourChanceDeTirEnnemi();
     this->miseAJourCompteurDeplacementMaximal();
 }
 
@@ -97,6 +99,12 @@ void VagueEnnemis::evoluerDansLeTemsp() {
     }
     else {
         this->compteurDeplacement++;
+    }
+    for (Ennemi* ennemi : this->listeEnnemis) {
+        int chanceDeTirer = QRandomGenerator::global()->bounded(10000);
+        if (chanceDeTirer > this->chanceDeTirEnnemi) {
+            ennemi->tirer();
+        }
     }
 }
 

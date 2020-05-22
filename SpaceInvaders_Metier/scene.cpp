@@ -51,6 +51,13 @@ void Scene::supprimerObjetSpaceInvadersTexte(ObjetSpaceInvadersTexte *objetSpace
     this->removeItem(objetSpaceInvadersTexte);
 }
 
+void Scene::supprimerTousLesItems() {
+    for (QGraphicsItem* item : this->items()) {
+        this->removeItem(item);
+        delete item;
+    }
+}
+
 void Scene::initialiserScene() {
     this->initialiserArrierePlan();
     this->initialiserObjetsJeu();

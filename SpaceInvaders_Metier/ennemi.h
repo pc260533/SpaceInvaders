@@ -9,7 +9,6 @@
 
 #include <QObject>
 #include <QString>
-#include <QRandomGenerator>
 
 
 
@@ -17,7 +16,6 @@ class Ennemi : public QObject, public ObjetSpaceInvadersPixmapEvoluable, public 
     Q_OBJECT
 
 private:
-    static int chanceDeTirEnnemi;
     QString etatAnimationEnnemi;
     int vitesseEnnemi;
     int compteurChangementAnimation;
@@ -26,7 +24,6 @@ private:
 
 private:
     void animerEnnemi();
-    void miseAJourChanceDeTirEnnemi();
 
 public:
     Ennemi(QString cheminFichier, int positionX, int positionY);

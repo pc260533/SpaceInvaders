@@ -8,7 +8,7 @@
 #include "objetspaceinvadersgroupe.h"
 
 #include <QList>
-
+#include <QRandomGenerator>
 
 
 class VagueEnnemis : public ObjetSpaceInvadersGroupe {
@@ -20,12 +20,14 @@ private:
     int direction;
     int compteurDeplacement;
     int compteurDeplacementMaximal;
+    int chanceDeTirEnnemi;
 
 private:
     void creerVague();
     void descendreVagueEnnemis();
     bool testChangementDeDirectionVagueEnnemis(Ennemi* ennemi);
     void deplacerVagueEnnemis();
+    void miseAJourChanceDeTirEnnemi();
     void miseAJourCompteurDeplacementMaximal();
 
 public:
@@ -35,7 +37,6 @@ public:
     void ajouterEnnemi(Ennemi* ennemi);
     void supprimerEnnemi(Ennemi* ennemi);
     bool contientAucunEnnemis();
-    void reinitialiserChanceDeTirEnnemi();
 
     // IObjetSpaceInvadersEvoluable interface
 public:

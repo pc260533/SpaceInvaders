@@ -37,6 +37,8 @@ public:
     void ajouterObjetSpaceInvadersTexte(ObjetSpaceInvadersTexte* objetSpaceInvadersTexte);
     void supprimerObjetSpaceInvadersTexte(ObjetSpaceInvadersTexte* objetSpaceInvadersTexte);
 
+    void supprimerTousLesItems();
+
     virtual void initialiserObjetsJeu() = 0;
     virtual void initialiserArrierePlan() = 0;
     virtual void initialiserScene();

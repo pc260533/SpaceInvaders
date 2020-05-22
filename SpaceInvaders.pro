@@ -39,11 +39,11 @@ SOURCES += \
     SpaceInvaders_Metier/scene.cpp \
     SpaceInvaders_Metier/scenefindejeu.cpp \
     SpaceInvaders_Metier/scenegagne.cpp \
+    SpaceInvaders_Metier/scenejeu.cpp \
     SpaceInvaders_Metier/scenemenu.cpp \
     SpaceInvaders_Metier/sceneperdu.cpp \
     SpaceInvaders_Metier/sceneround.cpp \
-    SpaceInvaders_Metier/spaceinvaders.cpp \
-    SpaceInvaders_Metier/spaceinvadersimpl.cpp \
+    SpaceInvaders_Metier/scenespaceinvaders.cpp \
     SpaceInvaders_Metier/vagueennemis.cpp \
     main.cpp \
     mainwindow.cpp
@@ -72,11 +72,11 @@ HEADERS += \
     SpaceInvaders_Metier/scene.h \
     SpaceInvaders_Metier/scenefindejeu.h \
     SpaceInvaders_Metier/scenegagne.h \
+    SpaceInvaders_Metier/scenejeu.h \
     SpaceInvaders_Metier/scenemenu.h \
     SpaceInvaders_Metier/sceneperdu.h \
     SpaceInvaders_Metier/sceneround.h \
-    SpaceInvaders_Metier/spaceinvaders.h \
-    SpaceInvaders_Metier/spaceinvadersimpl.h \
+    SpaceInvaders_Metier/scenespaceinvaders.h \
     SpaceInvaders_Metier/vagueennemis.h \
     mainwindow.h
 
