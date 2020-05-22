@@ -51,6 +51,7 @@ public:
     virtual void initialiserArrierePlan() = 0;
     virtual void initialiserEvenements() = 0;
     virtual void onKeyPressEvent(QKeyEvent *event) = 0;
+    virtual void onKeyReleaseEvent(QKeyEvent *event) = 0;
 
 protected slots:
     void ajouterObjetsSpaceInvadersPixmapAuJeu(ObjetSpaceInvadersPixmap* objetSpaceInvadersPixmap);
@@ -60,6 +61,7 @@ protected slots:
     // QGraphicsScene interface
 protected:
     void keyPressEvent(QKeyEvent *event) override;
+    void keyReleaseEvent(QKeyEvent *event) override;
 
 };
 

@@ -56,10 +56,6 @@ void Ennemi::effetCollision(ObjetSpaceInvadersPixmap *objetSpaceInvadersPixmap) 
             emit this->suppressionObjetSpaceInvadersPixmapDansJeu(objetSpaceInvadersPixmap);
             emit this->suppressionObjetSpaceInvadersPixmapDansJeu(this);
         }
-        else if (objetType == "Joueur") {
-            Joueur* joueur = dynamic_cast<Joueur*>(objetSpaceInvadersPixmap);
-            joueur->setNombreViesJoueur(joueur->getNombreViesJoueur() - 1);
-        }
         else if (objetType == "PartieDeMur") {
             emit this->suppressionObjetSpaceInvadersPixmapDansJeu(objetSpaceInvadersPixmap);
         }

@@ -142,6 +142,10 @@ void SpaceInvadersImpl::onKeyPressEvent(QKeyEvent *event) {
     this->joueur->onKeyPressedEvent(event);
 }
 
+void SpaceInvadersImpl::onKeyReleaseEvent(QKeyEvent *event) {
+    this->joueur->onKeyReleasedEvent(event);
+}
+
 void SpaceInvadersImpl::onNombreViesJoueurDiminue() {
     this->miseAJourTexteNombreDeViesJoueur();
 }

@@ -18,9 +18,13 @@ private:
     int vitesseJoueur;
     int positionXInitiale;
     int positionYInitiale;
+    bool estDeplacementGauche;
+    bool estDeplacementDroite;
+    bool estEnTir;
 
 private:
     void intialiserLaPositionDuJoueur();
+    void decrementerVieDuJoueur();
 
 public:
     Joueur(int positionX, int positionY);
@@ -39,6 +43,7 @@ public:
     // ObjetSpaceInvadersBougeableClavier interface
 public:
     void onKeyPressedEvent(QKeyEvent *event) override;
+    void onKeyReleasedEvent(QKeyEvent *event) override;
 
     // IObjetSpaceInvadersTireur interface
 public:

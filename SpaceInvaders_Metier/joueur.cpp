@@ -7,6 +7,9 @@ Joueur::Joueur(int positionX, int positionY)
     this->enVieJoueur = true;
     this->positionXInitiale = positionX;
     this->positionYInitiale = positionY;
+    this->estDeplacementGauche = false;
+    this->estDeplacementDroite = false;
+    this->estEnTir = false;
 }
 
 int Joueur::getNombreViesJoueur() const {
@@ -21,9 +24,26 @@ void Joueur::intialiserLaPositionDuJoueur() {
     this->setPositionXY(this->positionXInitiale, this->positionYInitiale);
 }
 
+void Joueur::decrementerVieDuJoueur() {
+    this->nombreViesJoueur--;
+    if (this->nombreViesJoueur <= 0) {
+        this->enVieJoueur = false;
+    }
+}
+
 void Joueur::evoluerDansLeTemsp() {
     for (QGraphicsItem *item : this->collidingItems()) {
         this->effetCollision(dynamic_cast<ObjetSpaceInvadersPixmap*>(item));
+    }
+    if (this->estDeplacementGauche) {
+        if (this->getPositionX() > 0) {
+            this->deplacerXY(-this->vitesseJoueur, 0);
+        }
+    }
+    else if (this->estDeplacementDroite) {
+        if (this->getPositionX() < this->getLargeurEcran() - this->getLargeur()) {
+            this->deplacerXY(this->vitesseJoueur, 0);
+        }
     }
 }
 
@@ -31,12 +51,13 @@ void Joueur::effetCollision(ObjetSpaceInvadersPixmap *objetSpaceInvadersPixmap) 
     if (objetSpaceInvadersPixmap) {
         QString objetType = objetSpaceInvadersPixmap->getTypeObjet();
         if (objetType == "BalleEnnemi") {
-            this->nombreViesJoueur--;
-            if (this->nombreViesJoueur <= 0) {
-                this->enVieJoueur = false;
-            }
+            this->decrementerVieDuJoueur();
             this->intialiserLaPositionDuJoueur();
             emit this->suppressionObjetSpaceInvadersPixmapDansJeu(objetSpaceInvadersPixmap);
+            emit this->nombreViesJoueurDiminue();
+        }
+        else if ((objetType == "Ennemi1") || (objetType == "Ennemi2") || (objetType == "Ennemi3")) {
+            this->decrementerVieDuJoueur();
             emit this->nombreViesJoueurDiminue();
         }
     }
@@ -48,17 +69,26 @@ QString Joueur::getTypeObjet() {
 
 void Joueur::onKeyPressedEvent(QKeyEvent *event) {
     if (event->key() == Qt::Key_Left) {
-        if (this->getPositionX() > 0) {
-            this->deplacerXY(-this->vitesseJoueur, 0);
-        }
+        this->estDeplacementGauche = true;
     }
     else if (event->key() == Qt::Key_Right) {
-        if (this->getPositionX() < this->getLargeurEcran() - this->getLargeur()) {
-            this->deplacerXY(this->vitesseJoueur, 0);
-        }
+        this->estDeplacementDroite = true;
     }
-    else if (event->key() == Qt::Key_Space) {
+    else if ((event->key() == Qt::Key_Space) && (!this->estEnTir) && (!event->isAutoRepeat())) {
         this->tirer();
+        this->estEnTir = true;
+    }
+}
+
+void Joueur::onKeyReleasedEvent(QKeyEvent *event) {
+    if (event->key() == Qt::Key_Left) {
+        this->estDeplacementGauche = false;
+    }
+    else if (event->key() == Qt::Key_Right) {
+        this->estDeplacementDroite = false;
+    }
+    else if ((event->key() == Qt::Key_Space) && (!event->isAutoRepeat())) {
+        this->estEnTir = false;
     }
 }
 

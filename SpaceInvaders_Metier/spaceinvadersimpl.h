@@ -53,6 +53,7 @@ public:
     void initialiserArrierePlan() override;
     void initialiserEvenements() override;
     void onKeyPressEvent(QKeyEvent *event) override;
+    void onKeyReleaseEvent(QKeyEvent *event) override;
 
 private slots:
     void onNombreViesJoueurDiminue();

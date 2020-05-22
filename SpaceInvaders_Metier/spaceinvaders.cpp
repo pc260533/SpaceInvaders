@@ -66,3 +66,7 @@ void SpaceInvaders::supprimerObjetsSpaceInvadersPixmapDuJeu(ObjetSpaceInvadersPi
 void SpaceInvaders::keyPressEvent(QKeyEvent *event) {
     this->onKeyPressEvent(event);
 }
+
+void SpaceInvaders::keyReleaseEvent(QKeyEvent *event) {
+    this->onKeyReleaseEvent(event);
+}
