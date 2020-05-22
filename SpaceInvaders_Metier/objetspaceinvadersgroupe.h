@@ -14,7 +14,7 @@ public:
     ObjetSpaceInvadersGroupe(int positionX, int positionY);
     virtual ~ObjetSpaceInvadersGroupe() override;
 
-    // QGraphicsItem interface
+    // QGraphicsItemGroup interface
 public:
     void advance(int phase) override;
 

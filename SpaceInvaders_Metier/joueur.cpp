@@ -47,13 +47,13 @@ void Joueur::evoluerDansLeTemsp() {
     }
 }
 
-void Joueur::effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) {
-    if (objetSpaceInvadersPixmap) {
-        QString objetType = objetSpaceInvadersPixmap->getTypeObjet();
+void Joueur::effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmapEvoluable) {
+    if (objetSpaceInvadersPixmapEvoluable) {
+        QString objetType = objetSpaceInvadersPixmapEvoluable->getTypeObjet();
         if (objetType == "BalleEnnemi") {
             this->decrementerVieDuJoueur();
             this->intialiserLaPositionDuJoueur();
-            emit this->suppressionObjetSpaceInvadersPixmapDansJeu(objetSpaceInvadersPixmap);
+            emit this->suppressionObjetSpaceInvadersPixmapDansJeu(objetSpaceInvadersPixmapEvoluable);
             emit this->nombreViesJoueurDiminue();
         }
         else if ((objetType == "Ennemi1") || (objetType == "Ennemi2") || (objetType == "Ennemi3")) {

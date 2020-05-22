@@ -10,9 +10,7 @@ SceneRound::~SceneRound() {
 }
 
 void SceneRound::initialiserObjetsJeu() {
-    int id = QFontDatabase::addApplicationFont(":/ressources/font/fonts/fontSpaceInvaders.ttf");
-    QString family = QFontDatabase::applicationFontFamilies(id).at(0);
-    QFont fontSpaceInvaders = QFont(family);
+    QFont fontSpaceInvaders = this->getFontSpaceInvaders();
     fontSpaceInvaders.setPixelSize(80);
 
     this->nextRoundTextItem = new ObjetSpaceInvadersTexte(120, 220);

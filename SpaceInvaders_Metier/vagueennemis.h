@@ -18,7 +18,6 @@ private:
     int vitesseX;
     int vitesseY;
     int direction;
-
     int compteurDeplacement;
     int compteurDeplacementMaximal;
 
@@ -36,8 +35,9 @@ public:
     void ajouterEnnemi(Ennemi* ennemi);
     void supprimerEnnemi(Ennemi* ennemi);
     bool contientAucunEnnemis();
+    void reinitialiserChanceDeTirEnnemi();
 
-    // ObjetSpaceInvaders interface
+    // IObjetSpaceInvadersEvoluable interface
 public:
     void evoluerDansLeTemsp() override;
 

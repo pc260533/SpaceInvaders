@@ -5,6 +5,7 @@
 #include "objetspaceinvaderspixmapevoluable.h"
 #include "objetspaceinvaderstexte.h"
 
+#include <QFontDatabase>
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QList>
@@ -27,6 +28,8 @@ public:
     int getHauteur() const;
     int getLargeur() const;
 
+    QFont getFontSpaceInvaders();
+
     void ajouterObjetSpaceInvadersPixmap(ObjetSpaceInvadersPixmap* objetSpaceInvadersPixmap);
     void supprimerObjetSpaceInvadersPixmap(ObjetSpaceInvadersPixmap* objetSpaceInvadersPixmap);
     void ajouterObjetSpaceInvadersGroupe(ObjetSpaceInvadersGroupe* objetSpaceInvadersGroupe);
@@ -38,7 +41,6 @@ public:
     virtual void initialiserArrierePlan() = 0;
     virtual void initialiserScene();
     virtual void reinitialiserScene();
-
 
 };
 

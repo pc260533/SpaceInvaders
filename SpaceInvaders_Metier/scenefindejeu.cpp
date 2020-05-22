@@ -10,9 +10,7 @@ SceneFinDeJeu::~SceneFinDeJeu() {
 }
 
 void SceneFinDeJeu::initialiserObjetsJeu() {
-    int id = QFontDatabase::addApplicationFont(":/ressources/font/fonts/fontSpaceInvaders.ttf");
-    QString family = QFontDatabase::applicationFontFamilies(id).at(0);
-    QFont fontSpaceInvaders = QFont(family);
+    QFont fontSpaceInvaders = this->getFontSpaceInvaders();
     fontSpaceInvaders.setPixelSize(50);
 
     this->rejouerTextItem = new ObjetSpaceInvadersTexte(60, 350);

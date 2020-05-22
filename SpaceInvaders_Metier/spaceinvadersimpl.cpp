@@ -24,7 +24,9 @@ SpaceInvadersImpl::SpaceInvadersImpl() : SpaceInvaders() {
 SpaceInvadersImpl::~SpaceInvadersImpl() {
     delete this->joueur;
     delete this->vagueEnnemis;
-    delete this->ennemiMystere;
+    if (this->ennemiMystere) {
+        delete this->ennemiMystere;
+    }
     delete this->mur1;
     delete this->mur2;
     delete this->mur3;
@@ -55,18 +57,18 @@ void SpaceInvadersImpl::miseAJourTexteRoundHighestRound() {
 
 void SpaceInvadersImpl::chargerNouveauRound() {
     this->round++;
-    this->clear();
-    this->initialiserArrierePlan();
-    this->initialiserObjetsJeu();
+    this->vagueEnnemis->reinitialiserChanceDeTirEnnemi();
+    this->reinitialiserScene();
+    this->initialiserScene();
 }
 
 
 void SpaceInvadersImpl::actionAExecuterJeuPerdu() {
-
+    emit this->partiePerdu();
 }
 
 void SpaceInvadersImpl::actionAExecuterJeuGagne() {
-
+    emit this->partieGagne();
 }
 
 bool SpaceInvadersImpl::jeuEstGagne() {
@@ -116,9 +118,7 @@ void SpaceInvadersImpl::initialiserObjetsJeu() {
     this->ajouterObjetSpaceInvadersGroupe(this->mur3);
     this->ajouterObjetSpaceInvadersGroupe(this->mur4);
 
-    int id = QFontDatabase::addApplicationFont(":/ressources/font/fonts/fontSpaceInvaders.ttf");
-    QString family = QFontDatabase::applicationFontFamilies(id).at(0);
-    QFont fontSpaceInvaders = QFont(family);
+    QFont fontSpaceInvaders = this->getFontSpaceInvaders();
     fontSpaceInvaders.setPixelSize(15);
 
     this->nombreViesJoueurTextItem = new ObjetSpaceInvadersTexte(20, 5);
@@ -161,7 +161,9 @@ void SpaceInvadersImpl::reinitialiserScene() {
     SpaceInvaders::reinitialiserScene();
     delete this->joueur;
     delete this->vagueEnnemis;
-    delete this->ennemiMystere;
+    if (this->ennemiMystere) {
+        delete this->ennemiMystere;
+    }
     delete this->mur1;
     delete this->mur2;
     delete this->mur3;
@@ -199,9 +201,6 @@ void SpaceInvadersImpl::afficherNextRound() {
 }
 
 void SpaceInvadersImpl::supprimerObjetsSpaceInvadersPixmapDuJeu(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) {
-    //ne pas supprimer deux fois le même objet
-    //vérifier que l'objet est dan la scène
-
     QString objetType = objetSpaceInvadersPixmap->getTypeObjet();
     if ((objetType == "Ennemi1") || (objetType == "Ennemi2") || (objetType == "Ennemi3")) {
         Ennemi* ennemi = dynamic_cast<Ennemi*>(objetSpaceInvadersPixmap);
@@ -213,6 +212,7 @@ void SpaceInvadersImpl::supprimerObjetsSpaceInvadersPixmapDuJeu(ObjetSpaceInvade
         EnnemiMystere* ennemiMystere = dynamic_cast<EnnemiMystere*>(objetSpaceInvadersPixmap);
         this->score += ennemiMystere->getScoreEnnemi();
         this->miseAJourTexteScoreHighscore();
+        this->ennemiMystere = nullptr;
     }
     else if (objetType == "PartieDeMur") {
         PartieDeMur* partieDeMur = dynamic_cast<PartieDeMur*>(objetSpaceInvadersPixmap);
@@ -221,12 +221,11 @@ void SpaceInvadersImpl::supprimerObjetsSpaceInvadersPixmapDuJeu(ObjetSpaceInvade
         this->mur3->supprimerPartieDeMur(partieDeMur);
         this->mur4->supprimerPartieDeMur(partieDeMur);
     }
-    //qDebug() << this->score;
     SpaceInvaders::supprimerObjetsSpaceInvadersPixmapDuJeu(objetSpaceInvadersPixmap);
 }
 
 void SpaceInvadersImpl::evoluer() {
-    /*if (this->jeuEstGagne()) {
+    if (this->jeuEstGagne()) {
         this->actionAExecuterJeuGagne();
     }
     else if (this->jeuEstPerdu()) {
@@ -235,9 +234,8 @@ void SpaceInvadersImpl::evoluer() {
     if ((this->vagueEnnemis->getListeEnnemis().size() == 59) && (this->joueur->getNombreViesJoueur() > 0)) {
         qDebug() << "nouveau round";
         this->chargerNouveauRound();
-        //ca réinitialise mais ca atend 10 secondes donc c'est niqué
         this->getGraphicsView()->setScene(this->sceneRound);
-        QTimer::singleShot(10000, this, SLOT(afficherNextRound()));
-    }*/
+        QTimer::singleShot(2000, this, SLOT(afficherNextRound()));
+    }
     SpaceInvaders::evoluer();
 }

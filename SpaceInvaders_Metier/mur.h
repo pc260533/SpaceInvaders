@@ -23,7 +23,7 @@ public:
     void ajouterPartieDeMur(PartieDeMur* partieDeMur);
     void supprimerPartieDeMur(PartieDeMur* partieDeMur);
 
-    // ObjetSpaceInvaders interface
+    // IObjetSpaceInvadersEvoluable interface
 public:
     void evoluerDansLeTemsp() override;
 

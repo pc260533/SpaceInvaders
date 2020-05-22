@@ -20,11 +20,11 @@ void EnnemiMystere::evoluerDansLeTemsp() {
     }
 }
 
-void EnnemiMystere::effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) {
-    if (objetSpaceInvadersPixmap) {
-        QString objetType = objetSpaceInvadersPixmap->getTypeObjet();
+void EnnemiMystere::effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmapEvoluable) {
+    if (objetSpaceInvadersPixmapEvoluable) {
+        QString objetType = objetSpaceInvadersPixmapEvoluable->getTypeObjet();
         if (objetType == "BalleJoueur") {
-            emit this->suppressionObjetSpaceInvadersPixmapDansJeu(objetSpaceInvadersPixmap);
+            emit this->suppressionObjetSpaceInvadersPixmapDansJeu(objetSpaceInvadersPixmapEvoluable);
             emit this->suppressionObjetSpaceInvadersPixmapDansJeu(this);
         }
     }

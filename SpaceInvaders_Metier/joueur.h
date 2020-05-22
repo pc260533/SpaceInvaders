@@ -31,16 +31,16 @@ public:
     int getNombreViesJoueur() const;
     void setNombreViesJoueur(int nombreViesJoueur);
 
-    // ObjetSpaceInvaders interface
+    // IObjetSpaceInvadersEvoluable interface
 public:
     void evoluerDansLeTemsp() override;
 
-    // ObjetSpaceInvadersPixmap interface
+    // ObjetSpaceInvadersPixmapEvoluable interface
 public:
-    void effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) override;
+    void effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmapEvoluable) override;
     QString getTypeObjet() override;
 
-    // ObjetSpaceInvadersBougeableClavier interface
+    // IObjetSpaceInvadersBougeableClavier interface
 public:
     void onKeyPressedEvent(QKeyEvent *event) override;
     void onKeyReleasedEvent(QKeyEvent *event) override;
@@ -49,7 +49,7 @@ public:
 public:
     void tirer() override;
 
-    // ObjetSpaceInvaders interface
+    // ObjetSpaceInvadersPixmapEvoluable interface
 signals:
     void nouveauObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmapEvoluable*) override;
     void suppressionObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmapEvoluable *) override;

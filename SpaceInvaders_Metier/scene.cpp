@@ -4,6 +4,7 @@ Scene::Scene() : QGraphicsScene(0, 0, 800, 600) {
     this->titre = "Space Invaders";
     this->largeur = 800;
     this->hauteur = 600;
+    this->getFontSpaceInvaders();
 }
 
 Scene::~Scene() {
@@ -16,6 +17,14 @@ int Scene::getHauteur() const {
 
 int Scene::getLargeur() const {
     return largeur;
+}
+
+QFont Scene::getFontSpaceInvaders(){
+    if (QFontDatabase::applicationFontFamilies(0).empty()) {
+        QFontDatabase::addApplicationFont(":/ressources/font/fonts/fontSpaceInvaders.ttf");
+    }
+    QString family = QFontDatabase::applicationFontFamilies(0).at(0);
+    return QFont(family);
 }
 
 void Scene::ajouterObjetSpaceInvadersPixmap(ObjetSpaceInvadersPixmap* objetSpaceInvadersPixmap) {

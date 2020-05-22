@@ -11,9 +11,7 @@ ScenePerdu::~ScenePerdu() {
 
 void ScenePerdu::initialiserObjetsJeu() {
     SceneFinDeJeu::initialiserObjetsJeu();
-    int id = QFontDatabase::addApplicationFont(":/ressources/font/fonts/fontSpaceInvaders.ttf");
-    QString family = QFontDatabase::applicationFontFamilies(id).at(0);
-    QFont fontSpaceInvaders = QFont(family);
+    QFont fontSpaceInvaders = this->getFontSpaceInvaders();
     fontSpaceInvaders.setPixelSize(100);
 
     this->perduTextItem = new ObjetSpaceInvadersTexte(75, 100);

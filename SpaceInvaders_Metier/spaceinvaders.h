@@ -20,10 +20,7 @@ class SpaceInvaders : public Scene {
     Q_OBJECT
 
 private:
-    QList<ObjetSpaceInvadersPixmapEvoluable*> listeObjetsSpaceInvaders;
-
     QGraphicsView* graphicsView;
-
     QList<ObjetSpaceInvadersPixmapEvoluable*> listeObjetsSpaceInvadersASupprimer;
 
 public:

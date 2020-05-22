@@ -15,15 +15,15 @@ void PartieDeMur::evoluerDansLeTemsp() {
     }
 }
 
-void PartieDeMur::effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) {
-    if (objetSpaceInvadersPixmap) {
-        QString objetType = objetSpaceInvadersPixmap->getTypeObjet();
+void PartieDeMur::effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmapEvoluable) {
+    if (objetSpaceInvadersPixmapEvoluable) {
+        QString objetType = objetSpaceInvadersPixmapEvoluable->getTypeObjet();
         if (objetType == "BalleJoueur") {
-            emit this->suppressionObjetSpaceInvadersPixmapDansJeu(objetSpaceInvadersPixmap);
+            emit this->suppressionObjetSpaceInvadersPixmapDansJeu(objetSpaceInvadersPixmapEvoluable);
             emit this->suppressionObjetSpaceInvadersPixmapDansJeu(this);
         }
         else if (objetType == "BalleEnnemi") {
-            emit this->suppressionObjetSpaceInvadersPixmapDansJeu(objetSpaceInvadersPixmap);
+            emit this->suppressionObjetSpaceInvadersPixmapDansJeu(objetSpaceInvadersPixmapEvoluable);
             emit this->suppressionObjetSpaceInvadersPixmapDansJeu(this);
         }
     }

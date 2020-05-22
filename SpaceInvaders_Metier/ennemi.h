@@ -21,6 +21,8 @@ private:
     QString etatAnimationEnnemi;
     int vitesseEnnemi;
     int compteurChangementAnimation;
+    bool vaEtreDetruit;
+    int compteurAvantDestruction;
 
 private:
     void animerEnnemi();
@@ -33,19 +35,19 @@ public:
     virtual QString getCheminFichierAnimationEnnemi1() = 0;
     virtual QString getCheminFichierAnimationEnnemi2() = 0;
 
-    // ObjetSpaceInvaders interface
+    // IObjetSpaceInvadersEvoluable interface
 public:
     void evoluerDansLeTemsp() override;
 
-    // ObjetSpaceInvadersPixmap interface
+    // ObjetSpaceInvadersPixmapEvoluable interface
 public:
-    void effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) override;
+    void effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmapEvoluable) override;
 
     // IObjetSpaceInvadersTireur interface
 public:
     void tirer() override;
 
-    // ObjetSpaceInvadersPixmap interface
+    // IObjetSpaceInvadersEvoluable interface
 signals:
     void nouveauObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmapEvoluable *) override;
     void suppressionObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmapEvoluable *) override;

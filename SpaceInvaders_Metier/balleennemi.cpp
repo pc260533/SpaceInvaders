@@ -16,7 +16,7 @@ void BalleEnnemi::evoluerDansLeTemsp() {
     }
 }
 
-void BalleEnnemi::effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) {
+void BalleEnnemi::effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmapEvoluable) {
 
 }
 

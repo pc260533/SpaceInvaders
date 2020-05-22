@@ -14,16 +14,16 @@ public:
     BalleJoueur(int positionX, int positionY);
     virtual ~BalleJoueur();
 
-    // ObjetSpaceInvaders interface
+    // IObjetSpaceInvadersEvoluable interface
 public:
     void evoluerDansLeTemsp() override;
 
-    // ObjetSpaceInvadersPixmap interface
+    // ObjetSpaceInvadersPixmapEvoluable interface
 public:
-    void effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) override;
+    void effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmapEvoluable) override;
     QString getTypeObjet() override;
 
-    // ObjetSpaceInvaders interface
+    // ObjetSpaceInvadersPixmapEvoluable interface
 signals:
     void nouveauObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmapEvoluable*) override;
     void suppressionObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmapEvoluable *) override;

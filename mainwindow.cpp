@@ -9,6 +9,12 @@ MainWindow::MainWindow(QWidget *parent)
     this->ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     this->ui->graphicsView->setFrameStyle(0);
 
+    this->sceneMenu = new SceneMenu();
+    this->sceneGagne = new SceneGagne();
+    this->scenePerdu = new ScenePerdu();
+    this->sceneMenu->initialiserScene();
+    this->sceneGagne->initialiserScene();
+    this->scenePerdu->initialiserScene();
 
     this->spaceInvadersImpl = new SpaceInvadersImpl();
     this->spaceInvadersImpl->setGraphicsView(this->ui->graphicsView);
@@ -21,6 +27,9 @@ MainWindow::MainWindow(QWidget *parent)
 }
 
 MainWindow::~MainWindow() {
+    delete this->sceneMenu;
+    delete this->sceneGagne;
+    delete this->scenePerdu;
     delete this->spaceInvadersImpl;
     delete this->timer;
     delete this->ui;

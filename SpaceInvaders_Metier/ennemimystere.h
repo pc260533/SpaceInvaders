@@ -17,13 +17,13 @@ public:
     EnnemiMystere(int positionX, int positionY);
     virtual ~EnnemiMystere() override;
 
-    // ObjetSpaceInvaders interface
+    // IObjetSpaceInvadersEvoluable interface
 public:
     void evoluerDansLeTemsp() override;
 
-    // ObjetSpaceInvadersPixmap interface
+    // ObjetSpaceInvadersPixmapEvoluable interface
 public:
-    void effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) override;
+    void effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmapEvoluable) override;
     QString getTypeObjet() override;
 
     // IEnnemi interface

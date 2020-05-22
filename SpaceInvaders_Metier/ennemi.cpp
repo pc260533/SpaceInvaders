@@ -6,6 +6,8 @@ Ennemi::Ennemi(QString cheminFichier, int positionX, int positionY) : ObjetSpace
     this->etatAnimationEnnemi = "";
     this->vitesseEnnemi = 5;
     this->compteurChangementAnimation = 1;
+    this->vaEtreDetruit = false;
+    this->compteurAvantDestruction = 1;
 }
 
 Ennemi::~Ennemi() {
@@ -31,6 +33,14 @@ void Ennemi::miseAJourChanceDeTirEnnemi() {
 }
 
 void Ennemi::evoluerDansLeTemsp() {
+    if (this->vaEtreDetruit) {
+        if (this->compteurAvantDestruction == 3) {
+            emit this->suppressionObjetSpaceInvadersPixmapDansJeu(this);
+        }
+        else {
+            this->compteurAvantDestruction++;
+        }
+    }
     for (QGraphicsItem *item : this->collidingItems()) {
         this->effetCollision(dynamic_cast<ObjetSpaceInvadersPixmapEvoluable*>(item));
     }
@@ -47,17 +57,17 @@ void Ennemi::evoluerDansLeTemsp() {
     }
 }
 
-void Ennemi::effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) {
-    if (objetSpaceInvadersPixmap) {
-        QString objetType = objetSpaceInvadersPixmap->getTypeObjet();
+void Ennemi::effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmapEvoluable) {
+    if (objetSpaceInvadersPixmapEvoluable) {
+        QString objetType = objetSpaceInvadersPixmapEvoluable->getTypeObjet();
         if (objetType == "BalleJoueur") {
             this->changerImage(":/ressources/images/images/explosionEnnemi.png");
             this->miseAJourChanceDeTirEnnemi();
-            emit this->suppressionObjetSpaceInvadersPixmapDansJeu(objetSpaceInvadersPixmap);
-            emit this->suppressionObjetSpaceInvadersPixmapDansJeu(this);
+            this->vaEtreDetruit = true;
+            emit this->suppressionObjetSpaceInvadersPixmapDansJeu(objetSpaceInvadersPixmapEvoluable);
         }
         else if (objetType == "PartieDeMur") {
-            emit this->suppressionObjetSpaceInvadersPixmapDansJeu(objetSpaceInvadersPixmap);
+            emit this->suppressionObjetSpaceInvadersPixmapDansJeu(objetSpaceInvadersPixmapEvoluable);
         }
     }
 }

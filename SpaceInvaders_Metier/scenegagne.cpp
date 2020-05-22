@@ -11,9 +11,7 @@ SceneGagne::~SceneGagne() {
 
 void SceneGagne::initialiserObjetsJeu() {
     SceneFinDeJeu::initialiserObjetsJeu();
-    int id = QFontDatabase::addApplicationFont(":/ressources/font/fonts/fontSpaceInvaders.ttf");
-    QString family = QFontDatabase::applicationFontFamilies(id).at(0);
-    QFont fontSpaceInvaders = QFont(family);
+    QFont fontSpaceInvaders = this->getFontSpaceInvaders();
     fontSpaceInvaders.setPixelSize(100);
 
     this->gagneTextItem = new ObjetSpaceInvadersTexte(135, 100);

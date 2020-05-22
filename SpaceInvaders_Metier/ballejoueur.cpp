@@ -19,11 +19,11 @@ void BalleJoueur::evoluerDansLeTemsp() {
     }
 }
 
-void BalleJoueur::effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) {
-    if (objetSpaceInvadersPixmap) {
-        QString objetType = objetSpaceInvadersPixmap->getTypeObjet();
+void BalleJoueur::effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmapEvoluable) {
+    if (objetSpaceInvadersPixmapEvoluable) {
+        QString objetType = objetSpaceInvadersPixmapEvoluable->getTypeObjet();
         if (objetType == "BalleEnnemi") {
-            emit suppressionObjetSpaceInvadersPixmapDansJeu(objetSpaceInvadersPixmap);
+            emit suppressionObjetSpaceInvadersPixmapDansJeu(objetSpaceInvadersPixmapEvoluable);
             emit suppressionObjetSpaceInvadersPixmapDansJeu(this);
         }
     }

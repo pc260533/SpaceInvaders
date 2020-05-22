@@ -3,8 +3,9 @@
 
 #include "scene.h"
 
-#include <QFontDatabase>
 #include <QGraphicsScene>
+
+
 
 class SceneFinDeJeu : public Scene {
 

@@ -23,7 +23,7 @@ public:
 
     virtual void effetCollision(ObjetSpaceInvadersPixmapEvoluable* objetSpaceInvadersPixmap) = 0;
 
-    // QGraphicsItem interface
+    // QGraphicsPixmapItem interface
 public:
     void advance(int phase) override;
 

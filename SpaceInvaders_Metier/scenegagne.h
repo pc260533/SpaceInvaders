@@ -3,8 +3,9 @@
 
 #include "scenefindejeu.h"
 
-#include <QFontDatabase>
 #include <QGraphicsScene>
+
+
 
 class SceneGagne : public SceneFinDeJeu {
 
@@ -21,6 +22,5 @@ public:
     void initialiserArrierePlan() override;
 
 };
-
 
 #endif // SCENEGAGNE_H

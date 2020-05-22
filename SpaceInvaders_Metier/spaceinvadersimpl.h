@@ -9,7 +9,6 @@
 #include "spaceinvaders.h"
 #include "vagueennemis.h"
 
-#include <QFontDatabase>
 #include <QTimer>
 
 

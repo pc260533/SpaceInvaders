@@ -11,7 +11,7 @@ public:
     Ennemi2(int positionX, int positionY);
     virtual ~Ennemi2() override;
 
-    // ObjetSpaceInvadersPixmap interface
+    // ObjetSpaceInvadersPixmapEvoluable interface
 public:
     QString getTypeObjet() override;
 

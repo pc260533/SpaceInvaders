@@ -29,7 +29,9 @@ void SpaceInvaders::ajouterObjetsSpaceInvadersPixmapAuJeu(ObjetSpaceInvadersPixm
 
 void SpaceInvaders::supprimerObjetsSpaceInvadersPixmapDuJeu(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) {
     //qDebug() << "objet attrapé et supprimé";
-    this->supprimerObjetSpaceInvadersPixmap(objetSpaceInvadersPixmap);
+    if (!this->items().contains(objetSpaceInvadersPixmap)) {
+        this->supprimerObjetSpaceInvadersPixmap(objetSpaceInvadersPixmap);
+    }
     if (!this->listeObjetsSpaceInvadersASupprimer.contains(objetSpaceInvadersPixmap)) {
         this->listeObjetsSpaceInvadersASupprimer.push_back(objetSpaceInvadersPixmap);
     }

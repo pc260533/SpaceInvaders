@@ -40,9 +40,7 @@ SceneMenu::~SceneMenu() {
 }
 
 void SceneMenu::initialiserObjetsJeu() {
-    int id = QFontDatabase::addApplicationFont(":/ressources/font/fonts/fontSpaceInvaders.ttf");
-    QString family = QFontDatabase::applicationFontFamilies(id).at(0);
-    QFont fontSpaceInvaders = QFont(family);
+    QFont fontSpaceInvaders = this->getFontSpaceInvaders();
     fontSpaceInvaders.setPixelSize(35);
     this->jouerTextItem = new ObjetSpaceInvadersTexte(240, 265);
     this->jouerTextItem->setTexte("Press A to play");
