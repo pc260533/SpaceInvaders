@@ -10,7 +10,12 @@
 class ObjetSpaceInvadersGroupe : public QGraphicsItemGroup, public ObjetSpaceInvaders {
 
 public:
-    ObjetSpaceInvadersGroupe();
+    ObjetSpaceInvadersGroupe(int positionX, int positionY);
+    virtual ~ObjetSpaceInvadersGroupe() override;
+
+    // QGraphicsItem interface
+public:
+    void advance(int phase) override;
 
 };
 

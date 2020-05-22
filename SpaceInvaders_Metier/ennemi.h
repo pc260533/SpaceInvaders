@@ -35,7 +35,7 @@ public:
     // ObjetSpaceInvaders interface
 public:
     void evoluerDansLeTemsp() override;
-    void effetCollision(ObjetSpaceInvadersPixmap *objetSpaceInvaders) override;
+    void effetCollision(ObjetSpaceInvaders *objetSpaceInvaders) override;
 
     // IObjetSpaceInvadersTireur interface
 public:

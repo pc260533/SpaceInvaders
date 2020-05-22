@@ -47,7 +47,7 @@ void Ennemi::evoluerDansLeTemsp() {
     }
 }
 
-void Ennemi::effetCollision(ObjetSpaceInvadersPixmap *objetSpaceInvaders) {
+void Ennemi::effetCollision(ObjetSpaceInvaders *objetSpaceInvaders) {
 
 }
 

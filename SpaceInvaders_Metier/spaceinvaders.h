@@ -23,7 +23,6 @@ private:
     int largeur;
     QList<ObjetSpaceInvadersPixmap*> listeObjetsSpaceInvaders;
 
-    //QGraphicsScene* graphicsSceneJeu;
     QGraphicsView* graphicsView;
 
 public:
@@ -33,8 +32,6 @@ public:
     int getHauteur() const;
     int getLargeur() const;
     void setGraphicsView(QGraphicsView *value);
-    //QGraphicsScene *getGraphicsSceneJeu() const;
-    //void setGraphicsSceneJeu(QGraphicsScene *value);
 
     void ajouterObjetSpaceInvaders(ObjetSpaceInvadersPixmap* objetSpaceInvaders);
     void supprimerObjetSpaceInvaders(ObjetSpaceInvadersPixmap* objetSpaceInvaders);

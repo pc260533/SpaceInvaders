@@ -13,7 +13,7 @@ void EnnemiMystere::evoluerDansLeTemsp() {
     }
 }
 
-void EnnemiMystere::effetCollision(ObjetSpaceInvadersPixmap *objetSpaceInvaders) {
+void EnnemiMystere::effetCollision(ObjetSpaceInvaders *objetSpaceInvaders) {
 
 }
 

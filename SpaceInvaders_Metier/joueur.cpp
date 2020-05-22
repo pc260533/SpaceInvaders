@@ -13,7 +13,7 @@ void Joueur::evoluerDansLeTemsp() {
 
 }
 
-void Joueur::effetCollision(ObjetSpaceInvadersPixmap *objetSpaceInvaders) {
+void Joueur::effetCollision(ObjetSpaceInvaders *objetSpaceInvaders) {
 
 }
 
@@ -22,15 +22,11 @@ void Joueur::onKeyPressedEvent(QKeyEvent *event) {
         if (this->getPositionX() > 0) {
             this->deplacerXY(-this->vitesseJoueur, 0);
         }
-        /*qDebug() << "x :" << this->getPositionX() << "    y :" << this->getPositionY();
-        qDebug() << "x :" << this->pos().x() << "    y :" << this->pos().y();*/
     }
     else if (event->key() == Qt::Key_Right) {
         if (this->getPositionX() < this->getLargeurEcran() - this->getLargeur()) {
             this->deplacerXY(this->vitesseJoueur, 0);
         }
-        /*qDebug() << "x :" << this->getPositionX() << "    y :" << this->getPositionY();
-        qDebug() << "x :" << this->pos().x() << "    y :" << this->pos().y();*/
     }
     else if (event->key() == Qt::Key_Space) {
         this->tirer();

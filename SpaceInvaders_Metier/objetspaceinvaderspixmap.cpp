@@ -1,44 +1,16 @@
 #include "objetspaceinvaderspixmap.h"
 
-ObjetSpaceInvadersPixmap::ObjetSpaceInvadersPixmap(QString cheminFichier, int positionX, int positionY) {
+ObjetSpaceInvadersPixmap::ObjetSpaceInvadersPixmap(QString cheminFichier, int positionX, int positionY) : ObjetSpaceInvaders(positionX, positionY) {
     this->cheminFichier = cheminFichier;
-    this->positionX = positionX;
-    this->positionY = positionY;
     this->pixmap = QPixmap(cheminFichier);
     this->setPixmap(this->pixmap);
     this->hauteur = this->pixmap.size().height();
     this->largeur = this->pixmap.size().width();
-    this->hauteurEcran = 600;
-    this->largeurEcran = 800;
-    this->setPos(this->positionX, this->positionY);
+    this->setPos(this->getPositionX(), this->getPositionY());
 }
 
 ObjetSpaceInvadersPixmap::~ObjetSpaceInvadersPixmap() {
 
-}
-
-int ObjetSpaceInvadersPixmap::getPositionX() const {
-    return this->positionX;
-}
-
-void ObjetSpaceInvadersPixmap::setPositionX(int value) {
-    this->positionX = value;
-}
-
-int ObjetSpaceInvadersPixmap::getPositionY() const {
-    return this->positionY;
-}
-
-void ObjetSpaceInvadersPixmap::setPositionY(int value) {
-    this->positionY = value;
-}
-
-int ObjetSpaceInvadersPixmap::getHauteurEcran() const {
-    return this->hauteurEcran;
-}
-
-int ObjetSpaceInvadersPixmap::getLargeurEcran() const {
-    return this->largeurEcran;
 }
 
 int ObjetSpaceInvadersPixmap::getHauteur() const {
@@ -50,33 +22,23 @@ int ObjetSpaceInvadersPixmap::getLargeur() const {
 }
 
 int ObjetSpaceInvadersPixmap::getMilieuX() const {
-    return this->positionX + (this->largeur / 2);
+    return this->getPositionX() + (this->largeur / 2);
 }
 
 int ObjetSpaceInvadersPixmap::getMilieuY() const {
-    return this->positionY + (this->hauteur / 2);
+    return this->getPositionX() + (this->hauteur / 2);
 }
 
 void ObjetSpaceInvadersPixmap::deplacerXY(int deplacementX, int deplacementY) {
-    this->positionX += deplacementX;
-    this->positionY += deplacementY;
-    this->setPos(this->positionX, this->positionY);
-    //this->setX(this->positionX + deplacementX);
-    //this->moveBy(deplacementX, deplacementY);
+    this->setPositionX(this->getPositionX() + deplacementX);
+    this->setPositionY(this->getPositionY() + deplacementY);
+    this->setPos(this->getPositionX(), this->getPositionY());
 }
 
 void ObjetSpaceInvadersPixmap::changerImage(QString cheminFichier) {
     this->pixmap = QPixmap(cheminFichier);
     this->setPixmap(this->pixmap);
 }
-
-/*QRectF ObjetSpaceInvaders::boundingRect() const {
-    return QRectF(0, 0, this->largeur, this->hauteur);
-}*/
-
-/*void ObjetSpaceInvaders::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
-    painter->drawPixmap(0, 0, this->pixmap);
-}*/
 
 void ObjetSpaceInvadersPixmap::advance(int phase) {
     this->evoluerDansLeTemsp();
