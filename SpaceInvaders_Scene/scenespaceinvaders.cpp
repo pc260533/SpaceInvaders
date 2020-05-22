@@ -31,6 +31,7 @@ SceneSpaceInvaders::SceneSpaceInvaders() : SceneJeu() {
 SceneSpaceInvaders::~SceneSpaceInvaders() {
     this->sauvegarderHighscoreHighestRound();
     this->reinitialiserScene();
+    delete this->sceneRound;
     /*delete this->joueur;
     delete this->vagueEnnemis;
     if (this->ennemiMystere) {
