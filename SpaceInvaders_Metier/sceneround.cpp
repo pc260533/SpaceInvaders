@@ -2,12 +2,11 @@
 
 SceneRound::SceneRound(): Scene() {
     this->nextRoundTextItem = nullptr;
-    this->initialiserArrierePlan();
-    this->initialiserObjetsJeu();
 }
 
 SceneRound::~SceneRound() {
-
+    this->supprimerObjetSpaceInvadersTexte(this->nextRoundTextItem);
+    delete this->nextRoundTextItem;
 }
 
 void SceneRound::initialiserObjetsJeu() {

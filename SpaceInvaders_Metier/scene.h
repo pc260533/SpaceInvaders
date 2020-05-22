@@ -36,6 +36,9 @@ public:
 
     virtual void initialiserObjetsJeu() = 0;
     virtual void initialiserArrierePlan() = 0;
+    virtual void initialiserScene();
+    virtual void reinitialiserScene();
+
 
 };
 

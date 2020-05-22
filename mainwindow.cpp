@@ -12,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     this->spaceInvadersImpl = new SpaceInvadersImpl();
     this->spaceInvadersImpl->setGraphicsView(this->ui->graphicsView);
-    this->spaceInvadersImpl->jouer();
+    this->spaceInvadersImpl->initialiserScene();
 
 
     this->timer = new QTimer(this);

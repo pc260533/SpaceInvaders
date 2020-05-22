@@ -18,6 +18,7 @@ SpaceInvadersImpl::SpaceInvadersImpl() : SpaceInvaders() {
     this->highestRoundTextItem = nullptr;
     this->nombreViesJoueurTextItem = nullptr;
     this->sceneRound = new SceneRound();
+    this->sceneRound->initialiserScene();
 }
 
 SpaceInvadersImpl::~SpaceInvadersImpl() {
@@ -156,12 +157,8 @@ void SpaceInvadersImpl::initialiserArrierePlan() {
     this->setBackgroundBrush(Qt::black);
 }
 
-void SpaceInvadersImpl::initialiserEvenements() {
-
-}
-
 void SpaceInvadersImpl::reinitialiserScene() {
-    this->clear();
+    SpaceInvaders::reinitialiserScene();
     delete this->joueur;
     delete this->vagueEnnemis;
     delete this->ennemiMystere;

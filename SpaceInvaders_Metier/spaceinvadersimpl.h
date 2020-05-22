@@ -57,7 +57,6 @@ public:
     bool jeuEstPerdu() override;
     void initialiserObjetsJeu() override;
     void initialiserArrierePlan() override;
-    void initialiserEvenements() override;
     void reinitialiserScene() override;
     void onKeyPressEvent(QKeyEvent *event) override;
     void onKeyReleaseEvent(QKeyEvent *event) override;

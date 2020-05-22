@@ -18,9 +18,7 @@ void SpaceInvaders::setGraphicsView(QGraphicsView* graphicsView) {
 }
 
 void SpaceInvaders::jouer() {
-    this->initialiserArrierePlan();
-    this->initialiserObjetsJeu();
-    this->initialiserEvenements();
+
 }
 
 void SpaceInvaders::ajouterObjetsSpaceInvadersPixmapAuJeu(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) {
@@ -32,17 +30,20 @@ void SpaceInvaders::ajouterObjetsSpaceInvadersPixmapAuJeu(ObjetSpaceInvadersPixm
 void SpaceInvaders::supprimerObjetsSpaceInvadersPixmapDuJeu(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) {
     //qDebug() << "objet attrapé et supprimé";
     this->supprimerObjetSpaceInvadersPixmap(objetSpaceInvadersPixmap);
-    this->listeObjetsSpaceInvadersASupprimer.push_back(objetSpaceInvadersPixmap);
+    if (!this->listeObjetsSpaceInvadersASupprimer.contains(objetSpaceInvadersPixmap)) {
+        this->listeObjetsSpaceInvadersASupprimer.push_back(objetSpaceInvadersPixmap);
+    }
 }
 
 void SpaceInvaders::evoluer() {
     this->advance();
     for (ObjetSpaceInvadersPixmapEvoluable* objetSpaceInvadersPixmapEvoluable : this->listeObjetsSpaceInvadersASupprimer) {
-        if (objetSpaceInvadersPixmapEvoluable) {
+        if (objetSpaceInvadersPixmapEvoluable != nullptr) {
             delete objetSpaceInvadersPixmapEvoluable;
+            objetSpaceInvadersPixmapEvoluable = nullptr;
         }
-        this->listeObjetsSpaceInvadersASupprimer.clear();
     }
+    this->listeObjetsSpaceInvadersASupprimer.clear();
 }
 
 void SpaceInvaders::keyPressEvent(QKeyEvent *event) {

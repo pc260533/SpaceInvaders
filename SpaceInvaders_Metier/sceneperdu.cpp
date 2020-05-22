@@ -1,14 +1,12 @@
 #include "sceneperdu.h"
 
 ScenePerdu::ScenePerdu(): SceneFinDeJeu() {
-    this->rejouerTextItem = nullptr;
     this->perduTextItem = nullptr;
-    this->initialiserArrierePlan();
-    this->initialiserObjetsJeu();
 }
 
 ScenePerdu::~ScenePerdu() {
-
+    this->supprimerObjetSpaceInvadersTexte(this->perduTextItem);
+    delete this->perduTextItem;
 }
 
 void ScenePerdu::initialiserObjetsJeu() {

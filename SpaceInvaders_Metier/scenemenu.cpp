@@ -12,12 +12,31 @@ SceneMenu::SceneMenu(): Scene() {
     this->ennemi3PixmapItem = nullptr;
     this->ennemiMysterePixmapItem = nullptr;
     this->logoPixmapItem = nullptr;
-    this->initialiserArrierePlan();
-    this->initialiserObjetsJeu();
 }
 
 SceneMenu::~SceneMenu() {
-
+    this->supprimerObjetSpaceInvadersTexte(this->ennemi1TextItem);
+    this->supprimerObjetSpaceInvadersTexte(this->ennemi2TextItem);
+    this->supprimerObjetSpaceInvadersTexte(this->ennemi3TextItem);
+    this->supprimerObjetSpaceInvadersTexte(this->ennemiMystereTextItem);
+    this->supprimerObjetSpaceInvadersTexte(this->jouerTextItem);
+    this->supprimerObjetSpaceInvadersTexte(this->quitterTextItem);
+    this->supprimerObjetSpaceInvadersPixmap(this->ennemi1PixmapItem);
+    this->supprimerObjetSpaceInvadersPixmap(this->ennemi2PixmapItem);
+    this->supprimerObjetSpaceInvadersPixmap(this->ennemi3PixmapItem);
+    this->supprimerObjetSpaceInvadersPixmap(this->ennemiMysterePixmapItem);
+    this->supprimerObjetSpaceInvadersPixmap(this->logoPixmapItem);
+    delete this->ennemi1TextItem;
+    delete this->ennemi2TextItem;
+    delete this->ennemi3TextItem;
+    delete this->ennemiMystereTextItem;
+    delete this->jouerTextItem;
+    delete this->quitterTextItem;
+    delete this->ennemi1PixmapItem;
+    delete this->ennemi2PixmapItem;
+    delete this->ennemi3PixmapItem;
+    delete this->ennemiMysterePixmapItem;
+    delete this->logoPixmapItem;
 }
 
 void SceneMenu::initialiserObjetsJeu() {

@@ -39,5 +39,14 @@ void Scene::ajouterObjetSpaceInvadersTexte(ObjetSpaceInvadersTexte *objetSpaceIn
 }
 
 void Scene::supprimerObjetSpaceInvadersTexte(ObjetSpaceInvadersTexte *objetSpaceInvadersTexte) {
-    this->addItem(objetSpaceInvadersTexte);
+    this->removeItem(objetSpaceInvadersTexte);
+}
+
+void Scene::initialiserScene() {
+    this->initialiserArrierePlan();
+    this->initialiserObjetsJeu();
+}
+
+void Scene::reinitialiserScene(){
+    this->clear();
 }

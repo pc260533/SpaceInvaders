@@ -2,12 +2,11 @@
 
 SceneFinDeJeu::SceneFinDeJeu(): Scene() {
     this->rejouerTextItem = nullptr;
-    this->initialiserArrierePlan();
-    this->initialiserObjetsJeu();
 }
 
 SceneFinDeJeu::~SceneFinDeJeu() {
-
+    this->supprimerObjetSpaceInvadersTexte(this->rejouerTextItem);
+    delete this->rejouerTextItem;
 }
 
 void SceneFinDeJeu::initialiserObjetsJeu() {

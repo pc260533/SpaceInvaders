@@ -2,12 +2,11 @@
 
 SceneGagne::SceneGagne(): SceneFinDeJeu() {
     this->gagneTextItem = nullptr;
-    this->initialiserArrierePlan();
-    this->initialiserObjetsJeu();
 }
 
 SceneGagne::~SceneGagne() {
-
+    this->supprimerObjetSpaceInvadersTexte(this->gagneTextItem);
+    delete this->gagneTextItem;
 }
 
 void SceneGagne::initialiserObjetsJeu() {

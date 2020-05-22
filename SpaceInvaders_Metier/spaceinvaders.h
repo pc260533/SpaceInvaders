@@ -39,8 +39,6 @@ public:
     virtual void actionAExecuterJeuGagne() = 0;
     virtual bool jeuEstGagne() = 0;
     virtual bool jeuEstPerdu() = 0;
-    virtual void initialiserEvenements() = 0;
-    virtual void reinitialiserScene() = 0;
     virtual void onKeyPressEvent(QKeyEvent *event) = 0;
     virtual void onKeyReleaseEvent(QKeyEvent *event) = 0;
 
