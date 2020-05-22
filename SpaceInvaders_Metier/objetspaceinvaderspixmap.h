@@ -29,7 +29,10 @@ public:
     int getMilieuY() const;
 
     void deplacerXY(int deplacementX, int deplacementY);
+    void setPositionXY(int positionX, int positionY);
     void changerImage(QString cheminFichier);
+
+    virtual QString getTypeObjet() = 0;
 
     virtual void effetCollision(ObjetSpaceInvadersPixmap* objetSpaceInvadersPixmap) = 0;
 

@@ -5,6 +5,8 @@ VagueEnnemis::VagueEnnemis(int positionX, int positionY) : ObjetSpaceInvadersGro
     this->vitesseX = 5;
     this->vitesseY = 10;
     this->direction = 1;
+    this->compteurDeplacement = 1;
+    this->compteurDeplacementMaximal = 100;
     this->creerVague();
 }
 
@@ -29,7 +31,6 @@ bool VagueEnnemis::testChangementDeDirectionVagueEnnemis(Ennemi* ennemi) {
 
 void VagueEnnemis::deplacerVagueEnnemis() {
     for (Ennemi* ennemi : this->listeEnnemis) {
-
         ennemi->deplacerXY(this->vitesseX * this->direction, 0);
         if (this->testChangementDeDirectionVagueEnnemis(ennemi)) {
             this->direction *= -1;
@@ -41,6 +42,10 @@ void VagueEnnemis::deplacerVagueEnnemis() {
             this->descendreVagueEnnemis();
         }
     }
+}
+
+void VagueEnnemis::miseAJourCompteurDeplacementMaximal() {
+    this->compteurDeplacementMaximal -= 2;
 }
 
 void VagueEnnemis::creerVague() {
@@ -71,6 +76,7 @@ void VagueEnnemis::ajouterEnnemi(Ennemi *ennemi) {
 
 void VagueEnnemis::supprimerEnnemi(Ennemi *ennemi) {
     this->listeEnnemis.removeOne(ennemi);
+    this->miseAJourCompteurDeplacementMaximal();
 }
 
 bool VagueEnnemis::contientAucunEnnemis() {
@@ -82,5 +88,12 @@ void VagueEnnemis::detruireVagueEnnemi() {
 }
 
 void VagueEnnemis::evoluerDansLeTemsp() {
-    this->deplacerVagueEnnemis();
+    if (this->compteurDeplacement >= this->compteurDeplacementMaximal) {
+        this->deplacerVagueEnnemis();
+        this->compteurDeplacement = 1;
+    }
+    else {
+        this->compteurDeplacement++;
+    }
 }
+

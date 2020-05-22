@@ -9,5 +9,8 @@ ObjetSpaceInvadersGroupe::~ObjetSpaceInvadersGroupe() {
 }
 
 void ObjetSpaceInvadersGroupe::advance(int phase) {
+    if (!phase) {
+        return;
+    }
     this->evoluerDansLeTemsp();
 }

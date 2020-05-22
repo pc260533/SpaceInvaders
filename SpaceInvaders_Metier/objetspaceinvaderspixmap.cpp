@@ -35,11 +35,20 @@ void ObjetSpaceInvadersPixmap::deplacerXY(int deplacementX, int deplacementY) {
     this->setPos(this->getPositionX(), this->getPositionY());
 }
 
+void ObjetSpaceInvadersPixmap::setPositionXY(int positionX, int positionY) {
+    this->setPositionX(positionX);
+    this->setPositionY(positionY);
+    this->setPos(this->getPositionX(), this->getPositionY());
+}
+
 void ObjetSpaceInvadersPixmap::changerImage(QString cheminFichier) {
     this->pixmap = QPixmap(cheminFichier);
     this->setPixmap(this->pixmap);
 }
 
 void ObjetSpaceInvadersPixmap::advance(int phase) {
+    if (!phase) {
+        return;
+    }
     this->evoluerDansLeTemsp();
 }

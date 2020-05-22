@@ -11,10 +11,18 @@ public:
     Ennemi2(int positionX, int positionY);
     virtual ~Ennemi2() override;
 
+    // ObjetSpaceInvadersPixmap interface
+public:
+    QString getTypeObjet() override;
+
     // Ennemi interface
 public:
     QString getCheminFichierAnimationEnnemi1() override;
     QString getCheminFichierAnimationEnnemi2() override;
+
+    // IEnnemi interface
+public:
+    int getScoreEnnemi() override;
 
 };
 

@@ -8,10 +8,18 @@ Ennemi2::~Ennemi2() {
 
 }
 
+QString Ennemi2::getTypeObjet() {
+    return "Ennemi2";
+}
+
 QString Ennemi2::getCheminFichierAnimationEnnemi1() {
     return ":/ressources/images/images/ennemi2_0.png";
 }
 
 QString Ennemi2::getCheminFichierAnimationEnnemi2() {
     return ":/ressources/images/images/ennemi2_1.png";
+}
+
+int Ennemi2::getScoreEnnemi() {
+    return 30;
 }

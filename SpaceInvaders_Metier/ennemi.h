@@ -2,7 +2,9 @@
 #define ENNEMI_H
 
 #include "balleennemi.h"
+#include "iennemi.h"
 #include "iobjetspaceinvaderstireur.h"
+#include "joueur.h"
 #include "objetspaceinvaderspixmap.h"
 
 #include <QObject>
@@ -11,7 +13,7 @@
 
 
 
-class Ennemi : public QObject, public ObjetSpaceInvadersPixmap, public IObjetSpaceInvadersTireur {
+class Ennemi : public QObject, public ObjetSpaceInvadersPixmap, public IObjetSpaceInvadersTireur, public IEnnemi {
     Q_OBJECT
 
 private:
@@ -21,10 +23,8 @@ private:
     int compteurChangementAnimation;
 
 private:
-    // pas besoin on deplace tous dans la ague directement
-    void deplacerEnnemi();
-
     void animerEnnemi();
+    void miseAJourChanceDeTirEnnemi();
 
 public:
     Ennemi(QString cheminFichier, int positionX, int positionY);

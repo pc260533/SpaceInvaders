@@ -26,14 +26,14 @@ void Ennemi::animerEnnemi() {
     }
 }
 
+void Ennemi::miseAJourChanceDeTirEnnemi() {
+    Ennemi::chanceDeTirEnnemi--;
+}
+
 void Ennemi::evoluerDansLeTemsp() {
-    /*QList<QGraphicsItem *> localCollidingItems = this->collidingItems();
-    int test = localCollidingItems.size();
-    if (test > 1) {
-        this->effetCollision(dynamic_cast<ObjetSpaceInvadersPixmap*>(localCollidingItems.at(0)));
-        qDebug() << "collision";
-    }*/
-    //qDebug() << "advance ennemi";
+    for (QGraphicsItem *item : this->collidingItems()) {
+        this->effetCollision(dynamic_cast<ObjetSpaceInvadersPixmap*>(item));
+    }
     if (this->compteurChangementAnimation == 100) {
         this->animerEnnemi();
         this->compteurChangementAnimation = 1;
@@ -48,7 +48,22 @@ void Ennemi::evoluerDansLeTemsp() {
 }
 
 void Ennemi::effetCollision(ObjetSpaceInvadersPixmap *objetSpaceInvadersPixmap) {
-
+    if (objetSpaceInvadersPixmap) {
+        QString objetType = objetSpaceInvadersPixmap->getTypeObjet();
+        if (objetType == "BalleJoueur") {
+            this->changerImage(":/ressources/images/images/explosionEnnemi.png");
+            this->miseAJourChanceDeTirEnnemi();
+            emit this->suppressionObjetSpaceInvadersPixmapDansJeu(objetSpaceInvadersPixmap);
+            emit this->suppressionObjetSpaceInvadersPixmapDansJeu(this);
+        }
+        else if (objetType == "Joueur") {
+            Joueur* joueur = dynamic_cast<Joueur*>(objetSpaceInvadersPixmap);
+            joueur->setNombreViesJoueur(joueur->getNombreViesJoueur() - 1);
+        }
+        else if (objetType == "PartieDeMur") {
+            emit this->suppressionObjetSpaceInvadersPixmapDansJeu(objetSpaceInvadersPixmap);
+        }
+    }
 }
 
 void Ennemi::tirer() {

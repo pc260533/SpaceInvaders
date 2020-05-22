@@ -15,4 +15,7 @@
         <file>images/logoSpaceInvaders.png</file>
         <file>images/partieDeMur.png</file>
     </qresource>
+    <qresource prefix="/ressources/font">
+        <file>fonts/fontSpaceInvaders.ttf</file>
+    </qresource>
 </RCC>

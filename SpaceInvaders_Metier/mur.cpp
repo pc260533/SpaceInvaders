@@ -9,6 +9,10 @@ Mur::~Mur() {
 
 }
 
+QList<PartieDeMur*> Mur::getListePartieDeMur() const {
+    return this->listePartieDeMur;
+}
+
 void Mur::ajouterPartieDeMur(PartieDeMur *partieDeMur) {
     this->listePartieDeMur.push_back(partieDeMur);
 }

@@ -24,6 +24,7 @@ SOURCES += \
     SpaceInvaders_Metier/ennemi2.cpp \
     SpaceInvaders_Metier/ennemi3.cpp \
     SpaceInvaders_Metier/ennemimystere.cpp \
+    SpaceInvaders_Metier/iennemi.cpp \
     SpaceInvaders_Metier/iobjetspaceinvadersbougeableclavier.cpp \
     SpaceInvaders_Metier/iobjetspaceinvaderstireur.cpp \
     SpaceInvaders_Metier/joueur.cpp \
@@ -31,8 +32,8 @@ SOURCES += \
     SpaceInvaders_Metier/objetspaceinvaders.cpp \
     SpaceInvaders_Metier/objetspaceinvadersgroupe.cpp \
     SpaceInvaders_Metier/objetspaceinvaderspixmap.cpp \
+    SpaceInvaders_Metier/objetspaceinvaderstexte.cpp \
     SpaceInvaders_Metier/partiedemur.cpp \
-    SpaceInvaders_Metier/score.cpp \
     SpaceInvaders_Metier/spaceinvaders.cpp \
     SpaceInvaders_Metier/spaceinvadersimpl.cpp \
     SpaceInvaders_Metier/vagueennemis.cpp \
@@ -48,6 +49,7 @@ HEADERS += \
     SpaceInvaders_Metier/ennemi2.h \
     SpaceInvaders_Metier/ennemi3.h \
     SpaceInvaders_Metier/ennemimystere.h \
+    SpaceInvaders_Metier/iennemi.h \
     SpaceInvaders_Metier/iobjetspaceinvadersbougeableclavier.h \
     SpaceInvaders_Metier/iobjetspaceinvaderstireur.h \
     SpaceInvaders_Metier/joueur.h \
@@ -55,8 +57,8 @@ HEADERS += \
     SpaceInvaders_Metier/objetspaceinvaders.h \
     SpaceInvaders_Metier/objetspaceinvadersgroupe.h \
     SpaceInvaders_Metier/objetspaceinvaderspixmap.h \
+    SpaceInvaders_Metier/objetspaceinvaderstexte.h \
     SpaceInvaders_Metier/partiedemur.h \
-    SpaceInvaders_Metier/score.h \
     SpaceInvaders_Metier/spaceinvaders.h \
     SpaceInvaders_Metier/spaceinvadersimpl.h \
     SpaceInvaders_Metier/vagueennemis.h \

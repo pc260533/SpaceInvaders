@@ -20,6 +20,7 @@ public:
     // ObjetSpaceInvadersPixmap interface
 public:
     void effetCollision(ObjetSpaceInvadersPixmap *objetSpaceInvadersPixmap) override;
+    QString getTypeObjet() override;
 
     // ObjetSpaceInvaders interface
 signals:

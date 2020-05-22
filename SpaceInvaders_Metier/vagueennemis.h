@@ -19,11 +19,15 @@ private:
     int vitesseY;
     int direction;
 
+    int compteurDeplacement;
+    int compteurDeplacementMaximal;
+
 private:
     void creerVague();
     void descendreVagueEnnemis();
     bool testChangementDeDirectionVagueEnnemis(Ennemi* ennemi);
     void deplacerVagueEnnemis();
+    void miseAJourCompteurDeplacementMaximal();
 
 public:
     VagueEnnemis(int positionX, int positionY);

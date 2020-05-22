@@ -16,12 +16,16 @@ private:
     int nombreViesJoueur;
     bool enVieJoueur;
     int vitesseJoueur;
+    int positionXInitiale;
+    int positionYInitiale;
 
 private:
     void intialiserLaPositionDuJoueur();
 
 public:
     Joueur(int positionX, int positionY);
+    int getNombreViesJoueur() const;
+    void setNombreViesJoueur(int nombreViesJoueur);
 
     // ObjetSpaceInvaders interface
 public:
@@ -30,6 +34,7 @@ public:
     // ObjetSpaceInvadersPixmap interface
 public:
     void effetCollision(ObjetSpaceInvadersPixmap *objetSpaceInvadersPixmap) override;
+    QString getTypeObjet() override;
 
     // ObjetSpaceInvadersBougeableClavier interface
 public:
@@ -43,6 +48,9 @@ public:
 signals:
     void nouveauObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmap*) override;
     void suppressionObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmap *) override;
+
+    void nombreViesJoueurDiminue();
+
 };
 
 #endif // JOUEUR_H

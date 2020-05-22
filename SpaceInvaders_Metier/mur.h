@@ -19,6 +19,7 @@ private:
 public:
     Mur(int positionX, int positionY);
     virtual ~Mur() override;
+    QList<PartieDeMur *> getListePartieDeMur() const;
     void ajouterPartieDeMur(PartieDeMur* partieDeMur);
     void supprimerPartieDeMur(PartieDeMur* partieDeMur);
 

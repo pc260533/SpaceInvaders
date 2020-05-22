@@ -5,7 +5,8 @@
 
 
 
-class PartieDeMur : public ObjetSpaceInvadersPixmap {
+class PartieDeMur : public QObject, public ObjetSpaceInvadersPixmap {
+    Q_OBJECT
 
 public:
     PartieDeMur(int positionX, int positionY);
@@ -18,6 +19,7 @@ public:
     // ObjetSpaceInvadersPixmap interface
 public:
     void effetCollision(ObjetSpaceInvadersPixmap *objetSpaceInvadersPixmap) override;
+    QString getTypeObjet() override;
 
 signals:
     void nouveauObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmap *) override;
