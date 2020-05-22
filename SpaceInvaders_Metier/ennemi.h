@@ -1,38 +1,41 @@
 #ifndef ENNEMI_H
 #define ENNEMI_H
 
+#include "balleennemi.h"
 #include "iobjetspaceinvaderstireur.h"
-#include "objetspaceinvaders.h"
+#include "objetspaceinvaderspixmap.h"
 
 #include <QString>
+#include <ctime>
 
 
 
-class Ennemi : QObject, ObjetSpaceInvaders, IObjetSpaceInvadersTireur {
+class Ennemi : public QObject, public ObjetSpaceInvadersPixmap, public IObjetSpaceInvadersTireur {
     Q_OBJECT
 
 private:
-    int chanceDeTirEnnemi;
+    static int chanceDeTirEnnemi;
     QString etatAnimationEnnemi;
-    QString cheminFichierAnimationEnnemi1;
-    QString cheminFichierAnimationEnnemi2;
     int vitesseEnnemi;
+    int compteurChangementAnimation;
 
 private:
-    void initialiserAnimation();
+    // pas besoin on deplace tous dans la ague directement
+    void deplacerEnnemi();
+
+    void animerEnnemi();
 
 public:
     Ennemi(QString cheminFichier, int positionX, int positionY);
-    virtual ~Ennemi();
-    void setCheminFichierAnimationEnnemi1(QString cheminFichierAnimationEnnemi1);
-    void setCheminFichierAnimationEnnemi2(QString cheminFichierAnimationEnnemi2);
+    virtual ~Ennemi() override;
 
-    virtual void initialiserFichiersAnimations() = 0;
+    virtual QString getCheminFichierAnimationEnnemi1() = 0;
+    virtual QString getCheminFichierAnimationEnnemi2() = 0;
 
     // ObjetSpaceInvaders interface
 public:
     void evoluerDansLeTemsp() override;
-    void effetCollision(ObjetSpaceInvaders *objetSpaceInvaders) override;
+    void effetCollision(ObjetSpaceInvadersPixmap *objetSpaceInvaders) override;
 
     // IObjetSpaceInvadersTireur interface
 public:

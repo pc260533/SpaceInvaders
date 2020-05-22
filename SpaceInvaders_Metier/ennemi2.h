@@ -5,7 +5,7 @@
 
 
 
-class Ennemi2 : Ennemi {
+class Ennemi2 : public Ennemi {
 
 public:
     Ennemi2(int positionX, int positionY);
@@ -13,7 +13,13 @@ public:
 
     // Ennemi interface
 public:
-    void initialiserFichiersAnimations() override;
+    QString getCheminFichierAnimationEnnemi1() override;
+    QString getCheminFichierAnimationEnnemi2() override;
+
+    // ObjetSpaceInvaders interface
+signals:
+    void nouveauObjetSpaceInvadersDansJeu(ObjetSpaceInvadersPixmap *) override;
+    void suppressionObjetSpaceInvadersDansJeu(ObjetSpaceInvadersPixmap *) override;
 
 };
 

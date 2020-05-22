@@ -13,7 +13,7 @@ void Joueur::evoluerDansLeTemsp() {
 
 }
 
-void Joueur::effetCollision(ObjetSpaceInvaders *objetSpaceInvaders) {
+void Joueur::effetCollision(ObjetSpaceInvadersPixmap *objetSpaceInvaders) {
 
 }
 

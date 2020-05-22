@@ -8,7 +8,16 @@ Ennemi2::~Ennemi2() {
 
 }
 
-void Ennemi2::initialiserFichiersAnimations() {
-    this->setCheminFichierAnimationEnnemi1(":/ressources/images/images/ennemi2_0.png");
-    this->setCheminFichierAnimationEnnemi2(":/ressources/images/images/ennemi2_1.png");
+QString Ennemi2::getCheminFichierAnimationEnnemi1() {
+    return ":/ressources/images/images/ennemi2_0.png";
+}
+
+QString Ennemi2::getCheminFichierAnimationEnnemi2() {
+    return ":/ressources/images/images/ennemi2_1.png";
+}
+
+void Ennemi2::nouveauObjetSpaceInvadersDansJeu(ObjetSpaceInvadersPixmap *) {
+}
+
+void Ennemi2::suppressionObjetSpaceInvadersDansJeu(ObjetSpaceInvadersPixmap *) {
 }

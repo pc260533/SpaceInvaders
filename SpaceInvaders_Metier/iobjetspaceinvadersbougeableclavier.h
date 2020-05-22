@@ -1,11 +1,11 @@
 #ifndef OBJETSPACEINVADERSBOUGEABLECLAVIER_H
 #define OBJETSPACEINVADERSBOUGEABLECLAVIER_H
 
-#include "objetspaceinvaders.h"
+#include "objetspaceinvaderspixmap.h"
 
 
 
-class IObjetSpaceInvadersBougeableClavier : public ObjetSpaceInvaders {
+class IObjetSpaceInvadersBougeableClavier : public ObjetSpaceInvadersPixmap {
 
 public:
     IObjetSpaceInvadersBougeableClavier(QString cheminFichier, int positionX, int positionY);

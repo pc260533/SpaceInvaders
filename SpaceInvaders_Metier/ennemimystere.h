@@ -1,11 +1,29 @@
 #ifndef ENNEMIMYSTERE_H
 #define ENNEMIMYSTERE_H
 
+#include "objetspaceinvaderspixmap.h"
 
-class EnnemiMystere
-{
+
+
+class EnnemiMystere : public ObjetSpaceInvadersPixmap {
+
+private:
+    int vitesseEnnemiMystere;
+    int directionEnnemiMystere;
+
 public:
-    EnnemiMystere();
+    EnnemiMystere(int positionX, int positionY);
+
+    // ObjetSpaceInvaders interface
+public:
+    void evoluerDansLeTemsp() override;
+    void effetCollision(ObjetSpaceInvadersPixmap *objetSpaceInvaders) override;
+
+    // ObjetSpaceInvaders interface
+signals:
+    void nouveauObjetSpaceInvadersDansJeu(ObjetSpaceInvadersPixmap *) override;
+    void suppressionObjetSpaceInvadersDansJeu(ObjetSpaceInvadersPixmap *) override;
+
 };
 
 #endif // ENNEMIMYSTERE_H

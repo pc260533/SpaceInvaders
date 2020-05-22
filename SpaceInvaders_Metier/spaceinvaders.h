@@ -2,7 +2,7 @@
 #define JEU_H
 
 
-#include "objetspaceinvaders.h"
+#include "objetspaceinvaderspixmap.h"
 
 #include <QGraphicsScene>
 #include <QGraphicsView>
@@ -21,7 +21,7 @@ private:
     QString titre;
     int hauteur;
     int largeur;
-    QList<ObjetSpaceInvaders*> listeObjetsSpaceInvaders;
+    QList<ObjetSpaceInvadersPixmap*> listeObjetsSpaceInvaders;
 
     //QGraphicsScene* graphicsSceneJeu;
     QGraphicsView* graphicsView;
@@ -36,8 +36,8 @@ public:
     //QGraphicsScene *getGraphicsSceneJeu() const;
     //void setGraphicsSceneJeu(QGraphicsScene *value);
 
-    void ajouterObjetSpaceInvaders(ObjetSpaceInvaders* objetSpaceInvaders);
-    void supprimerObjetSpaceInvaders(ObjetSpaceInvaders* objetSpaceInvaders);
+    void ajouterObjetSpaceInvaders(ObjetSpaceInvadersPixmap* objetSpaceInvaders);
+    void supprimerObjetSpaceInvaders(ObjetSpaceInvadersPixmap* objetSpaceInvaders);
     void jouer();
 
     virtual void actionAExecuterJeuPerdu() = 0;
@@ -50,8 +50,8 @@ public:
     virtual void onKeyPressEvent(QKeyEvent *event) = 0;
 
 private slots:
-    void ajouterObjetsSpaceInvadersAuJeu(ObjetSpaceInvaders* objetSpaceInvaders);
-    void supprimerObjetsSpaceInvadersDuJeu(ObjetSpaceInvaders* objetSpaceInvaders);
+    void ajouterObjetsSpaceInvadersAuJeu(ObjetSpaceInvadersPixmap* objetSpaceInvaders);
+    void supprimerObjetsSpaceInvadersDuJeu(ObjetSpaceInvadersPixmap* objetSpaceInvaders);
 
 
     // QGraphicsScene interface

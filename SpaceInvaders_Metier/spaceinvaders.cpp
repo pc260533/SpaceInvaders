@@ -33,12 +33,12 @@ SpaceInvaders::~SpaceInvaders() {
 
 }
 
-void SpaceInvaders::ajouterObjetSpaceInvaders(ObjetSpaceInvaders* objetSpaceInvaders) {
+void SpaceInvaders::ajouterObjetSpaceInvaders(ObjetSpaceInvadersPixmap* objetSpaceInvaders) {
     //this->graphicsSceneJeu->addItem(objetSpaceInvaders);
     this->addItem(objetSpaceInvaders);
 }
 
-void SpaceInvaders::supprimerObjetSpaceInvaders(ObjetSpaceInvaders* objetSpaceInvaders) {
+void SpaceInvaders::supprimerObjetSpaceInvaders(ObjetSpaceInvadersPixmap* objetSpaceInvaders) {
     //this->graphicsSceneJeu->removeItem(objetSpaceInvaders);
     this->removeItem(objetSpaceInvaders);
 }
@@ -49,14 +49,14 @@ void SpaceInvaders::jouer() {
     this->initialiserEvenements();
 }
 
-void SpaceInvaders::ajouterObjetsSpaceInvadersAuJeu(ObjetSpaceInvaders *objetSpaceInvaders) {
+void SpaceInvaders::ajouterObjetsSpaceInvadersAuJeu(ObjetSpaceInvadersPixmap *objetSpaceInvaders) {
     qDebug() << "objet attrapé et ajouté";
     this->ajouterObjetSpaceInvaders(objetSpaceInvaders);
     //connect le signal de suppression ici en fait
-    QObject::connect(dynamic_cast<QObject*>(objetSpaceInvaders), SIGNAL(suppressionObjetSpaceInvadersDansJeu(ObjetSpaceInvaders*)), this, SLOT(supprimerObjetsSpaceInvadersDuJeu(ObjetSpaceInvaders*)));
+    QObject::connect(dynamic_cast<QObject*>(objetSpaceInvaders), SIGNAL(suppressionObjetSpaceInvadersDansJeu(ObjetSpaceInvadersPixmap*)), this, SLOT(supprimerObjetsSpaceInvadersDuJeu(ObjetSpaceInvadersPixmap*)));
 }
 
-void SpaceInvaders::supprimerObjetsSpaceInvadersDuJeu(ObjetSpaceInvaders *objetSpaceInvaders) {
+void SpaceInvaders::supprimerObjetsSpaceInvadersDuJeu(ObjetSpaceInvadersPixmap *objetSpaceInvaders) {
     qDebug() << "objet attrapé et supprimé";
     this->supprimerObjetSpaceInvaders(objetSpaceInvaders);
 }

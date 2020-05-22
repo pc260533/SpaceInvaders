@@ -17,7 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     SpaceInvaders_Metier/balle.cpp \
-    SpaceInvaders_Metier/balleenemi.cpp \
+    SpaceInvaders_Metier/balleennemi.cpp \
     SpaceInvaders_Metier/ballejoueur.cpp \
     SpaceInvaders_Metier/ennemi.cpp \
     SpaceInvaders_Metier/ennemi1.cpp \
@@ -27,15 +27,19 @@ SOURCES += \
     SpaceInvaders_Metier/iobjetspaceinvadersbougeableclavier.cpp \
     SpaceInvaders_Metier/iobjetspaceinvaderstireur.cpp \
     SpaceInvaders_Metier/joueur.cpp \
+    SpaceInvaders_Metier/mur.cpp \
     SpaceInvaders_Metier/objetspaceinvaders.cpp \
+    SpaceInvaders_Metier/objetspaceinvadersgroupe.cpp \
+    SpaceInvaders_Metier/objetspaceinvaderspixmap.cpp \
     SpaceInvaders_Metier/spaceinvaders.cpp \
     SpaceInvaders_Metier/spaceinvadersimpl.cpp \
+    SpaceInvaders_Metier/vagueennemis.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     SpaceInvaders_Metier/balle.h \
-    SpaceInvaders_Metier/balleenemi.h \
+    SpaceInvaders_Metier/balleennemi.h \
     SpaceInvaders_Metier/ballejoueur.h \
     SpaceInvaders_Metier/ennemi.h \
     SpaceInvaders_Metier/ennemi1.h \
@@ -45,9 +49,13 @@ HEADERS += \
     SpaceInvaders_Metier/iobjetspaceinvadersbougeableclavier.h \
     SpaceInvaders_Metier/iobjetspaceinvaderstireur.h \
     SpaceInvaders_Metier/joueur.h \
+    SpaceInvaders_Metier/mur.h \
     SpaceInvaders_Metier/objetspaceinvaders.h \
+    SpaceInvaders_Metier/objetspaceinvadersgroupe.h \
+    SpaceInvaders_Metier/objetspaceinvaderspixmap.h \
     SpaceInvaders_Metier/spaceinvaders.h \
     SpaceInvaders_Metier/spaceinvadersimpl.h \
+    SpaceInvaders_Metier/vagueennemis.h \
     mainwindow.h
 
 FORMS += \

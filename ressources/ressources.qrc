@@ -11,5 +11,8 @@
         <file>images/ennemi3_1.png</file>
         <file>images/ennemiMystere.png</file>
         <file>images/explosionEnnemi.png</file>
+        <file>images/balleEnnemi.png</file>
+        <file>images/logoSpaceInvaders.png</file>
+        <file>images/partieDeMur.png</file>
     </qresource>
 </RCC>

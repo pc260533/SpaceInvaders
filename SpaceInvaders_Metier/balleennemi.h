@@ -1,5 +1,5 @@
-#ifndef BALLEJOUEUR_H
-#define BALLEJOUEUR_H
+#ifndef BALLEENNEMI_H
+#define BALLEENNEMI_H
 
 #include "balle.h"
 
@@ -7,11 +7,11 @@
 
 
 
-class BalleJoueur : public QObject, public Balle {
+class BalleEnnemi : public QObject, public Balle {
     Q_OBJECT
 
 public:
-    BalleJoueur(int positionX, int positionY);
+    BalleEnnemi(int positionX, int positionY);
 
     // ObjetSpaceInvaders interface
 public:
@@ -25,4 +25,5 @@ signals:
 
 };
 
-#endif // BALLEJOUEUR_H
+
+#endif // BALLEENNEMI_H
