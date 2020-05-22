@@ -1,10 +1,7 @@
 #ifndef JEU_H
 #define JEU_H
 
-#include "objetspaceinvaderspixmapevoluable.h"
-#include "objetspaceinvadersgroupe.h"
-#include "objetspaceinvaderstexte.h"
-#include "scene.h"
+#include <SpaceInvaders_Metier/scene.h>
 
 #include <QGraphicsScene>
 #include <QGraphicsView>

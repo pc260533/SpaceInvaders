@@ -1,8 +1,6 @@
 #ifndef IOBJETSPACEINVADERSEVOLUABLE_H
 #define IOBJETSPACEINVADERSEVOLUABLE_H
 
-#include "objetspaceinvaders.h"
-
 
 
 class IObjetSpaceInvadersEvoluable  {

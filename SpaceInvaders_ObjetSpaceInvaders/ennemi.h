@@ -3,9 +3,9 @@
 
 #include "balleennemi.h"
 #include "iennemi.h"
-#include "iobjetspaceinvaderstireur.h"
 #include "joueur.h"
-#include "objetspaceinvaderspixmapevoluable.h"
+#include <SpaceInvaders_Metier/iobjetspaceinvaderstireur.h>
+#include <SpaceInvaders_Metier/objetspaceinvaderspixmapevoluable.h>
 
 #include <QObject>
 #include <QString>

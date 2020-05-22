@@ -2,8 +2,8 @@
 #define JOUEUR_H
 
 #include "ballejoueur.h"
-#include "iobjetspaceinvadersbougeableclavier.h"
-#include "iobjetspaceinvaderstireur.h"
+#include <SpaceInvaders_Metier/iobjetspaceinvadersbougeableclavier.h>
+#include <SpaceInvaders_Metier/iobjetspaceinvaderstireur.h>
 
 #include <QObject>
 #include <QKeyEvent>

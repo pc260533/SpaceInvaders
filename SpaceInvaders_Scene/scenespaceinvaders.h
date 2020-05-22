@@ -1,13 +1,13 @@
 #ifndef SPACEINVADERSIMPL_H
 #define SPACEINVADERSIMPL_H
 
-#include "ennemimystere.h"
-#include "joueur.h"
-#include "mur.h"
-#include "objetspaceinvaderstexte.h"
+#include <SpaceInvaders_ObjetSpaceInvaders/ennemimystere.h>
+#include <SpaceInvaders_ObjetSpaceInvaders/joueur.h>
+#include <SpaceInvaders_ObjetSpaceInvaders/mur.h>
+#include <SpaceInvaders_ObjetSpaceInvaders/vagueennemis.h>
+#include <SpaceInvaders_Metier/objetspaceinvaderstexte.h>
 #include "sceneround.h"
 #include "scenejeu.h"
-#include "vagueennemis.h"
 
 #include <QTimer>
 

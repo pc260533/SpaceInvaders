@@ -2,6 +2,7 @@
 #define IOBJETSPACEINVADERSTIREUR_H
 
 
+
 class IObjetSpaceInvadersTireur {
 
 public:

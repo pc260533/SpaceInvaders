@@ -2,7 +2,7 @@
 #define ENNEMIMYSTERE_H
 
 #include "iennemi.h"
-#include "objetspaceinvaderspixmapevoluable.h"
+#include <SpaceInvaders_Metier/objetspaceinvaderspixmapevoluable.h>
 
 #include <QMediaPlayer>
 

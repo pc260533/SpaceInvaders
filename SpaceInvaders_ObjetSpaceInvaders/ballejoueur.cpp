@@ -1,6 +1,7 @@
 #include "ballejoueur.h"
 
 BalleJoueur::BalleJoueur(int positionX, int positionY): QObject(nullptr), Balle(":/ressources/images/images/balleJoueur.png", positionX, positionY) {
+
 }
 
 BalleJoueur::~BalleJoueur() {

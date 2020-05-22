@@ -1,7 +1,7 @@
 #ifndef MUR_H
 #define MUR_H
 
-#include "objetspaceinvadersgroupe.h"
+#include <SpaceInvaders_Metier/objetspaceinvadersgroupe.h>
 #include "partiedemur.h"
 
 #include <QList>

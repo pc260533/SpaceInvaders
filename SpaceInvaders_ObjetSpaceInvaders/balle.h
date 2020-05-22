@@ -1,7 +1,7 @@
 #ifndef BALLE_H
 #define BALLE_H
 
-#include "objetspaceinvaderspixmapevoluable.h"
+#include <SpaceInvaders_Metier/objetspaceinvaderspixmapevoluable.h>
 
 
 

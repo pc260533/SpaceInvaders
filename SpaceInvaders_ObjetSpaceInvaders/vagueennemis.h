@@ -5,7 +5,7 @@
 #include "ennemi1.h"
 #include "ennemi2.h"
 #include "ennemi3.h"
-#include "objetspaceinvadersgroupe.h"
+#include <SpaceInvaders_Metier/objetspaceinvadersgroupe.h>
 
 #include <QList>
 #include <QRandomGenerator>

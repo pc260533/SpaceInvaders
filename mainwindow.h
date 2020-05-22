@@ -4,10 +4,10 @@
 #include <QMainWindow>
 #include <QTimer>
 
-#include <SpaceInvaders_Metier/scenegagne.h>
-#include <SpaceInvaders_Metier/scenemenu.h>
-#include <SpaceInvaders_Metier/sceneperdu.h>
-#include <SpaceInvaders_Metier/scenespaceinvaders.h>
+#include <SpaceInvaders_Scene/scenegagne.h>
+#include <SpaceInvaders_Scene/scenemenu.h>
+#include <SpaceInvaders_Scene/sceneperdu.h>
+#include <SpaceInvaders_Scene/scenespaceinvaders.h>
 
 
 

@@ -1,7 +1,7 @@
 #ifndef PARTIEDEMUR_H
 #define PARTIEDEMUR_H
 
-#include "objetspaceinvaderspixmapevoluable.h"
+#include <SpaceInvaders_Metier/objetspaceinvaderspixmapevoluable.h>
 
 
 
