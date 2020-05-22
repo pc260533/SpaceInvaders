@@ -20,8 +20,3 @@ void ObjetSpaceInvadersTexte::setCouleurTexte(QColor couleur) {
     this->couleur = couleur;
     this->setDefaultTextColor(couleur);
 }
-
-
-void ObjetSpaceInvadersTexte::evoluerDansLeTemsp() {
-
-}

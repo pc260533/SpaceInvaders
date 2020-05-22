@@ -5,10 +5,12 @@
 #include "joueur.h"
 #include "mur.h"
 #include "objetspaceinvaderstexte.h"
+#include "sceneround.h"
 #include "spaceinvaders.h"
 #include "vagueennemis.h"
 
 #include <QFontDatabase>
+#include <QTimer>
 
 
 
@@ -35,13 +37,17 @@ private:
     ObjetSpaceInvadersTexte* highestRoundTextItem;
     ObjetSpaceInvadersTexte* nombreViesJoueurTextItem;
 
+    SceneRound* sceneRound;
+
 private:
     void miseAJourTexteNombreDeViesJoueur();
     void miseAJourTexteScoreHighscore();
     void miseAJourTexteRoundHighestRound();
+    void chargerNouveauRound();
 
 public:
     SpaceInvadersImpl();
+    virtual ~SpaceInvadersImpl();
 
     // SpaceInvaders interface
 public:
@@ -52,15 +58,26 @@ public:
     void initialiserObjetsJeu() override;
     void initialiserArrierePlan() override;
     void initialiserEvenements() override;
+    void reinitialiserScene() override;
     void onKeyPressEvent(QKeyEvent *event) override;
     void onKeyReleaseEvent(QKeyEvent *event) override;
 
 private slots:
     void onNombreViesJoueurDiminue();
 
+    void afficherNextRound();
+
     // SpaceInvaders interface
 protected slots:
-    void supprimerObjetsSpaceInvadersPixmapDuJeu(ObjetSpaceInvadersPixmap *objetSpaceInvadersPixmap) override;
+    void supprimerObjetsSpaceInvadersPixmapDuJeu(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) override;
+
+    // SpaceInvaders interface
+public slots:
+    void evoluer() override;
+
+signals:
+    void partieGagne();
+    void partiePerdu();
 
 };
 

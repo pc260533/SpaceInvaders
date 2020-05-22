@@ -36,7 +36,6 @@ public:
     void ajouterEnnemi(Ennemi* ennemi);
     void supprimerEnnemi(Ennemi* ennemi);
     bool contientAucunEnnemis();
-    void detruireVagueEnnemi();
 
     // ObjetSpaceInvaders interface
 public:

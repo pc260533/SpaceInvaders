@@ -26,14 +26,22 @@ SOURCES += \
     SpaceInvaders_Metier/ennemimystere.cpp \
     SpaceInvaders_Metier/iennemi.cpp \
     SpaceInvaders_Metier/iobjetspaceinvadersbougeableclavier.cpp \
+    SpaceInvaders_Metier/iobjetspaceinvadersevoluable.cpp \
     SpaceInvaders_Metier/iobjetspaceinvaderstireur.cpp \
     SpaceInvaders_Metier/joueur.cpp \
     SpaceInvaders_Metier/mur.cpp \
     SpaceInvaders_Metier/objetspaceinvaders.cpp \
     SpaceInvaders_Metier/objetspaceinvadersgroupe.cpp \
     SpaceInvaders_Metier/objetspaceinvaderspixmap.cpp \
+    SpaceInvaders_Metier/objetspaceinvaderspixmapevoluable.cpp \
     SpaceInvaders_Metier/objetspaceinvaderstexte.cpp \
     SpaceInvaders_Metier/partiedemur.cpp \
+    SpaceInvaders_Metier/scene.cpp \
+    SpaceInvaders_Metier/scenefindejeu.cpp \
+    SpaceInvaders_Metier/scenegagne.cpp \
+    SpaceInvaders_Metier/scenemenu.cpp \
+    SpaceInvaders_Metier/sceneperdu.cpp \
+    SpaceInvaders_Metier/sceneround.cpp \
     SpaceInvaders_Metier/spaceinvaders.cpp \
     SpaceInvaders_Metier/spaceinvadersimpl.cpp \
     SpaceInvaders_Metier/vagueennemis.cpp \
@@ -51,14 +59,22 @@ HEADERS += \
     SpaceInvaders_Metier/ennemimystere.h \
     SpaceInvaders_Metier/iennemi.h \
     SpaceInvaders_Metier/iobjetspaceinvadersbougeableclavier.h \
+    SpaceInvaders_Metier/iobjetspaceinvadersevoluable.h \
     SpaceInvaders_Metier/iobjetspaceinvaderstireur.h \
     SpaceInvaders_Metier/joueur.h \
     SpaceInvaders_Metier/mur.h \
     SpaceInvaders_Metier/objetspaceinvaders.h \
     SpaceInvaders_Metier/objetspaceinvadersgroupe.h \
     SpaceInvaders_Metier/objetspaceinvaderspixmap.h \
+    SpaceInvaders_Metier/objetspaceinvaderspixmapevoluable.h \
     SpaceInvaders_Metier/objetspaceinvaderstexte.h \
     SpaceInvaders_Metier/partiedemur.h \
+    SpaceInvaders_Metier/scene.h \
+    SpaceInvaders_Metier/scenefindejeu.h \
+    SpaceInvaders_Metier/scenegagne.h \
+    SpaceInvaders_Metier/scenemenu.h \
+    SpaceInvaders_Metier/sceneperdu.h \
+    SpaceInvaders_Metier/sceneround.h \
     SpaceInvaders_Metier/spaceinvaders.h \
     SpaceInvaders_Metier/spaceinvadersimpl.h \
     SpaceInvaders_Metier/vagueennemis.h \

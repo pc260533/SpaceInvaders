@@ -1,14 +1,9 @@
-#ifndef OBJETJEU_H
-#define OBJETJEU_H
+#ifndef OBJETSPACEINVADERSPIXMAP_H
+#define OBJETSPACEINVADERSPIXMAP_H
 
 #include "objetspaceinvaders.h"
 
 #include <QGraphicsItem>
-#include <QPainter>
-#include <QPixmap>
-#include <QSize>
-
-#include <QDebug>
 
 
 
@@ -22,7 +17,7 @@ private:
 
 public:
     ObjetSpaceInvadersPixmap(QString cheminFichier, int positionX, int positionY);
-    virtual ~ObjetSpaceInvadersPixmap() override;
+    virtual ~ObjetSpaceInvadersPixmap();
     int getHauteur() const;
     int getLargeur() const;
     int getMilieuX() const;
@@ -31,19 +26,6 @@ public:
     void deplacerXY(int deplacementX, int deplacementY);
     void setPositionXY(int positionX, int positionY);
     void changerImage(QString cheminFichier);
-
-    virtual QString getTypeObjet() = 0;
-
-    virtual void effetCollision(ObjetSpaceInvadersPixmap* objetSpaceInvadersPixmap) = 0;
-
-    // QGraphicsItem interface
-public:
-    void advance(int phase) override;
-
-signals:
-    virtual void nouveauObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmap*) = 0;
-    virtual void suppressionObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmap*) = 0;
-
 };
 
-#endif // OBJETJEU_H
+#endif // OBJETSPACEINVADERSPIXMAP_H

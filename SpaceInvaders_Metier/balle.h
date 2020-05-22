@@ -1,11 +1,11 @@
 #ifndef BALLE_H
 #define BALLE_H
 
-#include "objetspaceinvaderspixmap.h"
+#include "objetspaceinvaderspixmapevoluable.h"
 
 
 
-class Balle : public ObjetSpaceInvadersPixmap {
+class Balle : public ObjetSpaceInvadersPixmapEvoluable {
 
 public:
     Balle(QString cheminFichier, int positionX, int positionY);

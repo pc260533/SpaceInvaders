@@ -1,49 +1,20 @@
 #include "spaceinvaders.h"
 
-void SpaceInvaders::setGraphicsView(QGraphicsView *value) {
-    this->graphicsView = value;
-    this->graphicsView->setScene(this);
-}
-
-int SpaceInvaders::getHauteur() const {
-    return hauteur;
-}
-
-int SpaceInvaders::getLargeur() const {
-    return largeur;
-}
-
-SpaceInvaders::SpaceInvaders() : QGraphicsScene(0, 0, 800, 600) {
-    this->largeur = 800;
-    this->hauteur = 600;
+SpaceInvaders::SpaceInvaders() : Scene() {
+    this->listeObjetsSpaceInvadersASupprimer = QList<ObjetSpaceInvadersPixmapEvoluable*>();
 }
 
 SpaceInvaders::~SpaceInvaders() {
 
 }
 
-void SpaceInvaders::ajouterObjetSpaceInvadersPixmap(ObjetSpaceInvadersPixmap* objetSpaceInvadersPixmap) {
-    this->addItem(objetSpaceInvadersPixmap);
+QGraphicsView* SpaceInvaders::getGraphicsView() const {
+    return this->graphicsView;
 }
 
-void SpaceInvaders::supprimerObjetSpaceInvadersPixmap(ObjetSpaceInvadersPixmap* objetSpaceInvadersPixmap) {
-    this->removeItem(objetSpaceInvadersPixmap);
-}
-
-void SpaceInvaders::ajouterObjetSpaceInvadersGroupe(ObjetSpaceInvadersGroupe* objetSpaceInvadersGroupe) {
-    this->addItem(objetSpaceInvadersGroupe);
-}
-
-void SpaceInvaders::supprimerObjetSpaceInvadersGroupe(ObjetSpaceInvadersGroupe* objetSpaceInvadersGroupe) {
-    this->removeItem(objetSpaceInvadersGroupe);
-}
-
-void SpaceInvaders::ajouterObjetSpaceInvadersTexte(ObjetSpaceInvadersTexte *objetSpaceInvadersTexte) {
-    this->addItem(objetSpaceInvadersTexte);
-}
-
-void SpaceInvaders::supprimerObjetSpaceInvadersTexte(ObjetSpaceInvadersTexte *objetSpaceInvadersTexte) {
-    this->addItem(objetSpaceInvadersTexte);
+void SpaceInvaders::setGraphicsView(QGraphicsView* graphicsView) {
+    this->graphicsView = graphicsView;
+    this->graphicsView->setScene(this);
 }
 
 void SpaceInvaders::jouer() {
@@ -52,15 +23,26 @@ void SpaceInvaders::jouer() {
     this->initialiserEvenements();
 }
 
-void SpaceInvaders::ajouterObjetsSpaceInvadersPixmapAuJeu(ObjetSpaceInvadersPixmap *objetSpaceInvadersPixmap) {
+void SpaceInvaders::ajouterObjetsSpaceInvadersPixmapAuJeu(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) {
     //qDebug() << "objet attrapé et ajouté";
     this->ajouterObjetSpaceInvadersPixmap(objetSpaceInvadersPixmap);
-    QObject::connect(dynamic_cast<QObject*>(objetSpaceInvadersPixmap), SIGNAL(suppressionObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmap*)), this, SLOT(supprimerObjetsSpaceInvadersPixmapDuJeu(ObjetSpaceInvadersPixmap*)));
+    QObject::connect(dynamic_cast<QObject*>(objetSpaceInvadersPixmap), SIGNAL(suppressionObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmapEvoluable*)), this, SLOT(supprimerObjetsSpaceInvadersPixmapDuJeu(ObjetSpaceInvadersPixmapEvoluable*)));
 }
 
-void SpaceInvaders::supprimerObjetsSpaceInvadersPixmapDuJeu(ObjetSpaceInvadersPixmap *objetSpaceInvadersPixmap) {
+void SpaceInvaders::supprimerObjetsSpaceInvadersPixmapDuJeu(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) {
     //qDebug() << "objet attrapé et supprimé";
     this->supprimerObjetSpaceInvadersPixmap(objetSpaceInvadersPixmap);
+    this->listeObjetsSpaceInvadersASupprimer.push_back(objetSpaceInvadersPixmap);
+}
+
+void SpaceInvaders::evoluer() {
+    this->advance();
+    for (ObjetSpaceInvadersPixmapEvoluable* objetSpaceInvadersPixmapEvoluable : this->listeObjetsSpaceInvadersASupprimer) {
+        if (objetSpaceInvadersPixmapEvoluable) {
+            delete objetSpaceInvadersPixmapEvoluable;
+        }
+        this->listeObjetsSpaceInvadersASupprimer.clear();
+    }
 }
 
 void SpaceInvaders::keyPressEvent(QKeyEvent *event) {

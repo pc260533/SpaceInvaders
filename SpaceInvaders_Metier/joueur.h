@@ -37,7 +37,7 @@ public:
 
     // ObjetSpaceInvadersPixmap interface
 public:
-    void effetCollision(ObjetSpaceInvadersPixmap *objetSpaceInvadersPixmap) override;
+    void effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) override;
     QString getTypeObjet() override;
 
     // ObjetSpaceInvadersBougeableClavier interface
@@ -51,8 +51,8 @@ public:
 
     // ObjetSpaceInvaders interface
 signals:
-    void nouveauObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmap*) override;
-    void suppressionObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmap *) override;
+    void nouveauObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmapEvoluable*) override;
+    void suppressionObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmapEvoluable *) override;
 
     void nombreViesJoueurDiminue();
 

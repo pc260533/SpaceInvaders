@@ -4,6 +4,10 @@ BalleEnnemi::BalleEnnemi(int positionX, int positionY): QObject(nullptr), Balle(
 
 }
 
+BalleEnnemi::~BalleEnnemi() {
+
+}
+
 void BalleEnnemi::evoluerDansLeTemsp() {
     this->deplacerXY(0, 2);
     if (this->getPositionY() + this->getHauteur() > this->getHauteurEcran()) {
@@ -12,7 +16,7 @@ void BalleEnnemi::evoluerDansLeTemsp() {
     }
 }
 
-void BalleEnnemi::effetCollision(ObjetSpaceInvadersPixmap *objetSpaceInvadersPixmap) {
+void BalleEnnemi::effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) {
 
 }
 

@@ -1,7 +1,7 @@
 #include "partiedemur.h"
 
 PartieDeMur::PartieDeMur(int positionX, int positionY) :
-    QObject(nullptr), ObjetSpaceInvadersPixmap(":/ressources/images/images/partieDeMur.png", positionX, positionY) {
+    QObject(nullptr), ObjetSpaceInvadersPixmapEvoluable(":/ressources/images/images/partieDeMur.png", positionX, positionY) {
 
 }
 
@@ -10,12 +10,12 @@ PartieDeMur::~PartieDeMur() {
 }
 
 void PartieDeMur::evoluerDansLeTemsp() {
-    for (QGraphicsItem *item : this->collidingItems()) {
-        this->effetCollision(dynamic_cast<ObjetSpaceInvadersPixmap*>(item));
+    for (QGraphicsItem* item : this->collidingItems()) {
+        this->effetCollision(dynamic_cast<ObjetSpaceInvadersPixmapEvoluable*>(item));
     }
 }
 
-void PartieDeMur::effetCollision(ObjetSpaceInvadersPixmap *objetSpaceInvadersPixmap) {
+void PartieDeMur::effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) {
     if (objetSpaceInvadersPixmap) {
         QString objetType = objetSpaceInvadersPixmap->getTypeObjet();
         if (objetType == "BalleJoueur") {

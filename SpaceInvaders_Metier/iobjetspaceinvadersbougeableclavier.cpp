@@ -1,7 +1,7 @@
 #include "iobjetspaceinvadersbougeableclavier.h"
 
 IObjetSpaceInvadersBougeableClavier::IObjetSpaceInvadersBougeableClavier(QString cheminFichier, int positionX, int positionY)
-    : ObjetSpaceInvadersPixmap(cheminFichier, positionX, positionY) {
+    : ObjetSpaceInvadersPixmapEvoluable(cheminFichier, positionX, positionY) {
     this->setFlag(QGraphicsItem::ItemIsFocusable);
     this->setFlag(QGraphicsItem::ItemIsMovable);
 }

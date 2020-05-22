@@ -1,11 +1,11 @@
 #ifndef PARTIEDEMUR_H
 #define PARTIEDEMUR_H
 
-#include "objetspaceinvaderspixmap.h"
+#include "objetspaceinvaderspixmapevoluable.h"
 
 
 
-class PartieDeMur : public QObject, public ObjetSpaceInvadersPixmap {
+class PartieDeMur : public QObject, public ObjetSpaceInvadersPixmapEvoluable {
     Q_OBJECT
 
 public:
@@ -18,12 +18,12 @@ public:
 
     // ObjetSpaceInvadersPixmap interface
 public:
-    void effetCollision(ObjetSpaceInvadersPixmap *objetSpaceInvadersPixmap) override;
+    void effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) override;
     QString getTypeObjet() override;
 
 signals:
-    void nouveauObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmap *) override;
-    void suppressionObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmap *) override;
+    void nouveauObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmapEvoluable *) override;
+    void suppressionObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmapEvoluable *) override;
 
 };
 

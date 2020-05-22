@@ -6,19 +6,22 @@ Mur::Mur(int positionX, int positionY) : ObjetSpaceInvadersGroupe(positionX, pos
 }
 
 Mur::~Mur() {
-
+    for (PartieDeMur* partieDeMur : this->listePartieDeMur) {
+        delete partieDeMur;
+    }
 }
 
 QList<PartieDeMur*> Mur::getListePartieDeMur() const {
     return this->listePartieDeMur;
 }
 
-void Mur::ajouterPartieDeMur(PartieDeMur *partieDeMur) {
+void Mur::ajouterPartieDeMur(PartieDeMur* partieDeMur) {
     this->listePartieDeMur.push_back(partieDeMur);
 }
 
-void Mur::supprimerPartieDeMur(PartieDeMur *partieDeMur) {
+void Mur::supprimerPartieDeMur(PartieDeMur* partieDeMur) {
     this->listePartieDeMur.removeOne(partieDeMur);
+    this->removeFromGroup(partieDeMur);
 }
 
 void Mur::creerMur() {

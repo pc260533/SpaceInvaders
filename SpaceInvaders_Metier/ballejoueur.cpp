@@ -1,13 +1,17 @@
 #include "ballejoueur.h"
 
 BalleJoueur::BalleJoueur(int positionX, int positionY): QObject(nullptr), Balle(":/ressources/images/images/balleJoueur.png", positionX, positionY) {
+}
+
+BalleJoueur::~BalleJoueur() {
 
 }
 
 void BalleJoueur::evoluerDansLeTemsp() {
     for (QGraphicsItem *item : this->collidingItems()) {
-        this->effetCollision(dynamic_cast<ObjetSpaceInvadersPixmap*>(item));
+        this->effetCollision(dynamic_cast<ObjetSpaceInvadersPixmapEvoluable*>(item));
     }
+
     this->deplacerXY(0, -10);
     if (this->getPositionY() + this->getHauteur() < 0) {
         //qDebug() << "émission suppresion balle joueur";
@@ -15,7 +19,7 @@ void BalleJoueur::evoluerDansLeTemsp() {
     }
 }
 
-void BalleJoueur::effetCollision(ObjetSpaceInvadersPixmap *objetSpaceInvadersPixmap) {
+void BalleJoueur::effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) {
     if (objetSpaceInvadersPixmap) {
         QString objetType = objetSpaceInvadersPixmap->getTypeObjet();
         if (objetType == "BalleEnnemi") {

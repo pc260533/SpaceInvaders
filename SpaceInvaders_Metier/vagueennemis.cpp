@@ -11,7 +11,9 @@ VagueEnnemis::VagueEnnemis(int positionX, int positionY) : ObjetSpaceInvadersGro
 }
 
 VagueEnnemis::~VagueEnnemis() {
-
+    for (Ennemi* ennemi : this->listeEnnemis) {
+        delete ennemi;
+    }
 }
 
 QList<Ennemi *> VagueEnnemis::getListeEnnemis() const {
@@ -70,21 +72,18 @@ void VagueEnnemis::creerVague() {
     }
 }
 
-void VagueEnnemis::ajouterEnnemi(Ennemi *ennemi) {
+void VagueEnnemis::ajouterEnnemi(Ennemi* ennemi) {
     this->listeEnnemis.push_back(ennemi);
 }
 
-void VagueEnnemis::supprimerEnnemi(Ennemi *ennemi) {
+void VagueEnnemis::supprimerEnnemi(Ennemi* ennemi) {
     this->listeEnnemis.removeOne(ennemi);
+    this->removeFromGroup(ennemi);
     this->miseAJourCompteurDeplacementMaximal();
 }
 
 bool VagueEnnemis::contientAucunEnnemis() {
     return this->listeEnnemis.empty();
-}
-
-void VagueEnnemis::detruireVagueEnnemi() {
-    this->listeEnnemis.clear();
 }
 
 void VagueEnnemis::evoluerDansLeTemsp() {

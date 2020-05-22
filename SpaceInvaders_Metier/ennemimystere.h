@@ -2,11 +2,11 @@
 #define ENNEMIMYSTERE_H
 
 #include "iennemi.h"
-#include "objetspaceinvaderspixmap.h"
+#include "objetspaceinvaderspixmapevoluable.h"
 
 
 
-class EnnemiMystere : public QObject, public ObjetSpaceInvadersPixmap, public IEnnemi {
+class EnnemiMystere : public QObject, public ObjetSpaceInvadersPixmapEvoluable, public IEnnemi {
     Q_OBJECT
 
 private:
@@ -23,7 +23,7 @@ public:
 
     // ObjetSpaceInvadersPixmap interface
 public:
-    void effetCollision(ObjetSpaceInvadersPixmap *objetSpaceInvadersPixmap) override;
+    void effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) override;
     QString getTypeObjet() override;
 
     // IEnnemi interface
@@ -32,8 +32,8 @@ public:
 
     // ObjetSpaceInvadersPixmap interface
 signals:
-    void nouveauObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmap *) override;
-    void suppressionObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmap *) override;
+    void nouveauObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmapEvoluable *) override;
+    void suppressionObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmapEvoluable *) override;
 
 };
 

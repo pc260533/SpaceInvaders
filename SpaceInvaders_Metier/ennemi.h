@@ -5,7 +5,7 @@
 #include "iennemi.h"
 #include "iobjetspaceinvaderstireur.h"
 #include "joueur.h"
-#include "objetspaceinvaderspixmap.h"
+#include "objetspaceinvaderspixmapevoluable.h"
 
 #include <QObject>
 #include <QString>
@@ -13,7 +13,7 @@
 
 
 
-class Ennemi : public QObject, public ObjetSpaceInvadersPixmap, public IObjetSpaceInvadersTireur, public IEnnemi {
+class Ennemi : public QObject, public ObjetSpaceInvadersPixmapEvoluable, public IObjetSpaceInvadersTireur, public IEnnemi {
     Q_OBJECT
 
 private:
@@ -39,7 +39,7 @@ public:
 
     // ObjetSpaceInvadersPixmap interface
 public:
-    void effetCollision(ObjetSpaceInvadersPixmap *objetSpaceInvadersPixmap) override;
+    void effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) override;
 
     // IObjetSpaceInvadersTireur interface
 public:
@@ -47,8 +47,8 @@ public:
 
     // ObjetSpaceInvadersPixmap interface
 signals:
-    void nouveauObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmap *) override;
-    void suppressionObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmap *) override;
+    void nouveauObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmapEvoluable *) override;
+    void suppressionObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmapEvoluable *) override;
 
 };
 

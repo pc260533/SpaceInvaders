@@ -2,7 +2,7 @@
 
 int Ennemi::chanceDeTirEnnemi = 9999;
 
-Ennemi::Ennemi(QString cheminFichier, int positionX, int positionY) : ObjetSpaceInvadersPixmap(cheminFichier, positionX, positionY) {
+Ennemi::Ennemi(QString cheminFichier, int positionX, int positionY) : ObjetSpaceInvadersPixmapEvoluable(cheminFichier, positionX, positionY) {
     this->etatAnimationEnnemi = "";
     this->vitesseEnnemi = 5;
     this->compteurChangementAnimation = 1;
@@ -32,7 +32,7 @@ void Ennemi::miseAJourChanceDeTirEnnemi() {
 
 void Ennemi::evoluerDansLeTemsp() {
     for (QGraphicsItem *item : this->collidingItems()) {
-        this->effetCollision(dynamic_cast<ObjetSpaceInvadersPixmap*>(item));
+        this->effetCollision(dynamic_cast<ObjetSpaceInvadersPixmapEvoluable*>(item));
     }
     if (this->compteurChangementAnimation == 100) {
         this->animerEnnemi();
@@ -47,7 +47,7 @@ void Ennemi::evoluerDansLeTemsp() {
     }
 }
 
-void Ennemi::effetCollision(ObjetSpaceInvadersPixmap *objetSpaceInvadersPixmap) {
+void Ennemi::effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) {
     if (objetSpaceInvadersPixmap) {
         QString objetType = objetSpaceInvadersPixmap->getTypeObjet();
         if (objetType == "BalleJoueur") {

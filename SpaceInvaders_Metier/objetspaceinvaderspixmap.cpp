@@ -45,10 +45,3 @@ void ObjetSpaceInvadersPixmap::changerImage(QString cheminFichier) {
     this->pixmap = QPixmap(cheminFichier);
     this->setPixmap(this->pixmap);
 }
-
-void ObjetSpaceInvadersPixmap::advance(int phase) {
-    if (!phase) {
-        return;
-    }
-    this->evoluerDansLeTemsp();
-}

@@ -24,8 +24,6 @@ public:
     int getHauteurEcran() const;
     int getLargeurEcran() const;
 
-    virtual void evoluerDansLeTemsp() = 0;
-
 };
 
 #endif // OBJETSPACEINVADERS_H

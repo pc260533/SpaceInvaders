@@ -12,6 +12,7 @@ class BalleJoueur : public QObject, public Balle {
 
 public:
     BalleJoueur(int positionX, int positionY);
+    virtual ~BalleJoueur();
 
     // ObjetSpaceInvaders interface
 public:
@@ -19,13 +20,13 @@ public:
 
     // ObjetSpaceInvadersPixmap interface
 public:
-    void effetCollision(ObjetSpaceInvadersPixmap *objetSpaceInvadersPixmap) override;
+    void effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) override;
     QString getTypeObjet() override;
 
     // ObjetSpaceInvaders interface
 signals:
-    void nouveauObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmap*) override;
-    void suppressionObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmap *) override;
+    void nouveauObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmapEvoluable*) override;
+    void suppressionObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmapEvoluable *) override;
 
 };
 

@@ -33,7 +33,7 @@ void Joueur::decrementerVieDuJoueur() {
 
 void Joueur::evoluerDansLeTemsp() {
     for (QGraphicsItem *item : this->collidingItems()) {
-        this->effetCollision(dynamic_cast<ObjetSpaceInvadersPixmap*>(item));
+        this->effetCollision(dynamic_cast<ObjetSpaceInvadersPixmapEvoluable*>(item));
     }
     if (this->estDeplacementGauche) {
         if (this->getPositionX() > 0) {
@@ -47,7 +47,7 @@ void Joueur::evoluerDansLeTemsp() {
     }
 }
 
-void Joueur::effetCollision(ObjetSpaceInvadersPixmap *objetSpaceInvadersPixmap) {
+void Joueur::effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) {
     if (objetSpaceInvadersPixmap) {
         QString objetType = objetSpaceInvadersPixmap->getTypeObjet();
         if (objetType == "BalleEnnemi") {
