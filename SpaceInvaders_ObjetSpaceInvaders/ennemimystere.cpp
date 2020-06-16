@@ -39,7 +39,7 @@ void EnnemiMystere::evoluerDansLeTemsp() {
     }
 }
 
-void EnnemiMystere::effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmapEvoluable) {
+void EnnemiMystere::effetCollision(ObjetSpaceInvadersPixmapEvoluable* objetSpaceInvadersPixmapEvoluable) {
     if (objetSpaceInvadersPixmapEvoluable) {
         QString objetType = objetSpaceInvadersPixmapEvoluable->getTypeObjet();
         if (objetType == "BalleJoueur") {

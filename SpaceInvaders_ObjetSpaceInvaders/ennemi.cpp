@@ -1,8 +1,8 @@
 #include "ennemi.h"
 
-Ennemi::Ennemi(QString cheminFichier, int positionX, int positionY) : ObjetSpaceInvadersPixmapEvoluable(cheminFichier, positionX, positionY) {
+Ennemi::Ennemi(QString cheminFichier, int positionX, int positionY)
+    : QObject(nullptr), ObjetSpaceInvadersPixmapEvoluable(cheminFichier, positionX, positionY) {
     this->etatAnimationEnnemi = "";
-    this->vitesseEnnemi = 5;
     this->compteurChangementAnimation = 1;
     this->vaEtreDetruit = false;
     this->compteurAvantDestruction = 1;
@@ -58,7 +58,7 @@ void Ennemi::evoluerDansLeTemsp() {
 
 }
 
-void Ennemi::effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmapEvoluable) {
+void Ennemi::effetCollision(ObjetSpaceInvadersPixmapEvoluable* objetSpaceInvadersPixmapEvoluable) {
     if (objetSpaceInvadersPixmapEvoluable) {
         QString objetType = objetSpaceInvadersPixmapEvoluable->getTypeObjet();
         if (objetType == "BalleJoueur") {

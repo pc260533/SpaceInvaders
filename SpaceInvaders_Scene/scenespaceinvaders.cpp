@@ -1,8 +1,5 @@
 #include "scenespaceinvaders.h"
 
-#include <QJsonDocument>
-#include <QJsonObject>
-
 SceneSpaceInvaders::SceneSpaceInvaders() : SceneJeu() {
     this->joueur = nullptr;
     this->vagueEnnemis = nullptr;
@@ -32,20 +29,6 @@ SceneSpaceInvaders::~SceneSpaceInvaders() {
     this->sauvegarderHighscoreHighestRound();
     this->reinitialiserScene();
     delete this->sceneRound;
-    /*delete this->joueur;
-    delete this->vagueEnnemis;
-    if (this->ennemiMystere) {
-        delete this->ennemiMystere;
-    }
-    delete this->mur1;
-    delete this->mur2;
-    delete this->mur3;
-    delete this->mur4;
-    delete this->scoreTextItem;
-    delete this->highscoreTextItem;
-    delete this->roundTextItem;
-    delete this->highestRoundTextItem;
-    delete this->sceneRound;*/
 }
 
 void SceneSpaceInvaders::miseAJourTexteNombreDeViesJoueur() {
@@ -66,7 +49,6 @@ void SceneSpaceInvaders::miseAJourTexteRoundHighestRound() {
 }
 
 void SceneSpaceInvaders::chargerNouveauRound() {
-    qDebug() << "chargerNouveauRound";
     this->round++;
     this->sauvegarderHighscoreHighestRound();
     this->reinitialiserScene();
@@ -203,9 +185,6 @@ void SceneSpaceInvaders::initialiserArrierePlan() {
 }
 
 void SceneSpaceInvaders::reinitialiserScene() {
-    //SpaceInvaders::reinitialiserScene();
-    //this->clear();
-    qDebug() << this->items().size();
     this->supprimerObjetSpaceInvadersPixmap(this->joueur);
     this->supprimerObjetSpaceInvadersGroupe(this->vagueEnnemis);
     this->supprimerObjetSpaceInvadersGroupe(this->mur1);
@@ -232,10 +211,10 @@ void SceneSpaceInvaders::reinitialiserScene() {
     delete this->highscoreTextItem;
     delete this->roundTextItem;
     delete this->highestRoundTextItem;
+
     //Suppression de tous les items : il peut rester des balles qui ont étét tirées mais pas supprimées.
     this->supprimerTousLesItems();
-    qDebug() << this->items().size();
-    qDebug() << this->items();
+
     this->joueur = nullptr;
     this->vagueEnnemis = nullptr;
     this->ennemiMystere = nullptr;
@@ -249,7 +228,7 @@ void SceneSpaceInvaders::reinitialiserScene() {
     this->highestRoundTextItem = nullptr;
 }
 
-void SceneSpaceInvaders::onKeyPressEvent(QKeyEvent *event) {
+void SceneSpaceInvaders::onKeyPressEvent(QKeyEvent* event) {
     if (event->key() == Qt::Key_Escape) {
         emit quitter();
     }
@@ -258,7 +237,7 @@ void SceneSpaceInvaders::onKeyPressEvent(QKeyEvent *event) {
     }
 }
 
-void SceneSpaceInvaders::onKeyReleaseEvent(QKeyEvent *event) {
+void SceneSpaceInvaders::onKeyReleaseEvent(QKeyEvent* event) {
     this->joueur->onKeyReleasedEvent(event);
 }
 
@@ -272,7 +251,7 @@ void SceneSpaceInvaders::afficherNextRound() {
     this->changementDeRound = false;
 }
 
-void SceneSpaceInvaders::supprimerObjetsSpaceInvadersPixmapDuJeu(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) {
+void SceneSpaceInvaders::supprimerObjetsSpaceInvadersPixmapDuJeu(ObjetSpaceInvadersPixmapEvoluable* objetSpaceInvadersPixmap) {
     QString objetType = objetSpaceInvadersPixmap->getTypeObjet();
     if ((objetType == "Ennemi1") || (objetType == "Ennemi2") || (objetType == "Ennemi3")) {
         Ennemi* ennemi = dynamic_cast<Ennemi*>(objetSpaceInvadersPixmap);

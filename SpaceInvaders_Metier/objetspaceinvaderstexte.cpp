@@ -6,6 +6,10 @@ ObjetSpaceInvadersTexte::ObjetSpaceInvadersTexte(int positionX, int positionY):
 
 }
 
+ObjetSpaceInvadersTexte::~ObjetSpaceInvadersTexte() {
+
+}
+
 void ObjetSpaceInvadersTexte::setTexte(QString texte) {
     this->texte = texte;
     this->setPlainText(this->texte);

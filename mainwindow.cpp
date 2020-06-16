@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent)
+MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow) {
     this->ui->setupUi(this);
@@ -75,8 +75,7 @@ void MainWindow::onQuitter() {
     this->close();
 }
 
-void MainWindow::keyPressEvent(QKeyEvent *event) {
-    //qDebug() << event;
+void MainWindow::keyPressEvent(QKeyEvent* event) {
     if (event->key() == Qt::Key_A) {
         if (!this->sceneSpaceInvaders) {
             this->sceneMenu->stopperMusiqueTheme();

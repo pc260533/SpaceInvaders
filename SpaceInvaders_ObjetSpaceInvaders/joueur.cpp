@@ -1,7 +1,7 @@
 #include "joueur.h"
 
 Joueur::Joueur(int positionX, int positionY)
-    :  QObject(nullptr), IObjetSpaceInvadersBougeableClavier(":/ressources/images/images/joueur.png", positionX, positionY) {
+    : QObject(nullptr), ObjetSpaceInvadersPixmapEvoluable(":/ressources/images/images/joueur.png", positionX, positionY) {
     this->vitesseJoueur = 5;
     this->nombreViesJoueur = 3;
     this->enVieJoueur = true;
@@ -62,7 +62,7 @@ void Joueur::evoluerDansLeTemsp() {
     }
 }
 
-void Joueur::effetCollision(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmapEvoluable) {
+void Joueur::effetCollision(ObjetSpaceInvadersPixmapEvoluable* objetSpaceInvadersPixmapEvoluable) {
     if (objetSpaceInvadersPixmapEvoluable) {
         QString objetType = objetSpaceInvadersPixmapEvoluable->getTypeObjet();
         if (objetType == "BalleEnnemi") {
@@ -82,7 +82,7 @@ QString Joueur::getTypeObjet() {
     return "Joueur";
 }
 
-void Joueur::onKeyPressedEvent(QKeyEvent *event) {
+void Joueur::onKeyPressedEvent(QKeyEvent* event) {
     if (event->key() == Qt::Key_Left) {
         this->estDeplacementGauche = true;
     }
@@ -99,7 +99,7 @@ void Joueur::onKeyPressedEvent(QKeyEvent *event) {
     }
 }
 
-void Joueur::onKeyReleasedEvent(QKeyEvent *event) {
+void Joueur::onKeyReleasedEvent(QKeyEvent* event) {
     if (event->key() == Qt::Key_Left) {
         this->estDeplacementGauche = false;
     }

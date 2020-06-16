@@ -17,18 +17,12 @@ void SceneJeu::setGraphicsView(QGraphicsView* graphicsView) {
     this->graphicsView->setScene(this);
 }
 
-void SceneJeu::jouer() {
-
-}
-
-void SceneJeu::ajouterObjetsSpaceInvadersPixmapAuJeu(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) {
-    //qDebug() << "objet attrapé et ajouté";
+void SceneJeu::ajouterObjetsSpaceInvadersPixmapAuJeu(ObjetSpaceInvadersPixmapEvoluable* objetSpaceInvadersPixmap) {
     this->ajouterObjetSpaceInvadersPixmap(objetSpaceInvadersPixmap);
     QObject::connect(dynamic_cast<QObject*>(objetSpaceInvadersPixmap), SIGNAL(suppressionObjetSpaceInvadersPixmapDansJeu(ObjetSpaceInvadersPixmapEvoluable*)), this, SLOT(supprimerObjetsSpaceInvadersPixmapDuJeu(ObjetSpaceInvadersPixmapEvoluable*)));
 }
 
-void SceneJeu::supprimerObjetsSpaceInvadersPixmapDuJeu(ObjetSpaceInvadersPixmapEvoluable *objetSpaceInvadersPixmap) {
-    //qDebug() << "objet attrapé et supprimé";
+void SceneJeu::supprimerObjetsSpaceInvadersPixmapDuJeu(ObjetSpaceInvadersPixmapEvoluable* objetSpaceInvadersPixmap) {
     if (!this->items().contains(objetSpaceInvadersPixmap)) {
         this->supprimerObjetSpaceInvadersPixmap(objetSpaceInvadersPixmap);
     }
@@ -48,10 +42,10 @@ void SceneJeu::evoluer() {
     this->listeObjetsSpaceInvadersASupprimer.clear();
 }
 
-void SceneJeu::keyPressEvent(QKeyEvent *event) {
+void SceneJeu::keyPressEvent(QKeyEvent* event) {
     this->onKeyPressEvent(event);
 }
 
-void SceneJeu::keyReleaseEvent(QKeyEvent *event) {
+void SceneJeu::keyReleaseEvent(QKeyEvent* event) {
     this->onKeyReleaseEvent(event);
 }
