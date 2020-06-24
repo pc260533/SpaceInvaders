@@ -89,10 +89,6 @@ void Joueur::onKeyPressedEvent(QKeyEvent* event) {
     else if (event->key() == Qt::Key_Right) {
         this->estDeplacementDroite = true;
     }
-    /*La vitesse else if (event->key() == Qt::Key_Space) {
-        this->tirer();
-        this->estEnTir = true;
-    }*/
     else if ((event->key() == Qt::Key_Space) && (!this->estEnTir) && (!event->isAutoRepeat())) {
         this->tirer();
         this->estEnTir = true;
